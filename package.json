@@ -2,7 +2,7 @@
   "name": "petly-site",
   "version": "0.1.0",
   "private": true,
-  "homepage": " https://romaleso261981.github.io/petly-site-my/",
+  "homepage": "https://romaleso261981.github.io/petly-site-my/",
   "dependencies": {
     "@react-hook/media-query": "^1.1.1",
     "@reduxjs/toolkit": "^1.9.3",
