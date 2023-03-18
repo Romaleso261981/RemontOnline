@@ -16,7 +16,7 @@ const authToken = {
 };
 
 const getAllNews = async () => {
-  return await API.get(`/news`);
+  return await API.get(`/sponsors`);
 };
 
 API.interceptors.response.use(
