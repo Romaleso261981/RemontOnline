@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://185.233.118.244:8080',
-  // baseURL: 'http://localhost:8080',
+  //   baseURL: 'http://185.233.118.244:8080',
+  baseURL: 'http://localhost:8080',
 });
 
 const authToken = {
@@ -16,7 +16,7 @@ const authToken = {
 };
 
 const getAllNews = async () => {
-  return await API.get(`/sponsors`);
+  return await API.get(`/news`);
 };
 
 API.interceptors.response.use(

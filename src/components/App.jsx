@@ -1,59 +1,38 @@
-import { getAllNews } from '../API';
-import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import Container from './Container/Container';
+import SharedLayout from './SharedLayout/SharedLayout';
+import Home from 'pages/Home/Home';
+import NewsPage from 'pages/NewsPage/NewsPage';
+import NoticesPage from 'pages/NoticesPage/NoticesPage';
+import NoticesPetsList from './Notices/NoticesCategoriesList/NoticesCategoriesList';
+import OurFriendsPage from 'pages/OurFriendsPage/OurFriendsPage';
+import NoticesPetsListOwn from './Notices/NoticesCategoriesList/NoticesPetsListOwn';
+import NoticesPetsListSell from './Notices/NoticesCategoriesList/NoticesPetsListSell';
 
 export const App = () => {
-  const [transactionList, setTransactionList] = useState([]);
-  const [queri, setQueri] = useState('sponsors');
-  console.log(queri);
-
-  useEffect(() => {
-    async function get() {
-      try {
-        const { data } = await getAllNews();
-        setTransactionList(data);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    get();
-  }, []);
-
-  function goNews() {
-    setQueri('news');
-  }
-  
-  function goSponsors() {
-    setQueri('sponsors');
-  }
-
   return (
     <>
-      {transactionList.map(
-        ({
-          _id,
-          date,
-          description,
-          url,
-          address,
-          addressUrl,
-          phone,
-          title,
-          workDays,
-        }) => (
-          <ul key={_id}>
-            <li>{date}</li>
-            <li>{address}</li>
-            <li>{addressUrl}</li>
-            <li>{title}</li>
-            <li>{phone}</li>
-            <li>{description}</li>
-            <li>{url}</li>
-          </ul>
-        ),
-      )}
-      <button onClick={goNews}>news</button>
-      <button onClick={goSponsors}>sponsors</button>
+      <Container>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/news" element={<NewsPage />} />
+
+            <Route path="/notices" element={<NoticesPage />}>
+              {/* <Route index element={<NoticesPetsListSell />} /> */}
+              <Route path="sell" element={<NoticesPetsListSell />} />
+              <Route path="lost-found" element={<NoticesPetsList />} />
+              <Route path="for-free" element={<NoticesPetsList />} />
+              <Route path="favorite" element={<NoticesPetsList />} />
+              <Route path="own" element={<NoticesPetsListOwn />} />
+            </Route>
+
+            <Route path="/friends" element={<OurFriendsPage />} />
+          </Route>
+          <Route path="*" element={<h1>Error 404</h1>} />
+        </Routes>
+      </Container>
     </>
   );
 };
