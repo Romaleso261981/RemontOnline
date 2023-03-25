@@ -16,6 +16,10 @@ export const GlobalStyles = css`
     height: 100%;
   }
 
+  body.modal-open {
+    overflow: hidden;
+  }
+
   h1,
   h2,
   h3,
@@ -27,6 +31,10 @@ export const GlobalStyles = css`
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   img {

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API = axios.create({
   //   baseURL: 'http://185.233.118.244:8080',
-  baseURL: 'http://localhost:8080',
+  baseURL: 'http://localhost:3000',
 });
 
 const authToken = {
@@ -15,9 +15,7 @@ const authToken = {
   },
 };
 
-const getAllNews = async () => {
-  return await API.get(`/news`);
-};
+
 
 API.interceptors.response.use(
   response => response,
@@ -41,4 +39,4 @@ API.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-export { API, authToken, getAllNews };
+export { API, authToken };
