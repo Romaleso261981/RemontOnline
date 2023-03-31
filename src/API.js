@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  //   baseURL: 'http://185.233.118.244:8080',
-  baseURL: 'http://localhost:8080',
+  baseURL: 'http://petly-site-back-my.up.railway.app',
+  // baseURL: 'http://localhost:8080',
 });
 
 const authToken = {
@@ -14,7 +14,6 @@ const authToken = {
     API.defaults.headers.common.Authorization = '';
   },
 };
-
 
 API.interceptors.response.use(
   response => response,
@@ -38,4 +37,4 @@ API.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-export { API, authToken};
+export { API, authToken };
