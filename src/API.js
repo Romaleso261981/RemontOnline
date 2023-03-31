@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://petly-site-back-my.up.railway.app',
+  baseURL: 'https://petly-site-back.up.railway.app/',
+  // baseURL: 'http://petly-site-back-my.up.railway.app',
   // baseURL: 'http://localhost:8080',
 });
 
