@@ -14,16 +14,17 @@ export const Flex = styled.div`
 `;
 
 export const BoxPetsData = styled.div`
-  /* display: flex;
-  justify-content: space-between;
-  padding-right: 16px;
-  margin-top: 0px;
-  margin-bottom: 24px; */
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    width: 704px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 821px;
+  }
 `;
 
-export const ContainerPets = styled.div`
+export const ContainerPets = styled.li`
   width: 280px;
-  /* height: 541px; */
 
   background: #ffffff;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
@@ -36,27 +37,27 @@ export const ContainerPets = styled.div`
   padding-left: 20px;
   margin-bottom: 20px;
 
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 704px;
-    /* height: 230px; */
     border-radius: 40px;
     display: flex;
-    margin-bottom: 22px;
   }
   @media screen and (min-width: 1280px) {
     width: 821px;
+    margin-bottom: 22px;
   }
 `;
 
 export const FlexSvg = styled.button`
-  /* position: absolute; */
   display: flex;
   align-items: center;
   justify-content: center;
   background: #fdf7f2;
   border: 0px;
-  /* right: 0px; */
-  /* bottom: -32px; */
 
   @media screen and (min-width: 1280px) {
     right: 0px;

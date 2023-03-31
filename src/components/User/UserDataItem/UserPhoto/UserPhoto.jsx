@@ -1,30 +1,48 @@
 import {
   inputfile,
-  PlusStyle,
+  ImageCover,
   ImageStyled,
   Flex,
   FlexSvg,
   Span,
 } from './UserPhoto.styled.jsx';
-import { AiOutlinePlus } from 'react-icons/ai';
 import { ButtonEditPhoto } from '../../ButtonUser/ButtonUser.jsx';
+import photoCover from 'img/photo_cover.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStateUsers } from 'redux/users/selectors.js';
+import { uploadAvatar } from 'redux/users/operations.js';
 
 const UserPhoto = () => {
+  const dispatch = useDispatch();
+
+  function changeHandler(e) {
+    const file = e.target.files[0];
+    dispatch(uploadAvatar(file));
+  }
+
+  const { avatarUrl } = useSelector(getStateUsers);
+
   return (
     <Flex>
-      <input type="file" name="file" id="file" style={inputfile}></input>
-      <label for="file">
-        <ImageStyled>
-          <AiOutlinePlus style={PlusStyle} />
-        </ImageStyled>
-      </label>
+      {avatarUrl ? (
+        <ImageStyled src={avatarUrl} alt="" />
+      ) : (
+        <ImageCover src={photoCover} alt="" />
+      )}
 
-      <input type="file" name="file" id="foto" style={inputfile}></input>
-      <label for="file">
+      <label>
+        <input
+          type="file"
+          name="file"
+          id="file"
+          placeholder="edit photo"
+          accept="image/*"
+          onChange={e => changeHandler(e)}
+          style={inputfile}
+        ></input>
+
         <FlexSvg>
           <ButtonEditPhoto
-            type="button"
-            ariaLabel="edit photo button"
             widthMsvg={'20px'}
             heighthMsvg={'20px'}
             widthTsvg={'20px'}

@@ -1,10 +1,10 @@
-// import styled from 'styled-components';
 import styled from '@emotion/styled';
 
 export const NewsSection = styled.div`
   display: flex;
   flex-direction: column;
   padding: 42px 20px 100px 20px;
+
   @media screen and (min-width: 1280px) {
     padding: 88px 20px 100px 20px;
   }
@@ -13,7 +13,6 @@ export const NewsSection = styled.div`
   }
 `;
 export const StyledForm = styled.form`
-  /* position: relative; */
   align-self: center;
   display: flex;
   margin-top: 28px;
@@ -169,4 +168,10 @@ export const NewsDate = styled.p`
 export const NewsLink = styled.a`
   color: #f59256;
   text-decoration: underline;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    color: #ff7f2f;
+    transform: scale(1.05);
+  }
 `;

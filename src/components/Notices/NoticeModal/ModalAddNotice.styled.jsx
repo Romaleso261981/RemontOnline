@@ -2,7 +2,12 @@ import styled from '@emotion/styled';
 import { Field } from 'formik';
 import { RxCross1 } from 'react-icons/rx';
 import { TfiPlus } from 'react-icons/tfi';
+import { Form } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
+
+export const StyledForm = styled(Form)`
+  top: 160px;
+`;
 
 const CloseButton = styled.button`
   position: absolute;
@@ -26,7 +31,7 @@ const CloseButton = styled.button`
   }
 
   svg {
-    color: black;
+    color: #000;
     font-size: 22px;
   }
 
@@ -90,10 +95,22 @@ export const StyledModal = styled.div`
   width: 280px;
   padding: 40px 20px;
   border-radius: 20px;
+  overflow: hidden;
+  top: 160px;
 
   @media screen and (min-width: 768px) {
     width: 608px;
     padding: 40px 80px;
+    top: 50%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: ${({ style, step }) =>
+      style.top !== undefined && step === 1
+        ? style.top
+        : style.top !== undefined && step === 2
+        ? style.top
+        : style.top};
   }
 `;
 
@@ -104,7 +121,7 @@ export const RadioWrapper = styled.div`
   row-gap: 16px;
   margin-bottom: 32px;
 
-  @media screen and (min-width: 728px) {
+  @media screen and (min-width: 768px) {
     column-gap: 12px;
     margin-bottom: 28px;
   }
@@ -114,8 +131,6 @@ export const InputGroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 16px;
-  /* margin-bottom: 20px; */
-  /* margin-bottom: 40px; */
 
   @media screen and (min-width: 768px) {
     row-gap: 28px;
@@ -144,7 +159,8 @@ export const BtnsModalWrapper = styled.div`
   flex-direction: column;
   row-gap: 12px;
   margin-top: 40px;
-  @media screen and (min-width: 728px) {
+
+  @media screen and (min-width: 768px) {
     flex-direction: row-reverse;
     row-gap: 0px;
     column-gap: 20px;
@@ -183,7 +199,7 @@ export const ModalBtnNext = ({ onClick, children, type }) => {
       textColor="white"
       bgColor={p => p.theme.colors.accent}
       border="none"
-      hoverTextColor="black"
+      hoverTextColor="#000"
       onClick={onClick}
     >
       {children}
@@ -195,7 +211,7 @@ export const ModalBtnBack = ({ onClick, children, type }) => {
   return (
     <BaseButton
       type={type}
-      textColor="black"
+      textColor="#000"
       bgColor={p => p.theme.colors.white}
       border={`2px solid #f59256`}
       hoverTextColor="#f59256"
@@ -208,23 +224,22 @@ export const ModalBtnBack = ({ onClick, children, type }) => {
 
 export const StyledLabel = styled.label`
   display: inline-block;
-  padding: 8px 23px;
+  padding: 6px 21px;
   border-radius: 40px;
   background-color: ${({ selected }) => (selected ? '#f59256' : 'white')};
-  color: ${({ selected }) => (selected ? 'white' : 'black')};
-  outline: ${({ selected }) => (selected ? 'none' : '2px solid #f59256')};
-  outline-offset: -2px;
+  color: ${({ selected }) => (selected ? 'white' : '#000')};
+  border: 2px solid #f59256;
   cursor: pointer;
   transition: all ${p => p.theme.animation.cubicBezier};
 
   &:hover {
-    background-color: ${({ selected }) => (selected ? '#f59256' : '#f59256')};
-    color: ${({ selected }) => (selected ? 'black' : 'black')};
+    background-color: #f59256;
+    color: #000;
   }
 
   @media screen and (min-width: 768px) {
     font-size: 20px;
-    padding: 10px 28px;
+    padding: 8px 26px;
   }
 `;
 
@@ -242,7 +257,7 @@ export const RadioSexBtnWrapper = styled.div`
 
   column-gap: 40px;
 
-  @media screen and (min-width: 728px) {
+  @media screen and (min-width: 768px) {
     margin-top: 31px;
     margin-bottom: 40px;
   }
@@ -316,6 +331,7 @@ export const StyledFileInput = styled.div`
     margin-bottom: 28px;
   }
 `;
+
 export const StyledInput = styled(Field)`
   width: 240px;
   height: 40px;
@@ -324,7 +340,8 @@ export const StyledInput = styled(Field)`
   padding-left: 14px;
   background-color: #fdf7f2;
   border: 1px solid
-    ${({ isvalidfield }) => (isvalidfield ? 'green' : '#f5925680')};
+    ${({ __isvalidfield }) =>
+      __isvalidfield === 'true' ? 'green' : '#f5925680'};
 
   &:focus {
     outline: none;
@@ -348,7 +365,8 @@ export const StyledTextareaAutosize = styled(TextareaAutosize)`
 
   background-color: #fdf7f2;
   border: 1px solid
-    ${({ isvalidfield }) => (isvalidfield ? 'green' : '#f5925680')};
+    ${({ __isvalidfield }) =>
+      __isvalidfield === 'true' ? 'green' : '#f5925680'};
 
   resize: none;
   overflow: hidden;
@@ -361,25 +379,5 @@ export const StyledTextareaAutosize = styled(TextareaAutosize)`
     padding: 16px 18px;
     min-height: 113px;
     font-size: 16px;
-  }
-`;
-
-export const FemaleIcon = styled.img`
-  width: 26px;
-  height: 40px;
-
-  @media only screen and (min-width: 768px) {
-    width: 38px;
-    height: 60px;
-  }
-`;
-
-export const MaleIcon = styled.img`
-  width: 36px;
-  height: 36px;
-
-  @media only screen and (min-width: 768px) {
-    width: 54px;
-    height: 54px;
   }
 `;

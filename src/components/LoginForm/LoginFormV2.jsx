@@ -1,5 +1,4 @@
 import React from 'react';
-// import * as ReactDOM from 'react-dom';
 import * as yup from 'yup';
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
@@ -14,6 +13,7 @@ import {
   Anchor,
   ApproveMessage,
   InputWrapper,
+  Section,
 } from './LoginForm.styled';
 import { GreenIcon, RedIcon } from './Icons';
 
@@ -53,72 +53,74 @@ const LogInForm = () => {
       }}
     >
       {({ errors, touched }) => (
-        <LogInWrapper>
-          <LogInTitle>Login</LogInTitle>
-          <Form>
-            <InputWrapper>
-              <LogInInput
-                name="email"
-                type="email"
-                placeholder="Email"
-                marginbottom={
-                  touched.email && '24' && (errors.email ? '0' : '0')
-                }
-                border={
-                  touched.email &&
+        <Section>
+          <LogInWrapper>
+            <LogInTitle>Login</LogInTitle>
+            <Form>
+              <InputWrapper>
+                <LogInInput
+                  name="email"
+                  type="email"
+                  autoComplete="off"
+                  placeholder="Email"
+                  marginbottom={
+                    touched.email && '24' && (errors.email ? '0' : '0')
+                  }
+                  border={
+                    touched.email &&
+                    'rgba(245, 146, 86, 0.5)' &&
+                    (errors.email
+                      ? '1px solid rgba(226, 0, 26, 1)'
+                      : `1px solid rgba(60, 188, 129, 1)`)
+                  }
+                />
+                {touched.email &&
                   'rgba(245, 146, 86, 0.5)' &&
-                  (errors.email
-                    ? '1px solid rgba(226, 0, 26, 1)'
-                    : `1px solid rgba(60, 188, 129, 1)`)
-                }
-              />
-              {touched.email &&
-                'rgba(245, 146, 86, 0.5)' &&
-                (errors.email ? (
-                  <ErrorMessage>{errors.email}</ErrorMessage>
-                ) : (
-                  <ApproveMessage>Email is correct</ApproveMessage>
-                ))}
-              {touched.email &&
-                'rgba(245, 146, 86, 0.5)' &&
-                (!errors.email ? <GreenIcon /> : <RedIcon />)}
-            </InputWrapper>
-            <InputWrapper>
-              <LogInInput
-                name="password"
-                type="password"
-                placeholder="Password"
-                marginbottom={
-                  touched.email && '24' && (errors.email ? '0' : '0')
-                }
-                border={
-                  touched.email &&
+                  (errors.email ? (
+                    <ErrorMessage>{errors.email}</ErrorMessage>
+                  ) : (
+                    <ApproveMessage>Email is correct</ApproveMessage>
+                  ))}
+                {touched.email &&
                   'rgba(245, 146, 86, 0.5)' &&
-                  (errors.password
-                    ? '1px solid rgba(226, 0, 26, 1)'
-                    : `1px solid rgba(60, 188, 129, 1)`)
-                }
-              />
-              {touched.email &&
-                'rgba(245, 146, 86, 0.5)' &&
-                (errors.password ? (
-                  <ErrorMessage>{errors.password}</ErrorMessage>
-                ) : (
-                  <ApproveMessage>Password is secure</ApproveMessage>
-                ))}
-              {touched.email &&
-                'rgba(245, 146, 86, 0.5)' &&
-                (!errors.password ? <GreenIcon /> : <RedIcon />)}
-            </InputWrapper>
-            <LogInButton type="submit">Login</LogInButton>
-            <LogInText>
-              Don't have an account?
-              <Anchor href="http://localhost:3000/petly-site/register">
-                Register
-              </Anchor>
-            </LogInText>
-          </Form>
-        </LogInWrapper>
+                  (!errors.email ? <GreenIcon /> : <RedIcon />)}
+              </InputWrapper>
+              <InputWrapper>
+                <LogInInput
+                  name="password"
+                  type="password"
+                  autoComplete="off"
+                  placeholder="Password"
+                  marginbottom={
+                    touched.email && '24' && (errors.email ? '0' : '0')
+                  }
+                  border={
+                    touched.email &&
+                    'rgba(245, 146, 86, 0.5)' &&
+                    (errors.password
+                      ? '1px solid rgba(226, 0, 26, 1)'
+                      : `1px solid rgba(60, 188, 129, 1)`)
+                  }
+                />
+                {touched.email &&
+                  'rgba(245, 146, 86, 0.5)' &&
+                  (errors.password ? (
+                    <ErrorMessage>{errors.password}</ErrorMessage>
+                  ) : (
+                    <ApproveMessage>Password is secure</ApproveMessage>
+                  ))}
+                {touched.email &&
+                  'rgba(245, 146, 86, 0.5)' &&
+                  (!errors.password ? <GreenIcon /> : <RedIcon />)}
+              </InputWrapper>
+              <LogInButton type="submit">Login</LogInButton>
+              <LogInText>
+                Don't have an account?
+                <Anchor to="/register">Register</Anchor>
+              </LogInText>
+            </Form>
+          </LogInWrapper>
+        </Section>
       )}
     </Formik>
   );

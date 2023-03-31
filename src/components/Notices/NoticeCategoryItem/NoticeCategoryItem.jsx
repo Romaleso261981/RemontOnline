@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { StyledLearnMoreButton } from 'components/ReusableComponents/Buttons/StyledLearnMoreButton';
 import { StyledLikeButton } from 'components/ReusableComponents/Buttons/StyledLikeButton';
 import { Modal } from 'components/Modal/Modal';
 import ModalNotice from '../NoticeModal/ModalNotice';
-// import Loader from 'components/Loader/Loader';
 
 import { fetchNoticeById } from 'services/getNoticesById';
 import { noticeLabelTranform } from 'utils/noticeLabelTranform';
@@ -14,31 +14,49 @@ import {
   Lable,
   StyledTitle,
   StyledList,
-  FeaturesBox,
-  Features,
-  Text,
   ButtonBox,
+  ImageCardWrap,
+  CardImage,
+  Row,
+  TableBody,
+  FirstColumn,
+  Table,
+  SecondColumn,
 } from './NoticeCategoryItem.styled';
 
 import { StyledDeleteButton } from 'components/ReusableComponents/Buttons/StyledDeleteButton';
 
-import defaultImg from '../../../img/defaultImg.jpg';
+import { selectIsLoggedIn } from 'redux/login/logIn-selectors';
+import {
+  getFavoriteNotices,
+  getIsLoading,
+  getOwnNotices,
+} from 'redux/notices/noticesSelectors';
 
-const NoticeCategoryItem = ({ notice, onClose }) => {
+import defaultImg from '../../../img/defaultImg.jpg';
+import {
+  addToFavorite,
+  deleteFromFavorite,
+  deleteNotice,
+} from 'redux/notices/noticesOperations';
+import { showToastInfo } from 'utils/showTost';
+import Loader from 'components/Loader/Loader';
+import { workWithBirthdate } from 'utils/numdersConverter';
+
+const NoticeCategoryItem = ({ notice }) => {
+  const dispatch = useDispatch();
+  const ownNotices = useSelector(getOwnNotices);
+  const favoriteNotices = useSelector(getFavoriteNotices);
+  const isLoading = useSelector(getIsLoading);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [noticeDetails, setNoticeDetails] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isOwnNotice, setIsOwnNotice] = useState(false);
 
-  const {
-    _id,
-    category,
-    title,
-    birthdate,
-    breed,
-    location,
-    price,
-    // image
-  } = notice;
+  const { _id, category, title, birthdate, breed, location, price, image } =
+    notice;
 
   const onLearMoreButtonClick = () => {
     setShowDetailsModal(!showDetailsModal);
@@ -47,21 +65,70 @@ const NoticeCategoryItem = ({ notice, onClose }) => {
 
   const searchNoticeById = async () => {
     try {
-      setLoading(true);
       const { data } = await fetchNoticeById(_id);
       setNoticeDetails(data);
     } catch (error) {
       console.log(error);
     }
-    setLoading(false);
   };
 
   const onAddToFavorite = () => {
-    console.log('add to faforite');
+    if (!isLoggedIn) {
+      showToastInfo('Please, signup or login to add notice to favorites');
+      return;
+    }
+
+    if (!isFavorite) {
+      dispatch(addToFavorite(_id));
+      setIsFavorite(true);
+      return;
+    }
+    if (isFavorite) {
+      dispatch(deleteFromFavorite(_id));
+      setIsFavorite(false);
+      return;
+    }
   };
 
-  const onDeleteFromFavorite = () => {
-    console.log('delete from faforite');
+  // find favorite
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
+
+    const findFavoriteNotices = () => {
+      const favorite = favoriteNotices.some(elem => elem._id === _id);
+      if (favorite) {
+        setIsFavorite(true);
+        return;
+      }
+      setIsFavorite(false);
+    };
+    findFavoriteNotices();
+  }, [_id, isLoggedIn, favoriteNotices]);
+
+  // find own
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
+
+    const findOwnNotices = () => {
+      const own = ownNotices.some(elem => elem._id === _id);
+      if (own) {
+        setIsOwnNotice(true);
+        return;
+      }
+      setIsOwnNotice(false);
+    };
+    findOwnNotices();
+  }, [_id, isLoggedIn, ownNotices]);
+
+  const onDeleteNotice = () => {
+    if (isFavorite) {
+      dispatch(deleteFromFavorite(_id));
+    }
+    dispatch(deleteNotice(_id));
   };
 
   return (
@@ -71,24 +138,38 @@ const NoticeCategoryItem = ({ notice, onClose }) => {
           <p>{noticeLabelTranform(category)}</p>
         </Lable>
 
-        <img src={defaultImg} alt="title" />
-        <StyledLikeButton onButtonClick={onAddToFavorite} />
+        <ImageCardWrap>
+          <CardImage src={image || defaultImg} alt={title} />
+        </ImageCardWrap>
+
+        <StyledLikeButton
+          onButtonClick={onAddToFavorite}
+          isFavorite={isFavorite}
+        />
         <StyledTitle>{title}</StyledTitle>
         <StyledList>
-          <FeaturesBox>
-            <Features>
-              <Text>Breed:</Text>
-              <Text>Place:</Text>
-              <Text>Age:</Text>
-              {category === 'sell' && <Text>Price:</Text>}
-            </Features>
-            <Features>
-              <Text>{breed || '-'}</Text>
-              <Text>{location || '-'}</Text>
-              <Text>{birthdate || '-'}</Text>
-              {category === 'sell' && <Text>{`${price || '-'}$`}</Text>}
-            </Features>
-          </FeaturesBox>
+          <Table>
+            <TableBody>
+              <Row>
+                <FirstColumn>Breed:</FirstColumn>
+                <SecondColumn>{breed || '-'}</SecondColumn>
+              </Row>
+              <Row>
+                <FirstColumn>Place:</FirstColumn>
+                <SecondColumn>{location || '-'}</SecondColumn>
+              </Row>
+              <Row>
+                <FirstColumn>Age:</FirstColumn>
+                <SecondColumn>{workWithBirthdate(birthdate)}</SecondColumn>
+              </Row>
+              {category === 'sell' && (
+                <Row>
+                  <FirstColumn>Price:</FirstColumn>
+                  <SecondColumn>{`${price || '-'}$`}</SecondColumn>
+                </Row>
+              )}
+            </TableBody>
+          </Table>
         </StyledList>
 
         <ButtonBox>
@@ -96,23 +177,26 @@ const NoticeCategoryItem = ({ notice, onClose }) => {
             onButtonClick={onLearMoreButtonClick}
             buttonName="Learn more"
           />
-          {true && (
+          {isLoggedIn && isOwnNotice && (
             <StyledDeleteButton
-              onButtonClick={onDeleteFromFavorite}
+              onButtonClick={onDeleteNotice}
               buttonName="Delete"
             />
           )}
         </ButtonBox>
       </StyledItem>
 
-      {!loading && noticeDetails && showDetailsModal && (
+      {showDetailsModal && (
         <Modal onClose={onLearMoreButtonClick}>
-          <ModalNotice
-            noticeDetails={noticeDetails}
-            onClose={onLearMoreButtonClick}
-            onAddToFavorite={onAddToFavorite}
-            loading={loading}
-          />
+          {!isLoading && !noticeDetails && <Loader top="50vh" />}
+          {noticeDetails && (
+            <ModalNotice
+              noticeDetails={noticeDetails}
+              onClose={onLearMoreButtonClick}
+              onAddToFavorite={onAddToFavorite}
+              isFavorite={isFavorite}
+            />
+          )}
         </Modal>
       )}
     </>

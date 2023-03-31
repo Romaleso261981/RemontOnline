@@ -1,18 +1,5 @@
 import styled from 'styled-components';
 
-export const CameraStyle = {
-  height: '26px',
-  width: '26px',
-  marginRight: '4px',
-  color: '#f59256',
-};
-
-export const PlusStyle = {
-  height: '71px',
-  width: '71px',
-  color: 'rgba(17, 17, 17, 0.6)',
-};
-
 export const Flex = styled.div`
   margin-left: 0px;
   margin-bottom: 66px;
@@ -29,7 +16,8 @@ export const Flex = styled.div`
     margin-left: 0px;
   }
 `;
-export const FlexSvg = styled.button`
+
+export const FlexSvg = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
@@ -62,17 +50,22 @@ export const Span = styled.span`
   }
 `;
 
-export const ImageStyled = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const ImageStyled = styled.img`
   width: 233px;
   height: 233px;
   margin-left: auto;
   margin-right: auto;
-  background: #fdf7f2;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 4/4;
+`;
+
+export const ImageCover = styled.img`
+  width: 233px;
+  height: 233px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const inputfile = {

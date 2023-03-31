@@ -5,10 +5,8 @@ export const Image = styled.img`
   height: 240px;
   margin-bottom: 20px;
   border-radius: 20px;
-
-  background: url();
-  background: #ffffff;
-  box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+  object-fit: cover;
+  aspect-ratio: 4/4;
 
   @media screen and (min-width: 768px) {
     width: 161px;
@@ -22,7 +20,7 @@ export const Flex = styled.div`
   display: flex;
 `;
 
-export const StyledTextPet = styled.h3`
+export const StyledTextPet = styled.li`
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 500;

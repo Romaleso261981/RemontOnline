@@ -1,23 +1,58 @@
-import styled from 'styled-components';
 import SearchBar from 'components/ReusableComponents/SearchBar/SearchBar';
+import { StyledSearchBox } from './NoticesSearch.styled';
 
-const StyledSearchBox = styled.div`
-  padding-top: 28px;
-  padding-bottom: 28px;
-  display: flex;
-  justify-content: center;
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchNoticesByCategory,
+  fetchNoticesByTitle,
+} from 'redux/notices/noticesOperations';
 
-  @media screen and (min-width: 768px) {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-`;
+import { getSearchBtnIsActive } from 'redux/notices/noticesSelectors';
+import { showToastInfo } from 'utils/showTost';
 
-const NoticesSearch = ({
-  onFormSubmit,
-  onInputChange,
-  isButtonClicked = true,
-}) => {
+const NoticesSearch = ({ category }) => {
+  const dispatch = useDispatch();
+  const isButtonClicked = useSelector(getSearchBtnIsActive);
+
+  const searchNoticeByTitle = title => {
+    if (!isButtonClicked) {
+      try {
+        dispatch(fetchNoticesByCategory(category));
+      } catch (error) {
+        console.log(error);
+      }
+      return;
+    }
+
+    if (category === 'own' || category === 'favorite') {
+      showToastInfo('Sorry, you can’t search in this categories');
+      return;
+    }
+
+    try {
+      dispatch(fetchNoticesByTitle(title));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onFormSubmit = event => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const normilizedValue = form.elements.search.value;
+
+    if (normilizedValue.trim() === '') {
+      showToastInfo('Sorry, no pets by this title');
+      return;
+    }
+
+    searchNoticeByTitle(normilizedValue);
+
+    if (!isButtonClicked) {
+      form.reset();
+    }
+  };
+
   return (
     <StyledSearchBox>
       <SearchBar
