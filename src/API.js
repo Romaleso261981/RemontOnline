@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://petly-site-back.up.railway.app/',
-  // baseURL: 'http://petly-site-back-my.up.railway.app/',
-  // baseURL: 'http://localhost:8080',
+  //   baseURL: 'http://185.233.118.244:8080',
+  baseURL: 'http://localhost:8080',
 });
 
 const authToken = {
@@ -14,6 +13,10 @@ const authToken = {
   unset() {
     API.defaults.headers.common.Authorization = '';
   },
+};
+
+const getAllNews = async () => {
+  return await API.get(`/news`);
 };
 
 API.interceptors.response.use(
@@ -38,4 +41,4 @@ API.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-export { API, authToken };
+export { API, authToken, getAllNews };

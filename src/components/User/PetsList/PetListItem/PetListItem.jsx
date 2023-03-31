@@ -12,10 +12,11 @@ const PetListItem = ({
   breed,
   comments,
   petId,
+  key,
 }) => {
   const dispatch = useDispatch();
   return (
-    <ContainerPets key={petId}>
+    <ContainerPets key={key}>
       <Image src={photo} alt={name} />
       <ul>
         <PetName name={name} />
