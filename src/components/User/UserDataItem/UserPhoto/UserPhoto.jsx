@@ -21,6 +21,7 @@ const UserPhoto = () => {
   }
 
   const { avatarUrl } = useSelector(getStateUsers);
+  console.log(avatarUrl);
 
   return (
     <Flex>
