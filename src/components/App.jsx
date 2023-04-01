@@ -1,6 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { Routes, Route  } from 'react-router-dom';
+import { lazy, Suspense, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+
+import { refreshUser } from '../redux/users/operations';
+import { selectAccessToken } from '../redux/login/logIn-selectors';
 import Container from './Container/Container';
 import SharedLayout from './SharedLayout/SharedLayout';
 import { ConditionalRoutes } from './ConditionalRoutes/ConditionalRoutes';
@@ -22,6 +26,23 @@ const NotFound = lazy(() => import('pages/NotFoundPage/NotFound'));
 const UserPage = lazy(() => import('pages/UserPage/UserPage'));
 
 export const App = () => {
+const dispatch = useDispatch();
+  const [isHintShown, setIsHintShown] = useState(false);
+  const token = useSelector(selectAccessToken);
+ 
+  console.log(isHintShown);
+  
+
+    useEffect(() => {
+      if (!token) {
+        setIsHintShown(true);
+        return;
+      }
+      dispatch(refreshUser());
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch]);
+  
+  
   return (
     <>
       <Container>

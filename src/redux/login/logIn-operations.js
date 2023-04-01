@@ -1,23 +1,14 @@
-import axios from 'axios';
+import { API, authToken } from '../../API';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = `https://petly-site-back.up.railway.app`;
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = ``;
-};
 
 export const logIn = createAsyncThunk(
   '/login',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/auth/login', credentials);
-      setAuthHeader(response.data.data.accessToken);
+      const response = await API.post('/auth/login', credentials);
+      authToken.set(response.data.data.accessToken);
 
       return response.data;
     } catch (e) {
@@ -29,8 +20,8 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('logout', async (_, thunkAPI) => {
   try {
-    await axios.get('/auth/logout');
-    clearAuthHeader();
+    await API.get('/auth/logout');
+    authToken.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -47,8 +38,8 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      setAuthHeader(persistedToken);
-      const res = await axios.post('/auth/login');
+      authToken.set(persistedToken);
+      const res = await API.post('/auth/login');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
