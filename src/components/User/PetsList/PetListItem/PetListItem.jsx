@@ -1,5 +1,5 @@
 import { FlexBasket, Image } from '../PetsList.styled';
-import { PetName, PetBirth, PetBreed, PetComments } from '../index';
+import { PetName, PetBirth, PetBreed, PetComments, PetPhone } from '../index';
 import { ContainerPets } from '../../PetsData/PetsData.styled';
 import { ButtonBasket } from '../../ButtonUser/ButtonUser';
 import { deletePet } from 'redux/pets/operations';
@@ -12,6 +12,7 @@ const PetListItem = ({
   breed,
   comments,
   petId,
+  phone,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -19,6 +20,7 @@ const PetListItem = ({
       <Image src={photo} alt={name} />
       <ul>
         <PetName name={name} />
+        <PetPhone phone={phone} />
         <PetBirth birthday={birthday} />
         <PetBreed breed={breed} />
         <PetComments comments={comments} />

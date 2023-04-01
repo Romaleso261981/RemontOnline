@@ -13,7 +13,7 @@ const PetsData = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const pets = useSelector(getStatePets);
-
+console.log(pets);
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);

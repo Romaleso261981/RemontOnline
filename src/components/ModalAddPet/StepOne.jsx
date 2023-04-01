@@ -8,18 +8,39 @@ const StepOne = () => {
     <>
       <InputField
         type="text"
-        label="Name pet"
+        label="Тип техніки"
         id="name"
         name="name"
-        placeholder="Type name pet"
+        placeholder="Холодильник"
+        span="*"
+      />
+      <InputField
+        type="text"
+        label="Модель"
+        id="breed"
+        name="breed"
+        placeholder="Type breed"
+        span="*"
+      />
+      <InputField
+        type="text"
+        label="Телефон"
+        id="phone"
+        name="phone"
+        placeholder="068 947 87 23"
+        span="*"
+      />
+      <InputField
+        type="text"
+        label="Адресса"
+        id="adress"
+        name="adress"
+        placeholder="м.Ладижин вул.Кравчика буд 25"
         span="*"
       />
 
       <DateBox>
-        <Label>
-          Date of birth
-          <span>*</span>
-        </Label>
+        <Label>Дата приймання</Label>
         <MyDataPicker
           name="birthdate"
           label="Date of birth*"
@@ -27,15 +48,6 @@ const StepOne = () => {
         />
         <ErrorData name="birthdate" component="div" />
       </DateBox>
-
-      <InputField
-        type="text"
-        label="Breed"
-        id="breed"
-        name="breed"
-        placeholder="Type breed"
-        span="*"
-      />
     </>
   );
 };

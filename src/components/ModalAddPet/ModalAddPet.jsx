@@ -53,6 +53,7 @@ const ModalAddPet = ({ closeModal }) => {
 
       const data = new FormData();
       data.append('name', values.name);
+      data.append('phone', values.phone);
       data.append('birthday', dateBD);
       data.append('breed', values.breed);
       data.append('comments', values.comments);

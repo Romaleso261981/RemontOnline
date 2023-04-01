@@ -13,17 +13,20 @@ const PetsList = ({ pets }) => {
       {!isLoading && pets.length === 0 && <CoverPage />}
       {!isLoading && pets.length >= 1 && (
         <ul>
-          {pets.map(({ photo, name, birthday, breed, comments, _id }) => (
-            <PetListItem
-              key={_id}
-              petId={_id}
-              photo={photo}
-              name={name}
-              birthday={birthday}
-              breed={breed}
-              comments={comments}
-            />
-          ))}
+          {pets.map(
+            ({ photo, name, birthday, breed, comments, _id, phone }) => (
+              <PetListItem
+                key={_id}
+                petId={_id}
+                photo={photo}
+                name={name}
+                phone={phone}
+                birthday={birthday}
+                breed={breed}
+                comments={comments}
+              />
+            ),
+          )}
         </ul>
       )}
     </>
