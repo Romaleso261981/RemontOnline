@@ -4,13 +4,13 @@ export const Nav = () => {
   return (
     <NavList>
       <li>
-        <NavGeneralLink to="/news">News</NavGeneralLink>
+        <NavGeneralLink to="/news">Зобленно</NavGeneralLink>
       </li>
       <li>
-        <NavGeneralLink to="/notices/sell">Find pet</NavGeneralLink>
+        <NavGeneralLink to="/notices/sell">Ремонт</NavGeneralLink>
       </li>
       <li>
-        <NavGeneralLink to="/friends">Our friends</NavGeneralLink>
+        <NavGeneralLink to="/friends">Гарантія</NavGeneralLink>
       </li>
     </NavList>
   );

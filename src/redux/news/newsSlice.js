@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchNews } from './newsOperations';
+import { fetchData } from './newsOperations';
 
 const pendingReducer = state => {
   state.isLoading = true;
@@ -24,9 +24,9 @@ const newsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchNews.pending, pendingReducer)
-      .addCase(fetchNews.fulfilled, fetchNewsSucceesReducer)
-      .addCase(fetchNews.rejected, rejectedReducer);
+      .addCase(fetchData.pending, pendingReducer)
+      .addCase(fetchData.fulfilled, fetchNewsSucceesReducer)
+      .addCase(fetchData.rejected, rejectedReducer);
   },
 });
 

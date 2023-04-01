@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import NewsList from 'components/NewsList/NewsList';
 
-import { fetchNews } from 'redux/news/newsOperations';
+import { fetchData } from 'redux/news/newsOperations';
 // import LoaderNews from 'components/NewsList/LoaderNews';
 import Loader from 'components/Loader/Loader';
 
@@ -29,11 +29,12 @@ const NewsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const isLoading = useSelector(selectIsLoading);
   const news = useSelector(selectNews);
+  console.log(news);
 
   const newsTitle = searchParams.get('query') || '';
   const ref = useRef();
   useEffect(() => {
-    dispatch(fetchNews());
+    dispatch(fetchData());
   }, [dispatch]);
 
   const visibleNews =

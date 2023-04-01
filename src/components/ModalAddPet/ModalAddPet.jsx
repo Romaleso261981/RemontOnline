@@ -55,7 +55,6 @@ const ModalAddPet = ({ closeModal }) => {
       data.append('name', values.name);
       data.append('birthday', dateBD);
       data.append('breed', values.breed);
-      data.append('photo', values.photo);
       data.append('comments', values.comments);
       data.append('owner', owner);
 

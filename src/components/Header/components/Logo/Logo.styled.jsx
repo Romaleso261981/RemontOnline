@@ -13,6 +13,18 @@ export const LogoWrapper = styled.h1`
   }
 `;
 
+export const ImageCover = styled.img`
+  width: 433px;
+  height: 70px;
+  margin-right: 20px;
+  margin-left: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
 export const LogoAccent = styled.span`
   color: #f59256;
 `;
