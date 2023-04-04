@@ -18,8 +18,8 @@ import {
 } from './RegisterForm.styled';
 import UniversalButton from 'components/ReusableComponents/Buttons/UniversalButton';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/register/operations';
-import { logIn } from 'redux/login/logIn-operations';
+import { Register } from 'redux/auth/auth-operations';
+import { logIn } from 'redux/auth/auth-operations';
 
 const RegistrationForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -39,7 +39,7 @@ const RegistrationForm = () => {
         password: values.password,
       };
 
-      await dispatch(register(credentials));
+      await dispatch(Register(credentials));
       await dispatch(logIn({ email: values.email, password: values.password }));
       resetForm();
     }

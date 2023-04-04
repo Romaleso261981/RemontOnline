@@ -29,7 +29,6 @@ const NewsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const isLoading = useSelector(selectIsLoading);
   const news = useSelector(selectNews);
-  console.log(news);
 
   const newsTitle = searchParams.get('query') || '';
   const ref = useRef();

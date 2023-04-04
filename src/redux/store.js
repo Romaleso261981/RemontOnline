@@ -1,8 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 
-import { registerReducer } from './register/registerSlice';
-import { logInReducer } from './login/logIn-slice';
+import { authReducer } from './auth/auth-slice';
 import { newsReducer } from './news/newsSlice';
 import { noticesReducer } from './notices/noticesSlice';
 import { userReducer } from './users/userSlice';
@@ -19,22 +18,15 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-const logInPersistConfig = {
-  key: 'login',
+const authPersistConfig = {
+  key: 'auth',
   storage,
-  whitelist: ['token'],
-};
-
-const registerPersistConfig = {
-  key: 'register',
-  storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken', 'refreshToken', 'sid', 'user'],
 };
 
 export const store = configureStore({
   reducer: {
-    register: persistReducer(registerPersistConfig, registerReducer),
-    logIn: persistReducer(logInPersistConfig, logInReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
     news: newsReducer,
     notices: noticesReducer,
     users: userReducer,

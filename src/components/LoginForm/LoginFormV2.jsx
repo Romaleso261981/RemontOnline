@@ -2,7 +2,7 @@ import React from 'react';
 import * as yup from 'yup';
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/login/logIn-operations';
+import { logIn } from 'redux/auth/auth-operations';
 import {
   LogInTitle,
   LogInInput,
@@ -49,7 +49,6 @@ const LogInForm = () => {
         setSubmitting(false);
       }}
       onChange={(values, { setSubmitting }) => {
-        console.log(values);
       }}
     >
       {({ errors, touched }) => (

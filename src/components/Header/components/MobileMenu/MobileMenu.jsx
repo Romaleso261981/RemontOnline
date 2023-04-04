@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/login/logIn-selectors';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import Container from 'components/Container/Container';
 import { StyledAccountButton } from 'components/ReusableComponents/Buttons/StyledAccountButton';
 import { StyledNavButton } from '../../../ReusableComponents/Buttons/StyledNavButton';

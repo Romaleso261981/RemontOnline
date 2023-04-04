@@ -2,7 +2,7 @@ import { MenuButtonOpen } from '../MobileMenu/MenuButton/MenuButtonOpen.styled';
 import { Nav, AuthNav, UserNav } from './components';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/login/logIn-selectors';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { NavMobile } from '../MobileMenu/MobileMenu';
 import { NavContainer } from './Navigation.styled';
 

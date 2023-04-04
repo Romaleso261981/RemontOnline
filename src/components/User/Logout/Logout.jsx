@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/login/logIn-operations';
+import { logOut } from 'redux/auth/auth-operations';
 import { BoxLogOut, LogoutSpan } from './Logout.styled';
 import { ButtonLogout } from '../ButtonUser/ButtonUser';
 

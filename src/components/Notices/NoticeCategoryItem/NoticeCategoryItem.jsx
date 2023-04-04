@@ -26,7 +26,7 @@ import {
 
 import { StyledDeleteButton } from 'components/ReusableComponents/Buttons/StyledDeleteButton';
 
-import { selectIsLoggedIn } from 'redux/login/logIn-selectors';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import {
   getFavoriteNotices,
   getIsLoading,

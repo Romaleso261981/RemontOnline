@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/login/logIn-selectors';
+import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
 import { Navigate, useParams } from 'react-router-dom';
 
 export const ConditionalRoutes = ({

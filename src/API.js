@@ -1,9 +1,11 @@
 import axios from 'axios';
+// import { useSelector } from 'react-redux';
+// import { selectAccessToken } from './redux/auth/auth-selectors';
 
 const API = axios.create({
-  baseURL: 'http://remontonlineback-production.up.railway.app/',
+  // baseURL: 'http://remontonlineback-production.up.railway.app/',
   // baseURL: 'https://petly-site-back.up.railway.app/',
-  // baseURL: 'http://localhost:8000',
+  baseURL: 'http://localhost:8000',
 });
 
 const authToken = {
@@ -16,12 +18,18 @@ const authToken = {
   },
 };
 
+// API.interceptors.request.use(config => {
+//   const accessToken = useSelector(selectAccessToken);
+//   if (accessToken) {
+//     config.headers.Authorization = `Bearer ${accessToken}`;
+//   }
+// });
+
 API.interceptors.response.use(
   response => response,
   async error => {
     if (error.response.status === 401) {
       const refreshToken = localStorage.getItem('refreshToken');
-      console.log(refreshToken);
       try {
         const { data } = await API.post('/auth/users/refresh', {
           refreshToken,

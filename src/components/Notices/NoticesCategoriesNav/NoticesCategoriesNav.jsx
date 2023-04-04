@@ -9,7 +9,7 @@ import {
 } from './NoticesCategoriesNav.styled';
 import { StyledNavButton } from 'components/ReusableComponents/Buttons/StyledNavButton';
 
-import { selectIsLoggedIn } from 'redux/login/logIn-selectors';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 const NoticesCategoriesNav = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

@@ -14,7 +14,7 @@ import { StyledAddPetMobileButton } from 'components/ReusableComponents/Buttons/
 import { StyledAddPetDesktopButton } from 'components/ReusableComponents/Buttons/StyledAddPetDesktopButton';
 import { Modal } from 'components/Modal/Modal';
 
-import { selectIsLoggedIn } from 'redux/login/logIn-selectors';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { getIsLoading } from 'redux/notices/noticesSelectors';
 import {
   fetchFavoriteNotices,

@@ -10,7 +10,6 @@ export const fetchPets = createAsyncThunk(
       const response = await API.get('/user/about');
       return response.data.data.userWithPet;
     } catch (error) {
-      console.log('fetchPetsError:', error.message);
       return thunkAPI(error.message);
     }
   },

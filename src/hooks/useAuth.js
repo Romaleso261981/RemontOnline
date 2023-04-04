@@ -3,7 +3,7 @@ import {
   selectIsLoggedIn,
   selectUserName,
   selectIsRefreshing,
-} from 'redux/login/logIn-selectors';
+} from 'redux/auth/auth-selectors';
 
 export const useAuth = () => {
   return {

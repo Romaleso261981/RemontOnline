@@ -1,7 +1,6 @@
 import { API } from '../../API';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
 export const fetchUser = createAsyncThunk('/user', async (_, { thunkAPI }) => {
   try {
     const response = await API.get('/user/about');
