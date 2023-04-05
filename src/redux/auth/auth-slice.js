@@ -30,7 +30,6 @@ const authSlice = createSlice({
         state.isRegister = true;
       })
       .addCase(logIn.pending, state => {
-        console.log('logIn.pending');
         state.isLogin = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
@@ -41,30 +40,23 @@ const authSlice = createSlice({
         state.isLogin = false;
       })
       .addCase(logOut.pending, (state, { payload }) => {
-        console.log('logOut.pending');
       })
       .addCase(logOut.fulfilled, (state, { payload }) => {
-        console.log('logOut.fulfilled');
         state.isRefreshing = false;
         state.isLoggedIn = false;
       })
       .addCase(logOut.rejected, (state, { payload }) => {
-        console.log('logOut.rejected');
       })
-      .addCase(refreshUser.pending, state => ({
-        ...state,
-        isLogin: false,
-      }))
-      .addCase(refreshUser.fulfilled, (state, { payload }) => ({
-        ...state,
-        token: payload.token,
-        email: payload.user.email,
-        isLogin: true,
-      }))
-      .addCase(refreshUser.rejected, state => ({
-        ...state,
-        isLogin: false,
-      }))
+      .addCase(refreshUser.fulfilled, (state, {payload}) => {
+        const { data, accessToken, refreshToken } = payload;
+        state.accessToken = accessToken;
+        state.refreshToken = refreshToken;
+        state.user = data.user;
+        state.isRefreshing = true;
+        state.isLoggedIn = true;
+      })
+      .addCase(refreshUser.rejected, state => {
+      })
       .addCase(googleAuth.fulfilled, (state, action) => {
         const { user, accessToken, refreshToken, sid } = action.payload;
         state.user = user;

@@ -19,13 +19,13 @@ const PetsData = () => {
   return (
     <BoxPetsData>
       <Flex>
-        <TitleUser M={'0px'}>My pets:</TitleUser>
+        <TitleUser M={'0px'}>Техніка в ремонті:</TitleUser>
         <FlexSvg
           type="button"
           ariaLabel="add pet button"
           onClick={() => setIsOpen(true)}
         >
-          <Span>Add pet</Span>
+          <Span>Нове замовлення</Span>
           <ButtonPlus
             widthM={'40px'}
             heightM={'40px'}

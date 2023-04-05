@@ -10,7 +10,6 @@ export const fetchUser = createAsyncThunk('/user', async (_, { thunkAPI }) => {
     return thunkAPI(error.message);
   }
 });
-
 export const uploadAvatar = createAsyncThunk(
   'user/changeAvatar',
   async (file, { thunkAPI }) => {
@@ -32,14 +31,12 @@ export const refreshUser = createAsyncThunk(
       // const formData = new FormData();
       // formData.append('avatarUrl', file);
       const response = await API.post('/user/current');
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI(error.message);
     }
   },
 );
-
 export const uploadUser = createAsyncThunk(
   'user/change',
   async (formData, { thunkAPI }) => {

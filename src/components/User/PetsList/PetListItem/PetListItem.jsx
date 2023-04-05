@@ -9,24 +9,27 @@ import {
 import { deletePet } from 'redux/pets/operations';
 import { useDispatch } from 'react-redux';
 
+
+
 const PetListItem = ({
   photo,
-  name,
-  birthday,
-  breed,
+  phone,
+  nametechnique,
+  datecreation,
+  model,
   comments,
   petId,
-  phone,
+  id,
 }) => {
   const dispatch = useDispatch();
   return (
-    <ContainerPets key={petId}>
-      <Image src={photo} alt={name} />
+    <ContainerPets key={id}>
+      <Image src={photo} alt={nametechnique} />
       <ul>
-        <PetName name={name} />
+        <PetName nametechnique={nametechnique} />
         <PetPhone phone={phone} />
-        <PetBirth birthday={birthday} />
-        <PetBreed breed={breed} />
+        <PetBirth datecreation={datecreation} />
+        <PetBreed model={model} />
         <PetComments comments={comments} />
       </ul>
       <FlexBasket>

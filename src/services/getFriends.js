@@ -9,7 +9,6 @@ export async function fetchFriends() {
     const { data } = await axios.get(url);
     return data;
   } catch (error) {
-    console.log(error.data);
     toast.error(error.response.data.message);
   }
 }

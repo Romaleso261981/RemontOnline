@@ -1,7 +1,7 @@
 import { StyledTextPet } from '../PetsList.styled';
 
-const PetBreed = ({ breed }) => {
-  return <StyledTextPet margin={'16px'}>Breed: {breed}</StyledTextPet>;
+const PetBreed = ({ model }) => {
+  return <StyledTextPet margin={'16px'}>Модель: {model}</StyledTextPet>;
 };
 
 export default PetBreed;

@@ -52,10 +52,10 @@ const ModalAddPet = ({ closeModal }) => {
       const dateBD = format(values.birthdate, 'dd.MM.yyyy');
 
       const data = new FormData();
-      data.append('name', values.name);
+      data.append('nametechnique', values.name);
       data.append('phone', values.phone);
-      data.append('birthday', dateBD);
-      data.append('breed', values.breed);
+      data.append('datecreation', dateBD);
+      data.append('model', values.breed);
       data.append('comments', values.comments);
       data.append('owner', owner);
 

@@ -6,7 +6,9 @@ import Loader from 'components/Loader/Loader';
 // import { Animation } from 'components/Animation/Animation';
 
 const PetsList = ({ pets }) => {
+  console.log(pets);
   const isLoading = useSelector(getIsLoading);
+  console.log(pets);
   return (
     <>
       {isLoading && <Loader />}
@@ -14,15 +16,23 @@ const PetsList = ({ pets }) => {
       {!isLoading && pets.length >= 1 && (
         <ul>
           {pets.map(
-            ({ photo, name, birthday, breed, comments, _id, phone }) => (
+            ({
+              photo,
+              nametechnique,
+              datecreation,
+              model,
+              comments,
+              _id,
+              phone,
+            }) => (
               <PetListItem
-                key={_id}
+                id={_id}
                 petId={_id}
                 photo={photo}
-                name={name}
                 phone={phone}
-                birthday={birthday}
-                breed={breed}
+                nametechnique={nametechnique}
+                datecreation={datecreation}
+                model={model}
                 comments={comments}
               />
             ),

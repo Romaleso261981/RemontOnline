@@ -1,7 +1,7 @@
 import { StyledPetPhone } from '../PetsList.styled';
 
-const PetPhone = ({ name }) => {
-  return <StyledPetPhone>Телефон: {name}</StyledPetPhone>;
+const PetPhone = ({ phone }) => {
+  return <StyledPetPhone>Телефон: {phone}</StyledPetPhone>;
 };
 
 export default PetPhone;

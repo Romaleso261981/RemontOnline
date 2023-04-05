@@ -1,7 +1,7 @@
 import { StyledTextPet } from '../PetsList.styled';
 
-const PetName = ({ name }) => {
-  return <StyledTextPet>Name: {name}</StyledTextPet>;
+const PetName = ({ nametechnique }) => {
+  return <StyledTextPet>Тип: {nametechnique}</StyledTextPet>;
 };
 
 export default PetName;
