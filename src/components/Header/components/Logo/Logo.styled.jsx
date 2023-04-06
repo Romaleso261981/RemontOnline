@@ -19,9 +19,15 @@ export const ImageCover = styled.img`
   margin-right: 20px;
   margin-left: 10px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
     margin-left: auto;
     margin-right: auto;
+    width: 433px;
+  }
+  @media screen and (max-width: 320px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
   }
 `;
 
