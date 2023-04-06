@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
-import WaveMob from '../../img/HomePageBG/Wave@1x.png';
-import WaveTab from '../../img/HomePageBG/Wave@2x.png';
+import imgMob from '../../img/HomePageDog/img@1x.png';
+import imgTab from '../../img/HomePageDog/img@1x.png';
+import imgDes from '../../img/HomePageDog/img@1x.png';
+// import WaveMob from '../../img/HomePageBG/Wave@1x.png';
+// import WaveTab from '../../img/HomePageBG/Wave@2x.png';
 import WaveDes from '../../img/HomePageBG/Wave@3x.png';
-import DogMob from '../../img/HomePageDog/Dog@1x.png';
-import DogTab from '../../img/HomePageDog/Dog@2x.png';
-import DogDes from '../../img/HomePageDog/Dog@3x.png';
+// import bgMob from '../../img/HomePageDog/bg@1x.png';
+// import bgTab from '../../img/HomePageDog/bg@2x.png';
+import bgDes from '../../img/HomePageDog/bg@3x.png';
 
 export const HomePageBG = styled.div`
   background: transparent;
@@ -19,20 +22,19 @@ export const HomePageBG = styled.div`
   background-position: bottom;
   background-size: 280px 364px, 620px 470px;
 
-  background-image: url(${DogMob}), url(${WaveMob});
+  background-image: url(${imgMob});
 
   @media screen and (min-width: 768px) {
     background-size: 700px 850px, 1449px 1094px;
     min-height: 1250px;
-    background-image: url(${DogTab}), url(${WaveTab});
+    background-image: url(${imgTab});
   }
 
   @media screen and (min-width: 1280px) {
-    background-size: 624px 755px, 1300px 538px, 90px 90px;
-    min-height: 800px;
-    background-position: calc(50% + 400px) bottom, center bottom,
-      50% calc(50% - 300px);
-    background-image: url(${DogDes}), url(${WaveDes});
+    background-size: 424px 455px, 700px 538px, 500px 500px;
+    min-height: 300px;
+    background-position: 585px 220px, 600px 110px, 20px 130px;
+    background-image: url(${imgDes}), url(${bgDes}), url(${WaveDes});
   }
 `;
 
@@ -71,7 +73,7 @@ export const HomeTitle = styled.h1`
   }
 
   @media screen and (min-width: 1280px) {
-    padding-top: 92px;
+    padding-top: 150px;
     padding-left: 16px;
   }
 `;

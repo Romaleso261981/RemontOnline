@@ -7,7 +7,7 @@ export const Nav = () => {
         <NavGeneralLink to="/news">Зобленно</NavGeneralLink>
       </li>
       <li>
-        <NavGeneralLink to="/notices/sell">Ремонт</NavGeneralLink>
+        <NavGeneralLink to="/notices/sell">В ремонті</NavGeneralLink>
       </li>
       <li>
         <NavGeneralLink to="/friends">Гарантія</NavGeneralLink>
