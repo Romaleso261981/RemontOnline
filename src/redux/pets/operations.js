@@ -2,7 +2,6 @@ import { API } from '../../API';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-
 export const fetchPets = createAsyncThunk(
   '/user/pets',
   async (_, { thunkAPI }) => {
@@ -34,7 +33,7 @@ export const deletePet = createAsyncThunk(
   'pet/deletePet',
   async (petId, thunkAPI) => {
     try {
-      const response = await API.delete(`/pets/${petId}`);
+      const response = await API.delete(`/pet/${petId}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
