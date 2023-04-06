@@ -19,7 +19,7 @@ const StepOne = () => {
         label="Модель"
         id="breed"
         name="breed"
-        placeholder="Type breed"
+        placeholder="Samsung RR39M7140SA/UA"
         span="*"
       />
       <InputField
