@@ -6,3 +6,4 @@ const StyledSvgBasket = () => {
   );
 };
 export default StyledSvgBasket;
+

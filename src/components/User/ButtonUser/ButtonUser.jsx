@@ -6,6 +6,7 @@ import {
   StyledSvgPlus,
   StyledSvgPencil,
   StyledSvgCheck,
+  StyledSvgDone,
 } from '../ButtonUser';
 
 export const ButtonLogout = props => (
@@ -17,6 +18,11 @@ export const ButtonLogout = props => (
 export const ButtonBasket = props => (
   <StyleButton {...props}>
     <StyledSvgBasket></StyledSvgBasket>
+  </StyleButton>
+);
+export const ButtonDone = props => (
+  <StyleButton {...props}>
+    <StyledSvgDone></StyledSvgDone>
   </StyleButton>
 );
 
