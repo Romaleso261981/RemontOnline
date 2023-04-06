@@ -59,6 +59,9 @@ export const StyledTextPet = styled.li`
     font-size: 14px;
     line-height: 1.357;
   }
+  @media screen and (min-width: 1280px) {
+  max-width: 300px
+  }
 `;
 
 export const FlexBasket = styled.div`
@@ -68,5 +71,23 @@ export const FlexBasket = styled.div`
 
   @media screen and (min-width: 768px) {
     top: 20px;
+  }
+`;
+export const DataListFirst = styled.ul`
+  @media screen and (min-width: 1280px) {
+    margin-right: 40px;
+    display: block;
+  }
+`;
+export const DataListsecond = styled.ul`
+  @media screen and (min-width: 1280px) {
+    display: block;
+  }
+`;
+export const DataListWrapper = styled.ul`
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 `;

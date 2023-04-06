@@ -40,6 +40,11 @@ export const StyleButton = styled.div`
       height: ${props => props.heighthTsvg || '18px'};
     }
   }
+
+  @media screen and (min-width: 1280px) {
+   margin-bottom: 5px;
+   margin-top: 5px;
+  }
 `;
 
 export const Button = styled.button`
