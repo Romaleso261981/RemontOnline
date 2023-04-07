@@ -1,15 +1,15 @@
-import PetsList from 'components/User/PetsList/PetsList';
-import { BoxPetsData, Flex, Span, FlexSvg } from './PetsData.styled';
+import OrderList from 'components/User/OrderList/OrderList';
+import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 import TitleUser from '../TitleUser/TitleUser';
 import { useEffect, useState } from 'react';
 import { ButtonPlus } from '../ButtonUser/ButtonUser';
 import { fetchPets } from 'redux/pets/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStatePets } from 'redux/pets/selectors';
-import ModalAddPet from 'components/ModalAddPet/ModalAddPet';
+import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import { Modal } from 'components/Modal/Modal';
 
-const PetsData = () => {
+const OrderData = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const pets = useSelector(getStatePets);
@@ -17,7 +17,7 @@ const PetsData = () => {
     dispatch(fetchPets());
   }, [dispatch]);
   return (
-    <BoxPetsData>
+    <BoxOrderData>
       <Flex>
         <TitleUser M={'0px'}>Техніка в ремонті:</TitleUser>
         <FlexSvg
@@ -45,14 +45,14 @@ const PetsData = () => {
         </FlexSvg>
       </Flex>
 
-      <PetsList pets={pets} />
+      <OrderList pets={pets} />
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <ModalAddPet closeModal={() => setIsOpen(false)} />
+          <ModalAddOrder closeModal={() => setIsOpen(false)} />
         </Modal>
       )}
-    </BoxPetsData>
+    </BoxOrderData>
   );
 };
 
-export default PetsData;
+export default OrderData;

@@ -1,11 +1,11 @@
-import PetListItem from './PetListItem/PetListItem';
+import PetListItem from './OrderListItem/OrderListItem';
 import { getIsLoading } from 'redux/pets/selectors';
 import { useSelector } from 'react-redux';
 import CoverPage from 'components/ReusableComponents/CoverPage/CoverPage';
 import Loader from 'components/Loader/Loader';
 // import { Animation } from 'components/Animation/Animation';
 
-const PetsList = ({ pets }) => {
+const OrderList = ({ pets }) => {
   console.log(pets);
   const isLoading = useSelector(getIsLoading);
   console.log(pets);
@@ -43,4 +43,4 @@ const PetsList = ({ pets }) => {
   );
 };
 
-export default PetsList;
+export default OrderList;

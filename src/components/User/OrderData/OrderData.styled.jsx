@@ -13,7 +13,7 @@ export const Flex = styled.div`
   }
 `;
 
-export const BoxPetsData = styled.div`
+export const BoxOrderData = styled.div`
   width: 280px;
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -23,7 +23,7 @@ export const BoxPetsData = styled.div`
   }
 `;
 
-export const ContainerPets = styled.li`
+export const ContainerOrder = styled.li`
   width: 280px;
 
   background: #ffffff;

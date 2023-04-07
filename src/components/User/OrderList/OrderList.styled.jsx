@@ -40,7 +40,7 @@ export const StyledPetPhone = styled.li`
     line-height: 1.357;
   }
 `;
-export const StyledTextPet = styled.li`
+export const StyledTextOrder = styled.li`
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 500;

@@ -3,9 +3,15 @@ import {
   DataListFirst,
   DataListsecond,
   DataListWrapper,
-} from '../PetsList.styled';
-import { PetName, PetBirth, PetBreed, PetComments, PetPhone } from '../index';
-import { ContainerPets } from '../../PetsData/PetsData.styled';
+} from '../OrderList.styled';
+import {
+  PetName,
+  DateCreation,
+  TechnicalModel,
+  PetComments,
+  PetPhone,
+} from '../index';
+import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import {
   ButtonBasket,
   ButtonDone,
@@ -16,8 +22,7 @@ import { useDispatch } from 'react-redux';
 
 
 
-const PetListItem = ({
-  photo,
+const OrderListItem = ({
   phone,
   nametechnique,
   datecreation,
@@ -28,20 +33,20 @@ const PetListItem = ({
 }) => {
   const dispatch = useDispatch();
   return (
-    <ContainerPets key={id}>
+    <ContainerOrder key={id}>
       <DataListWrapper>
         <DataListFirst>
           <PetName nametechnique={nametechnique} />
           <PetPhone phone={phone} />
-          <PetBirth datecreation={datecreation} />
-          <PetBreed model={model} />
+          <DateCreation datecreation={datecreation} />
+          <TechnicalModel model={model} />
           <PetComments comments={comments} />
         </DataListFirst>
         <DataListsecond>
           <PetName nametechnique={nametechnique} />
           <PetPhone phone={phone} />
-          <PetBirth datecreation={datecreation} />
-          <PetBreed model={model} />
+          <DateCreation datecreation={datecreation} />
+          <TechnicalModel model={model} />
           <PetComments comments={comments} />
         </DataListsecond>
       </DataListWrapper>
@@ -101,8 +106,8 @@ const PetListItem = ({
           strokeM={'#fdf7f2'}
         />
       </FlexBasket>
-    </ContainerPets>
+    </ContainerOrder>
   );
 };
 
-export default PetListItem;
+export default OrderListItem;

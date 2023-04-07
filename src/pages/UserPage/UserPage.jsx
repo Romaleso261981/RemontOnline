@@ -1,5 +1,5 @@
 import UserData from 'components/User/UserData/UserData';
-import PetsData from 'components/User/PetsData/PetsData';
+import OrderData from 'components/User/OrderData/OrderData';
 import { UserWrapper } from './UserPage.styled';
 import { fetchUser } from 'redux/users/operations';
 import { useEffect } from 'react';
@@ -15,7 +15,7 @@ const UserPage = () => {
   return (
     <UserWrapper>
       <UserData />
-      <PetsData />
+      <OrderData />
     </UserWrapper>
   );
 };

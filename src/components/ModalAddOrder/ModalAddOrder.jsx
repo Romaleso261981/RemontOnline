@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
-import { Container, ControlBox, FormStyled, Title } from './ModalAddPet.styled';
+import {
+  Container,
+  ControlBox,
+  FormStyled,
+  Title,
+} from './ModalAddOrder.styled';
 import {
   initialValues,
   validationSchemaStepOne,
@@ -17,7 +22,7 @@ import { addPet } from 'redux/pets/operations';
 import { getStateUsersId } from 'redux/users/selectors';
 import { format } from 'date-fns';
 
-const ModalAddPet = ({ closeModal }) => {
+const ModalAddOrder = ({ closeModal }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [file, setFile] = useState(null);
   const [fileDataURL, setFileDataURL] = useState(null);
@@ -134,4 +139,4 @@ const ModalAddPet = ({ closeModal }) => {
   );
 };
 
-export default ModalAddPet;
+export default ModalAddOrder;
