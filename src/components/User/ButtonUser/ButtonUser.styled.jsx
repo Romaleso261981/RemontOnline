@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const StyleButton = styled.div`
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   width: ${props => props.widthM || '18px'};
@@ -42,8 +43,10 @@ export const StyleButton = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-   margin-bottom: 5px;
-   margin-top: 5px;
+    width: ${props => props.widthM || '18px'};
+    height: ${props => props.heightM || '18px'};
+    border-radius: ${props => props.bRadius || '5px'};
+    margin-top: 5px;
   }
 `;
 

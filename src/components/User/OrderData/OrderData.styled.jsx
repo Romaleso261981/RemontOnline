@@ -49,6 +49,7 @@ export const ContainerOrder = styled.li`
   @media screen and (min-width: 1280px) {
     width: 821px;
     margin-bottom: 22px;
+    border-radius: 5px;
   }
 `;
 

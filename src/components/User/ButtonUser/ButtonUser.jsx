@@ -20,6 +20,7 @@ export const ButtonBasket = props => (
     <StyledSvgBasket></StyledSvgBasket>
   </StyleButton>
 );
+export const UniversalButton = props => <StyleButton {...props}>{props.text}</StyleButton>;
 export const ButtonDone = props => (
   <StyleButton {...props}>
     <StyledSvgDone></StyledSvgDone>

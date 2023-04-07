@@ -64,13 +64,16 @@ export const StyledTextOrder = styled.li`
   }
 `;
 
-export const FlexBasket = styled.div`
+export const BattonWrapper = styled.div`
   position: absolute;
   top: 272px;
   right: 20px;
 
   @media screen and (min-width: 768px) {
     top: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    top: 10px;
   }
 `;
 export const DataListFirst = styled.ul`
@@ -80,6 +83,11 @@ export const DataListFirst = styled.ul`
   }
 `;
 export const DataListsecond = styled.ul`
+  @media screen and (min-width: 1280px) {
+    display: block;
+  }
+`;
+export const CommentWrapper = styled.ul`
   @media screen and (min-width: 1280px) {
     display: block;
   }

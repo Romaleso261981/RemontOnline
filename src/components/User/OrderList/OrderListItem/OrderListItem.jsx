@@ -1,8 +1,9 @@
 import {
-  FlexBasket,
+  BattonWrapper,
   DataListFirst,
   DataListsecond,
   DataListWrapper,
+  CommentWrapper,
 } from '../OrderList.styled';
 import {
   PetName,
@@ -13,14 +14,10 @@ import {
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import {
-  ButtonBasket,
-  ButtonDone,
-  ButtonPencil,
+  UniversalButton,
 } from '../../ButtonUser/ButtonUser';
 import { deletePet } from 'redux/pets/operations';
 import { useDispatch } from 'react-redux';
-
-
 
 const OrderListItem = ({
   phone,
@@ -38,27 +35,25 @@ const OrderListItem = ({
         <DataListFirst>
           <PetName nametechnique={nametechnique} />
           <PetPhone phone={phone} />
-          <DateCreation datecreation={datecreation} />
-          <TechnicalModel model={model} />
-          <PetComments comments={comments} />
         </DataListFirst>
         <DataListsecond>
-          <PetName nametechnique={nametechnique} />
-          <PetPhone phone={phone} />
           <DateCreation datecreation={datecreation} />
           <TechnicalModel model={model} />
-          <PetComments comments={comments} />
         </DataListsecond>
+        <CommentWrapper>
+          <PetComments comments={comments} />
+        </CommentWrapper>
       </DataListWrapper>
-      <FlexBasket>
-        <ButtonDone
+      <BattonWrapper>
+        <UniversalButton
           type="button"
           onClick={() => {
             dispatch(deletePet(petId));
           }}
           ariaLabel="basket button"
-          widthM={'20px'}
+          widthM={'80px'}
           heightM={'20px'}
+          bRadius={'5px'}
           widthT={'44px'}
           heightT={'44px'}
           widthMsvg={'20px'}
@@ -66,17 +61,19 @@ const OrderListItem = ({
           widthTsvg={'24px'}
           heighthTsvg={'24px'}
           bgT={'#d5e3d6'}
+          text="в роботі"
           fillM={'rgba(17, 17, 17, 0.6)'}
           strokeM={'#fdf7f2'}
         />
-        <ButtonPencil
+        <UniversalButton
           type="button"
           onClick={() => {
             dispatch(deletePet(petId));
           }}
           ariaLabel="basket button"
-          widthM={'20px'}
+          widthM={'80px'}
           heightM={'20px'}
+          bRadius={'5px'}
           widthT={'44px'}
           heightT={'44px'}
           widthMsvg={'20px'}
@@ -84,17 +81,19 @@ const OrderListItem = ({
           widthTsvg={'24px'}
           heighthTsvg={'24px'}
           bgT={'#d5e3d6'}
+          text="зроблено"
           fillM={'rgba(17, 17, 17, 0.6)'}
           strokeM={'#fdf7f2'}
         />
-        <ButtonBasket
+        <UniversalButton
           type="button"
           onClick={() => {
             dispatch(deletePet(petId));
           }}
           ariaLabel="basket button"
-          widthM={'20px'}
+          widthM={'80px'}
           heightM={'20px'}
+          bRadius={'5px'}
           widthT={'44px'}
           heightT={'44px'}
           widthMsvg={'20px'}
@@ -102,10 +101,11 @@ const OrderListItem = ({
           widthTsvg={'24px'}
           heighthTsvg={'24px'}
           bgT={'#d5e3d6'}
+          text="закритий"
           fillM={'rgba(17, 17, 17, 0.6)'}
           strokeM={'#fdf7f2'}
         />
-      </FlexBasket>
+      </BattonWrapper>
     </ContainerOrder>
   );
 };
