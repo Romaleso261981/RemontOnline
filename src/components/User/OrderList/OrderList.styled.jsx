@@ -66,8 +66,8 @@ export const StyledTextOrder = styled.li`
 
 export const BattonWrapper = styled.div`
   position: absolute;
-  top: 272px;
-  right: 20px;
+  top: 300px;
+  right: 30px;
 
   @media screen and (min-width: 768px) {
     top: 20px;

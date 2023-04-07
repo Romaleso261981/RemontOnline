@@ -13,9 +13,7 @@ import {
   PetPhone,
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
-import {
-  UniversalButton,
-} from '../../ButtonUser/ButtonUser';
+import { UniversalButton } from '../../ButtonUser/ButtonUser';
 // import { deletePet } from 'redux/pets/operations';
 import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
 import { Modal } from 'components/Modal/Modal';
@@ -65,9 +63,7 @@ const OrderListItem = ({
           heighthMsvg={'20px'}
           widthTsvg={'24px'}
           heighthTsvg={'24px'}
-          bgT={'#d5e3d6'}
           text="в роботі"
-          fillM={'rgba(17, 17, 17, 0.6)'}
           strokeM={'#fdf7f2'}
         />
         <UniversalButton
@@ -86,9 +82,7 @@ const OrderListItem = ({
           heighthMsvg={'20px'}
           widthTsvg={'24px'}
           heighthTsvg={'24px'}
-          bgT={'#d5e3d6'}
           text="зроблено"
-          fillM={'rgba(17, 17, 17, 0.6)'}
           strokeM={'#fdf7f2'}
         />
         <UniversalButton
@@ -107,9 +101,7 @@ const OrderListItem = ({
           heighthMsvg={'20px'}
           widthTsvg={'24px'}
           heighthTsvg={'24px'}
-          bgT={'#d5e3d6'}
           text="редагувати"
-          fillM={'rgba(17, 17, 17, 0.6)'}
           strokeM={'#fdf7f2'}
         />
       </BattonWrapper>

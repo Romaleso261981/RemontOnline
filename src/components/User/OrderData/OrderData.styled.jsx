@@ -48,6 +48,9 @@ export const ContainerOrder = styled.li`
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
     margin-bottom: 22px;
     border-radius: 5px;
   }

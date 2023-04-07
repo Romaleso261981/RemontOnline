@@ -5,15 +5,14 @@ export const StyleButton = styled.div`
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  width: ${props => props.widthM || '18px'};
-  height: ${props => props.heightM || '18px'};
-
+  width: 100px;
+  height: 30px;
+  color: #ffffff;
   background-color: ${props => props.bgM || 'rgba(255, 255, 255, 0.6)'};
   backdrop-filter: blur(2px);
-  border-radius: 50%;
+  border-radius: 5px;
   border: transparent;
 
-  fill: ${props => props.fillM || '#f59256'};
   stroke: ${props => props.strokeM || '#f59256'};
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -24,18 +23,16 @@ export const StyleButton = styled.div`
 
   &:focus,
   &:hover {
-    outline: transparent;
-    fill: #f59256;
-    stroke: ${props => props.strokeHover || '#fff'};
-    background-color: ${props => props.bgHover};
-    border: ${props => props.borderHover};
+    background-color: #f29e0c;
+    color: #000000;
   }
 
   @media screen and (min-width: 768px) {
-    width: ${props => props.widthT || '18px'};
-    height: ${props => props.heightT || '18px'};
-    background-color: ${props => props.bgT || 'rgba(255, 255, 255, 0.6)'};
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
 
+    background-color: ${props => props.bgT || 'rgba(255, 255, 255, 0.6)'};
     svg {
       width: ${props => props.widthTsvg || '18px'};
       height: ${props => props.heighthTsvg || '18px'};
@@ -43,10 +40,11 @@ export const StyleButton = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    width: ${props => props.widthM || '18px'};
-    height: ${props => props.heightM || '18px'};
-    border-radius: ${props => props.bRadius || '5px'};
+    width: 110px;
+    height: 30px;
     margin-top: 5px;
+    background-color: ${props => props.bgT || 'rgb(20, 16, 232, 0.9);'};
+    fill: '#ffffff';
   }
 `;
 
@@ -67,7 +65,7 @@ export const StyleUpdateButton = styled.div`
   border-radius: 50%;
   border: transparent;
 
-  fill: ${({ disabled }) => (disabled ? 'rgba(17, 17, 17, 0.6)' : '#f59256')};
+  // fill: ${({ disabled }) => (disabled ? 'rgba(17, 17, 17, 0.6)' : '#f59256')};
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   svg {
