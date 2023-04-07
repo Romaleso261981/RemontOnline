@@ -8,10 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStatePets } from 'redux/pets/selectors';
 import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import { Modal } from 'components/Modal/Modal';
+import { getIsLoading } from 'redux/pets/selectors';
+import Loader from 'components/Loader/Loader2';
 
 const OrderData = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const isLoading = useSelector(getIsLoading);
   const pets = useSelector(getStatePets);
   useEffect(() => {
     dispatch(fetchPets());
@@ -44,8 +47,8 @@ const OrderData = () => {
           />
         </FlexSvg>
       </Flex>
-
-      <OrderList pets={pets} />
+      {isLoading && <Loader />}
+      {!isLoading && <OrderList pets={pets} />}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
           <ModalAddOrder closeModal={() => setIsOpen(false)} />

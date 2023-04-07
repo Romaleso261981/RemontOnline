@@ -16,10 +16,10 @@ export const Flex = styled.div`
 export const BoxOrderData = styled.div`
   width: 280px;
   @media screen and (min-width: 768px) {
-    width: 704px;
+    width: 168px;
   }
   @media screen and (min-width: 1280px) {
-    width: 821px;
+    width: 1280px;
   }
 `;
 
@@ -42,12 +42,12 @@ export const ContainerOrder = styled.li`
   }
 
   @media screen and (min-width: 768px) {
-    width: 704px;
+    width: 768px;
     border-radius: 40px;
     display: flex;
   }
   @media screen and (min-width: 1280px) {
-    width: 821px;
+    width: 1280px;
     margin-bottom: 22px;
     border-radius: 5px;
   }

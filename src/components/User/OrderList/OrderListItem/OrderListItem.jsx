@@ -16,8 +16,11 @@ import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import {
   UniversalButton,
 } from '../../ButtonUser/ButtonUser';
-import { deletePet } from 'redux/pets/operations';
-import { useDispatch } from 'react-redux';
+// import { deletePet } from 'redux/pets/operations';
+import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
+import { Modal } from 'components/Modal/Modal';
+import { useState } from 'react';
+// import { useDispatch } from 'react-redux';
 
 const OrderListItem = ({
   phone,
@@ -28,7 +31,8 @@ const OrderListItem = ({
   petId,
   id,
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <ContainerOrder key={id}>
       <DataListWrapper>
@@ -47,9 +51,10 @@ const OrderListItem = ({
       <BattonWrapper>
         <UniversalButton
           type="button"
-          onClick={() => {
-            dispatch(deletePet(petId));
-          }}
+          // onClick={() => setIsOpen(true)}
+          // onClick={() => {
+          //   dispatch(deletePet(petId));
+          // }}
           ariaLabel="basket button"
           widthM={'80px'}
           heightM={'20px'}
@@ -67,9 +72,10 @@ const OrderListItem = ({
         />
         <UniversalButton
           type="button"
-          onClick={() => {
-            dispatch(deletePet(petId));
-          }}
+          // onClick={() => setIsOpen(true)}
+          // onClick={() => {
+          //   dispatch(deletePet(petId));
+          // }}
           ariaLabel="basket button"
           widthM={'80px'}
           heightM={'20px'}
@@ -87,11 +93,12 @@ const OrderListItem = ({
         />
         <UniversalButton
           type="button"
-          onClick={() => {
-            dispatch(deletePet(petId));
-          }}
+          onClick={() => setIsOpen(true)}
+          // onClick={() => {
+          //   dispatch(deletePet(petId));
+          // }}
           ariaLabel="basket button"
-          widthM={'80px'}
+          widthM={'100px'}
           heightM={'20px'}
           bRadius={'5px'}
           widthT={'44px'}
@@ -101,11 +108,16 @@ const OrderListItem = ({
           widthTsvg={'24px'}
           heighthTsvg={'24px'}
           bgT={'#d5e3d6'}
-          text="закритий"
+          text="редагувати"
           fillM={'rgba(17, 17, 17, 0.6)'}
           strokeM={'#fdf7f2'}
         />
       </BattonWrapper>
+      {isOpen && (
+        <Modal onClose={() => setIsOpen(false)}>
+          <ModaEditingOrder closeModal={() => setIsOpen(false)} />
+        </Modal>
+      )}
     </ContainerOrder>
   );
 };

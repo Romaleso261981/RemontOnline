@@ -15,12 +15,25 @@ export const fetchPets = createAsyncThunk(
   },
 );
 
-export const addPet = createAsyncThunk(
+export const editingOrder = createAsyncThunk(
+  'order/editing',
+  async (pet, { thunkAPI }) => {
+    try {
+      const response = await API.post('/orders/editing', pet);
+      toast.success('замовлення змінено');
+      return response.data.allUserPets;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return thunkAPI(error.message);
+    }
+  },
+);
+export const addOrder = createAsyncThunk(
   'pets/addPet',
   async (pet, { thunkAPI }) => {
     try {
       const response = await API.post('/pets/pet', pet);
-      toast.success(`Pet added`);
+      toast.success('Замовлення додано');
       return response.data.allUserPets;
     } catch (error) {
       toast.error(error.response.data.message);

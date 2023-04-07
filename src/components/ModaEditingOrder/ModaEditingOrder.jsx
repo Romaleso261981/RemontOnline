@@ -7,7 +7,7 @@ import {
   ControlBox,
   FormStyled,
   Title,
-} from './ModalAddOrder.styled';
+} from './ModaEditingOrder.styled';
 import {
   initialValues,
   validationSchemaStepOne,
@@ -18,11 +18,11 @@ import UploadImageField from 'components/ReusableComponents/UploadImageField/Upl
 import CommentField from 'components/ReusableComponents/CommentField/CommentField';
 import { CloseModalButton } from 'components/ReusableComponents/Buttons/CloseModalButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { addOrder } from 'redux/pets/operations';
+import { editingOrder } from 'redux/pets/operations';
 import { getStateUsersId } from 'redux/users/selectors';
 import { format } from 'date-fns';
 
-const ModalAddOrder = ({ closeModal }) => {
+const ModaEditingOrder = ({ closeModal }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [file, setFile] = useState(null);
   const [fileDataURL, setFileDataURL] = useState(null);
@@ -65,7 +65,7 @@ const ModalAddOrder = ({ closeModal }) => {
       data.append('owner', owner);
 
       try {
-        dispatch(addOrder(data));
+        dispatch(editingOrder(data));
       } catch (error) {
         console.log('Failed to add pet:', error);
       }
@@ -139,4 +139,4 @@ const ModalAddOrder = ({ closeModal }) => {
   );
 };
 
-export default ModalAddOrder;
+export default ModaEditingOrder;

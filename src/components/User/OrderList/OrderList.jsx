@@ -2,13 +2,11 @@ import PetListItem from './OrderListItem/OrderListItem';
 import { getIsLoading } from 'redux/pets/selectors';
 import { useSelector } from 'react-redux';
 import CoverPage from 'components/ReusableComponents/CoverPage/CoverPage';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader2';
 // import { Animation } from 'components/Animation/Animation';
 
 const OrderList = ({ pets }) => {
-  console.log(pets);
   const isLoading = useSelector(getIsLoading);
-  console.log(pets);
   return (
     <>
       {isLoading && <Loader />}

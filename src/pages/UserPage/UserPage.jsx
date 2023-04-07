@@ -1,4 +1,4 @@
-import UserData from 'components/User/UserData/UserData';
+// import UserData from 'components/User/UserData/UserData';
 import OrderData from 'components/User/OrderData/OrderData';
 import { UserWrapper } from './UserPage.styled';
 import { fetchUser } from 'redux/users/operations';
@@ -14,7 +14,7 @@ const UserPage = () => {
 
   return (
     <UserWrapper>
-      <UserData />
+      {/* <UserData /> */}
       <OrderData />
     </UserWrapper>
   );
