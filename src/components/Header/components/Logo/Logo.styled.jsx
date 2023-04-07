@@ -27,7 +27,7 @@ export const ImageCover = styled.img`
   @media screen and (max-width: 320px) {
     margin-left: auto;
     margin-right: auto;
-    width: 150px;
+    width: 100px;
   }
 `;
 
