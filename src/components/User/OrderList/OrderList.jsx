@@ -15,23 +15,36 @@ const OrderList = ({ pets }) => {
         <ul>
           {pets.map(
             ({
-              photo,
-              nametechnique,
-              datecreation,
-              model,
-              comments,
               _id,
+              brend,
+              cost,
+              customerAddress,
+              customerName,
+              datecreation,
+              descriptionMalfunction,
+              descriptionOfRepair,
+              model,
+              nametechnique,
+              number,
               phone,
+              serialNumber,
+              status,
             }) => (
               <PetListItem
                 id={_id}
-                petId={_id}
-                photo={photo}
-                phone={phone}
-                nametechnique={nametechnique}
+                brend={brend}
+                cost={cost}
+                customerAddress={customerAddress}
+                customerName={customerName}
                 datecreation={datecreation}
+                descriptionMalfunction={descriptionMalfunction}
+                descriptionOfRepair={descriptionOfRepair}
                 model={model}
-                comments={comments}
+                nametechnique={nametechnique}
+                number={number}
+                phone={phone}
+                serialNumber={serialNumber}
+                status={status}
               />
             ),
           )}

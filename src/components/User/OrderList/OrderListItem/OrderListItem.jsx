@@ -21,38 +21,61 @@ import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 
 const OrderListItem = ({
-  phone,
-  nametechnique,
-  datecreation,
-  model,
-  comments,
-  petId,
   id,
+  brend,
+  cost,
+  customerAddress,
+  customerName,
+  datecreation,
+  descriptionMalfunction,
+  descriptionOfRepair,
+  model,
+  nametechnique,
+  number,
+  phone,
+  serialNumber,
+  status,
 }) => {
   // const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreDetali, setIsMoreDetali] = useState(false);
+  const [isMoreComent, setIsMoreComent] = useState(false);
+
+  const toggle = (is, isSet) => {
+    isSet(!is);
+  };
   return (
     <ContainerOrder key={id}>
       <DataListWrapper>
         <DataListFirst>
+          <PetName number={number} />
           <PetName nametechnique={nametechnique} />
+          <PetPhone brend={brend} />
+          <PetPhone model={model} />
           <PetPhone phone={phone} />
         </DataListFirst>
-        <DataListsecond>
-          <DateCreation datecreation={datecreation} />
-          <TechnicalModel model={model} />
-        </DataListsecond>
-        <CommentWrapper>
-          <PetComments comments={comments} />
-        </CommentWrapper>
+        {isMoreDetali && (
+          <DataListsecond>
+            <DateCreation datecreation={datecreation} />
+            <DateCreation customerName={customerName} />
+            <DateCreation customerAddress={customerAddress} />
+            <TechnicalModel model={model} />
+            <TechnicalModel status={status} />
+          </DataListsecond>
+        )}
+        {isMoreComent && (
+          <CommentWrapper>
+            <PetComments descriptionMalfunction={descriptionMalfunction} />
+            <PetComments descriptionOfRepair={descriptionOfRepair} />
+            <PetComments serialNumber={serialNumber} />
+            <PetComments cost={cost} />
+          </CommentWrapper>
+        )}
       </DataListWrapper>
       <BattonWrapper>
         <UniversalButton
           type="button"
-          // onClick={() => setIsOpen(true)}
-          // onClick={() => {
-          //   dispatch(deletePet(petId));
-          // }}
+          onClick={() => toggle(isMoreDetali, setIsMoreDetali)}
           ariaLabel="basket button"
           widthM={'80px'}
           heightM={'20px'}
@@ -68,7 +91,7 @@ const OrderListItem = ({
         />
         <UniversalButton
           type="button"
-          // onClick={() => setIsOpen(true)}
+          onClick={() => toggle(isMoreComent, setIsMoreComent)}
           // onClick={() => {
           //   dispatch(deletePet(petId));
           // }}
