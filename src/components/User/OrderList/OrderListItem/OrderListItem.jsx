@@ -46,8 +46,8 @@ const OrderListItem = ({
 }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMoreDetali, setIsMoreDetali] = useState(false);
-  const [isMoreComent, setIsMoreComent] = useState(false);
+  const [isMoreDetali, setIsMoreDetali] = useState(true);
+  const [isMoreComent, setIsMoreComent] = useState(true);
 
   const toggle = (is, isSet) => {
     isSet(!is);

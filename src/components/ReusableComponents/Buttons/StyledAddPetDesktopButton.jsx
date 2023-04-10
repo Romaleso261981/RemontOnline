@@ -62,7 +62,7 @@ export const StyledAddPetDesktopButton = ({ onAddButtonClick }) => {
           d="M16 30.222V16m0 0V1.778M16 16h14.222M16 16H1.778"
         />
       </svg>
-      <StyledSpan>Add pet</StyledSpan>
+      <StyledSpan>Додати замовлення</StyledSpan>
     </StyledButton>
   );
 };

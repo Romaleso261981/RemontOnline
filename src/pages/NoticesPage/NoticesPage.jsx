@@ -1,17 +1,18 @@
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Title from 'components/Title/Title';
-import NoticesSearch from 'components/Notices/NoticesSearch/NoticesSearch';
-import NoticesCategoriesNav from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
+// import Title from 'components/Title/Title';
+// import NoticesSearch from 'components/Notices/NoticesSearch/NoticesSearch';
+// import NoticesCategoriesNav from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
 import Loader from 'components/Loader/Loader';
 import ModalAddNotice from 'components/Notices/NoticeModal/ModalAddNotice';
 import NoticesCategoriesList from 'components/Notices/NoticesCategoriesList/NoticesCategoriesList';
 
-import { StyledSection, ButtonBox } from './NoticesPage.styled';
+import { StyledSection } from './NoticesPage.styled';
+// import { StyledSection, ButtonBox } from './NoticesPage.styled';
 import { StyledAddPetMobileButton } from 'components/ReusableComponents/Buttons/StyledAddPetMobileButton';
-import { StyledAddPetDesktopButton } from 'components/ReusableComponents/Buttons/StyledAddPetDesktopButton';
+// import { StyledAddPetDesktopButton } from 'components/ReusableComponents/Buttons/StyledAddPetDesktopButton';
 import { Modal } from 'components/Modal/Modal';
 
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
@@ -24,7 +25,9 @@ import {
 import { showToastInfo } from 'utils/showTost';
 
 const NoticesPage = () => {
-  const { category } = useParams();
+  // const { category } = useParams();
+  // console.log(category);
+  const category = 'прийнятий';
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -78,13 +81,13 @@ const NoticesPage = () => {
 
   return (
     <StyledSection>
-      <Title>Find your favorite pet</Title>
-      <NoticesSearch category={category} />
+      {/* <Title>Хороший майстер</Title> */}
+      {/* <NoticesSearch category={category} /> */}
 
-      <ButtonBox>
+      {/* <ButtonBox>
         <NoticesCategoriesNav category={category} />
         <StyledAddPetDesktopButton onAddButtonClick={onAddButtonClick} />
-      </ButtonBox>
+      </ButtonBox> */}
 
       <StyledAddPetMobileButton onAddButtonClick={onAddButtonClick} />
 

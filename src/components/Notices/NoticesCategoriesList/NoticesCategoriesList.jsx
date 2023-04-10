@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-
+// import OrderList from '../../User/OrderList/OrderList';
+import OrderData from '../../User/OrderData/OrderData';
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
 import { StyledList } from './NoticesCategoriesList.styled';
 
@@ -17,7 +18,10 @@ const NoticesCategoriesList = ({ category, onClose }) => {
 
   return (
     <>
-      {category === 'sell' && (
+      {true && <OrderData orders={notices} />}
+      {/* {category === 'sell' && <OrderData orders={notices} />} */}
+      {/* <OrderList pets={notices} /> */}
+      {/* {category === 'sell' && (
         <StyledList>
           {notices.map(notice => (
             <NoticeCategoryItem
@@ -27,7 +31,7 @@ const NoticesCategoriesList = ({ category, onClose }) => {
             ></NoticeCategoryItem>
           ))}
         </StyledList>
-      )}
+      )} */}
 
       {category === 'lost-found' && (
         <StyledList>

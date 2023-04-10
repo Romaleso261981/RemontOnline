@@ -1,18 +1,18 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import {
   NavBox,
   NavBox1,
   NavBox2,
   NavBox3,
-  NavUsersBox,
+  // NavUsersBox,
 } from './NoticesCategoriesNav.styled';
 import { StyledNavButton } from 'components/ReusableComponents/Buttons/StyledNavButton';
 
-import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+// import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 const NoticesCategoriesNav = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <NavBox>
@@ -21,18 +21,18 @@ const NoticesCategoriesNav = () => {
           <NavBox3>
             <StyledNavButton
               route="/notices/lost-found"
-              buttonName="lost/found"
+              buttonName="в ремонті"
             />
             <StyledNavButton
               route="/notices/for-free"
-              buttonName="in good hands"
+              buttonName="зроблено"
             />
           </NavBox3>
-          <StyledNavButton route="/notices/sell" buttonName="sell" />
+          <StyledNavButton route="/notices/sell" buttonName="на гарантії" />
         </NavBox2>
       </NavBox1>
 
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <NavUsersBox>
           <StyledNavButton
             route="/notices/favorite"
@@ -40,7 +40,7 @@ const NoticesCategoriesNav = () => {
           />
           <StyledNavButton route="/notices/own" buttonName="my ads" />
         </NavUsersBox>
-      )}
+      )} */}
     </NavBox>
   );
 };
