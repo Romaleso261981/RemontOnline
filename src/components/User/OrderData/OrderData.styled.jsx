@@ -28,7 +28,7 @@ export const ContainerOrder = styled.li`
 
   background: #ffffff;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
-  border-radius: 20px;
+  border-radius: 5px;
 
   position: relative;
   padding-top: 20px;
@@ -43,7 +43,6 @@ export const ContainerOrder = styled.li`
 
   @media screen and (min-width: 768px) {
     width: 768px;
-    border-radius: 40px;
     display: flex;
   }
   @media screen and (min-width: 1280px) {
@@ -52,7 +51,6 @@ export const ContainerOrder = styled.li`
     padding-right: 30px;
     padding-bottom: 30px;
     margin-bottom: 22px;
-    border-radius: 5px;
   }
 `;
 

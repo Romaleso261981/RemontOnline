@@ -6,102 +6,103 @@ import {
   CommentWrapper,
 } from '../OrderList.styled';
 import {
-  PetName,
-  DateCreation,
-  TechnicalModel,
-  PetComments,
-  PetPhone,
+  OrderNametechnique,
+  OrderBrend,
+  OrderModel,
+  OrderSerialNumber,
+  OrderDateCreation,
+  OrderCustomerName,
+  OrderCustomerAddress,
+  OrderPhone,
+  OrderDescriptionMalfunction,
+  OrderDescriptionOfRepair,
+  OrderCost,
+  OrderStatus,
+  OrderNumber,
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import { UniversalButton } from '../../ButtonUser/ButtonUser';
-// import { deletePet } from 'redux/pets/operations';
+import { deletePet } from 'redux/pets/operations';
 import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
 import { Modal } from 'components/Modal/Modal';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const OrderListItem = ({
-  phone,
-  nametechnique,
-  datecreation,
-  model,
-  comments,
-  petId,
   id,
+  brend,
+  cost,
+  customerAddress,
+  customerName,
+  datecreation,
+  descriptionMalfunction,
+  descriptionOfRepair,
+  model,
+  nametechnique,
+  number,
+  phone,
+  serialNumber,
+  status,
 }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreDetali, setIsMoreDetali] = useState(false);
+  const [isMoreComent, setIsMoreComent] = useState(false);
+
+  const toggle = (is, isSet) => {
+    isSet(!is);
+  };
   return (
     <ContainerOrder key={id}>
       <DataListWrapper>
         <DataListFirst>
-          <PetName nametechnique={nametechnique} />
-          <PetPhone phone={phone} />
+          <OrderNumber value={number} />
+          <OrderDateCreation value={datecreation} />
+          <OrderNametechnique value={nametechnique} />
+          <OrderBrend value={brend} />
+          <OrderModel value={model} />
         </DataListFirst>
-        <DataListsecond>
-          <DateCreation datecreation={datecreation} />
-          <TechnicalModel model={model} />
-        </DataListsecond>
-        <CommentWrapper>
-          <PetComments comments={comments} />
-        </CommentWrapper>
+        {isMoreDetali && (
+          <DataListsecond>
+            <OrderSerialNumber value={serialNumber} />
+            <OrderCustomerName value={customerName} />
+            <OrderCustomerAddress value={customerAddress} />
+            <OrderPhone value={phone} />
+          </DataListsecond>
+        )}
+        {isMoreComent && (
+          <CommentWrapper>
+            <OrderDescriptionMalfunction value={descriptionMalfunction} />
+            <OrderDescriptionOfRepair value={descriptionOfRepair} />
+            <OrderCost value={cost} />
+            <OrderStatus value={status} />
+          </CommentWrapper>
+        )}
       </DataListWrapper>
       <BattonWrapper>
         <UniversalButton
           type="button"
-          // onClick={() => setIsOpen(true)}
-          // onClick={() => {
-          //   dispatch(deletePet(petId));
-          // }}
-          ariaLabel="basket button"
-          widthM={'80px'}
-          heightM={'20px'}
-          bRadius={'5px'}
-          widthT={'44px'}
-          heightT={'44px'}
-          widthMsvg={'20px'}
-          heighthMsvg={'20px'}
-          widthTsvg={'24px'}
-          heighthTsvg={'24px'}
-          text="в роботі"
-          strokeM={'#fdf7f2'}
+          onClick={() => toggle(isMoreDetali, setIsMoreDetali)}
+          text="Деталі"
         />
         <UniversalButton
           type="button"
-          // onClick={() => setIsOpen(true)}
-          // onClick={() => {
-          //   dispatch(deletePet(petId));
-          // }}
-          ariaLabel="basket button"
-          widthM={'80px'}
-          heightM={'20px'}
-          bRadius={'5px'}
-          widthT={'44px'}
-          heightT={'44px'}
-          widthMsvg={'20px'}
-          heighthMsvg={'20px'}
-          widthTsvg={'24px'}
-          heighthTsvg={'24px'}
-          text="зроблено"
+          onClick={() => toggle(isMoreComent, setIsMoreComent)}
+          text="деталі"
           strokeM={'#fdf7f2'}
         />
         <UniversalButton
           type="button"
           onClick={() => setIsOpen(true)}
-          // onClick={() => {
-          //   dispatch(deletePet(petId));
-          // }}
-          ariaLabel="basket button"
-          widthM={'100px'}
-          heightM={'20px'}
-          bRadius={'5px'}
-          widthT={'44px'}
-          heightT={'44px'}
-          widthMsvg={'20px'}
-          heighthMsvg={'20px'}
-          widthTsvg={'24px'}
-          heighthTsvg={'24px'}
           text="редагувати"
+          strokeM={'#fdf7f2'}
+        />
+        <UniversalButton
+          type="button"
+          onClick={() => {
+            dispatch(deletePet(id));
+          }}
+          text="Видалити"
           strokeM={'#fdf7f2'}
         />
       </BattonWrapper>

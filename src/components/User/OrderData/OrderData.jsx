@@ -16,6 +16,7 @@ const OrderData = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isLoading = useSelector(getIsLoading);
   const pets = useSelector(getStatePets);
+  console.log(pets);
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);
