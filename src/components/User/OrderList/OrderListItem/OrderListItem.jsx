@@ -6,19 +6,21 @@ import {
   CommentWrapper,
 } from '../OrderList.styled';
 import {
-  PetName,
-  DateCreation,
-  TechnicalModel,
-  PetComments,
-  PetPhone,
+  OrderNametechnique,
+  OrderBrend,
+  OrderModel,
+  OrderSerialNumber,
+  OrderDateCreation,
+  OrderCustomerName,
+  OrderCustomerAddress,
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import { UniversalButton } from '../../ButtonUser/ButtonUser';
-// import { deletePet } from 'redux/pets/operations';
+import { deletePet } from 'redux/pets/operations';
 import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
 import { Modal } from 'components/Modal/Modal';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const OrderListItem = ({
   id,
@@ -36,7 +38,7 @@ const OrderListItem = ({
   serialNumber,
   status,
 }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isMoreDetali, setIsMoreDetali] = useState(false);
   const [isMoreComent, setIsMoreComent] = useState(false);
@@ -48,27 +50,26 @@ const OrderListItem = ({
     <ContainerOrder key={id}>
       <DataListWrapper>
         <DataListFirst>
-          <PetName number={number} />
-          <PetName nametechnique={nametechnique} />
-          <PetPhone brend={brend} />
-          <PetPhone model={model} />
-          <PetPhone phone={phone} />
+          <OrderDateCreation value={datecreation} />
+          <OrderNametechnique value={nametechnique} />
+          <OrderBrend value={brend} />
+          <OrderModel value={model} />
         </DataListFirst>
         {isMoreDetali && (
           <DataListsecond>
-            <DateCreation datecreation={datecreation} />
-            <DateCreation customerName={customerName} />
-            <DateCreation customerAddress={customerAddress} />
-            <TechnicalModel model={model} />
-            <TechnicalModel status={status} />
+            <OrderSerialNumber value={serialNumber} />
+            <OrderCustomerName value={customerName} />
+            <OrderCustomerAddress value={customerAddress} />
+            <OrderBrend value={phone} />
           </DataListsecond>
         )}
         {isMoreComent && (
           <CommentWrapper>
-            <PetComments descriptionMalfunction={descriptionMalfunction} />
-            <PetComments descriptionOfRepair={descriptionOfRepair} />
-            <PetComments serialNumber={serialNumber} />
-            <PetComments cost={cost} />
+            <OrderDateCreation value={descriptionMalfunction} />
+            <OrderNametechnique value={descriptionOfRepair} />
+            <OrderBrend value={cost} />
+            <OrderModel value={status} />
+            <OrderSerialNumber value={number} />
           </CommentWrapper>
         )}
       </DataListWrapper>
@@ -76,55 +77,26 @@ const OrderListItem = ({
         <UniversalButton
           type="button"
           onClick={() => toggle(isMoreDetali, setIsMoreDetali)}
-          ariaLabel="basket button"
-          widthM={'80px'}
-          heightM={'20px'}
-          bRadius={'5px'}
-          widthT={'44px'}
-          heightT={'44px'}
-          widthMsvg={'20px'}
-          heighthMsvg={'20px'}
-          widthTsvg={'24px'}
-          heighthTsvg={'24px'}
-          text="в роботі"
-          strokeM={'#fdf7f2'}
+          text="Деталі"
         />
         <UniversalButton
           type="button"
           onClick={() => toggle(isMoreComent, setIsMoreComent)}
-          // onClick={() => {
-          //   dispatch(deletePet(petId));
-          // }}
-          ariaLabel="basket button"
-          widthM={'80px'}
-          heightM={'20px'}
-          bRadius={'5px'}
-          widthT={'44px'}
-          heightT={'44px'}
-          widthMsvg={'20px'}
-          heighthMsvg={'20px'}
-          widthTsvg={'24px'}
-          heighthTsvg={'24px'}
-          text="зроблено"
+          text="деталі"
           strokeM={'#fdf7f2'}
         />
         <UniversalButton
           type="button"
           onClick={() => setIsOpen(true)}
-          // onClick={() => {
-          //   dispatch(deletePet(petId));
-          // }}
-          ariaLabel="basket button"
-          widthM={'100px'}
-          heightM={'20px'}
-          bRadius={'5px'}
-          widthT={'44px'}
-          heightT={'44px'}
-          widthMsvg={'20px'}
-          heighthMsvg={'20px'}
-          widthTsvg={'24px'}
-          heighthTsvg={'24px'}
           text="редагувати"
+          strokeM={'#fdf7f2'}
+        />
+        <UniversalButton
+          type="button"
+          onClick={() => {
+            dispatch(deletePet(id));
+          }}
+          text="Видалити"
           strokeM={'#fdf7f2'}
         />
       </BattonWrapper>
