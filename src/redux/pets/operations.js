@@ -46,7 +46,7 @@ export const deletePet = createAsyncThunk(
   'pet/deletePet',
   async (petId, thunkAPI) => {
     try {
-      const response = await API.delete(`/pet/${petId}`);
+      const response = await API.delete(`/orders/${petId}`, {petId});
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

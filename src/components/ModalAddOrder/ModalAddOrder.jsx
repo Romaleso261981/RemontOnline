@@ -25,7 +25,7 @@ const ModalAddOrder = ({ closeModal }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const dispatch = useDispatch();
   const owner = useSelector(getStateUsersId);
-  console.log(owner);
+console.log(owner);
   const handleSubmit = async (values, { setSubmitting }) => {
     console.log('handleSubmit');
     if (currentStep < 2) {
@@ -46,9 +46,7 @@ const ModalAddOrder = ({ closeModal }) => {
       data.append('datecreation', dateBD);
       data.append('descriptionMalfunction', values.descriptionMalfunction);
       data.append('descriptionOfRepair', values.descriptionOfRepair);
-      data.append('status', values.status);
       data.append('cost', values.cost);
-      data.append('owner', owner);
 
       try {
         dispatch(addOrder(data));
