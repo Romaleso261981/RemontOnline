@@ -13,6 +13,12 @@ import {
   OrderDateCreation,
   OrderCustomerName,
   OrderCustomerAddress,
+  OrderPhone,
+  OrderDescriptionMalfunction,
+  OrderDescriptionOfRepair,
+  OrderCost,
+  OrderStatus,
+  OrderNumber,
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import { UniversalButton } from '../../ButtonUser/ButtonUser';
@@ -50,6 +56,7 @@ const OrderListItem = ({
     <ContainerOrder key={id}>
       <DataListWrapper>
         <DataListFirst>
+          <OrderNumber value={number} />
           <OrderDateCreation value={datecreation} />
           <OrderNametechnique value={nametechnique} />
           <OrderBrend value={brend} />
@@ -60,16 +67,15 @@ const OrderListItem = ({
             <OrderSerialNumber value={serialNumber} />
             <OrderCustomerName value={customerName} />
             <OrderCustomerAddress value={customerAddress} />
-            <OrderBrend value={phone} />
+            <OrderPhone value={phone} />
           </DataListsecond>
         )}
         {isMoreComent && (
           <CommentWrapper>
-            <OrderDateCreation value={descriptionMalfunction} />
-            <OrderNametechnique value={descriptionOfRepair} />
-            <OrderBrend value={cost} />
-            <OrderModel value={status} />
-            <OrderSerialNumber value={number} />
+            <OrderDescriptionMalfunction value={descriptionMalfunction} />
+            <OrderDescriptionOfRepair value={descriptionOfRepair} />
+            <OrderCost value={cost} />
+            <OrderStatus value={status} />
           </CommentWrapper>
         )}
       </DataListWrapper>

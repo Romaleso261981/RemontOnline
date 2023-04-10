@@ -78,17 +78,34 @@ export const BattonWrapper = styled.div`
 `;
 export const DataListFirst = styled.ul`
   @media screen and (min-width: 1280px) {
+    min-height: 155px;
+    min-width: 300px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: 3px solid red;
     margin-right: 40px;
     display: block;
   }
 `;
 export const DataListsecond = styled.ul`
   @media screen and (min-width: 1280px) {
+    min-height: 155px;
+    min-width: 300px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: 3px solid red;
+    margin-right: 40px;
     display: block;
   }
 `;
 export const CommentWrapper = styled.ul`
   @media screen and (min-width: 1280px) {
+    min-height: 155px;
+    min-width: 300px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: 3px solid red;
+    margin-right: 40px;
     display: block;
   }
 `;

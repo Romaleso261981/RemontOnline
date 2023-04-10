@@ -5,7 +5,7 @@ export const StyleButton = styled.div`
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  width: 10px;
+  width: 100px;
   height: 30px;
   margin-top: 5px;
   color: #ffffff;
