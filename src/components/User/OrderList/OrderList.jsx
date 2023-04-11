@@ -5,15 +5,16 @@ import CoverPage from 'components/ReusableComponents/CoverPage/CoverPage';
 import Loader from 'components/Loader/Loader2';
 // import { Animation } from 'components/Animation/Animation';
 
-const OrderList = ({ pets }) => {
+const OrderList = ({ orders }) => {
+  console.log(orders);
   const isLoading = useSelector(getIsLoading);
   return (
     <>
       {isLoading && <Loader />}
-      {!isLoading && pets.length === 0 && <CoverPage />}
-      {!isLoading && pets.length >= 1 && (
+      {!isLoading && orders.length === 0 && <CoverPage />}
+      {!isLoading && orders.length >= 1 && (
         <ul>
-          {pets.map(
+          {orders.map(
             ({
               _id,
               brend,

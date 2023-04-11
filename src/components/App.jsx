@@ -21,7 +21,7 @@ const OurFriendsPage = lazy(() =>
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFound = lazy(() => import('pages/NotFoundPage/NotFound'));
-const UserPage = lazy(() => import('pages/UserPage/UserPage'));
+// const UserPage = lazy(() => import('pages/UserPage/UserPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,10 @@ export const App = () => {
               <Route
                 path="/user"
                 element={
-                  <PrivateRoute redirectTo="/login" component={<UserPage />} />
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<NoticesPage />}
+                  />
                 }
               />
             </Route>
