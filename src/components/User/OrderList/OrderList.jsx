@@ -7,7 +7,6 @@ import Loader from 'components/Loader/Loader2';
 
 const OrderList = ({ orders }) => {
   const isLoading = useSelector(getIsLoading);
-  console.log(orders);
 
   return (
     <>
