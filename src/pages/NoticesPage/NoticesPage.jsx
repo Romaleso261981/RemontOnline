@@ -14,27 +14,21 @@ import { StyledSection } from './NoticesPage.styled';
 import { StyledAddPetMobileButton } from 'components/ReusableComponents/Buttons/StyledAddPetMobileButton';
 // import { StyledAddPetDesktopButton } from 'components/ReusableComponents/Buttons/StyledAddPetDesktopButton';
 import { Modal } from 'components/Modal/Modal';
+import { Categories } from 'components/OnlineShop/Categories';
 
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { getIsLoading } from 'redux/notices/noticesSelectors';
-import {
-  fetchFavoriteNotices,
-  fetchNoticesByCategory,
-  fetchNoticesByOwner,
-} from 'redux/notices/noticesOperations';
+import { fetchNoticesByCategory } from 'redux/notices/noticesOperations';
 import { showToastInfo } from 'utils/showTost';
 
 const NoticesPage = () => {
-  // const { category } = useParams();
-  // console.log(category);
-  const category = 'прийнятий';
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [category, setCategory] = useState('прийнятий');
 
   useEffect(() => {
-    // list of functions
     const searchNoticeByCategory = () => {
       try {
         dispatch(fetchNoticesByCategory(category));
@@ -43,32 +37,7 @@ const NoticesPage = () => {
       }
     };
 
-    const searchNoticesByOwner = () => {
-      try {
-        dispatch(fetchNoticesByOwner());
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    const searchFavoriteNotices = () => {
-      try {
-        dispatch(fetchFavoriteNotices());
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    // download data on different conditions
     searchNoticeByCategory();
-
-    if (isLoggedIn) {
-      searchNoticesByOwner();
-    }
-
-    if (isLoggedIn) {
-      searchFavoriteNotices();
-    }
   }, [category, isLoggedIn, dispatch]);
 
   const onAddButtonClick = () => {
@@ -78,14 +47,14 @@ const NoticesPage = () => {
     }
     setShowAddModal(!showAddModal);
   };
-
+console.log(category);
   return (
     <StyledSection>
       {/* <Title>Хороший майстер</Title> */}
       {/* <NoticesSearch category={category} /> */}
 
       {/* <ButtonBox>
-        <NoticesCategoriesNav category={category} />
+        <Categories category={category} />
         <StyledAddPetDesktopButton onAddButtonClick={onAddButtonClick} />
       </ButtonBox> */}
 
@@ -101,10 +70,13 @@ const NoticesPage = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <NoticesCategoriesList
-            category={category}
-            onClose={onAddButtonClick}
-          />
+          <>
+            <Categories setCategory={setCategory} />
+            <NoticesCategoriesList
+              category={category}
+              onClose={onAddButtonClick}
+            />
+          </>
         )}
       </div>
     </StyledSection>
