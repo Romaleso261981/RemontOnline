@@ -6,8 +6,9 @@ import Loader from 'components/Loader/Loader2';
 // import { Animation } from 'components/Animation/Animation';
 
 const OrderList = ({ orders }) => {
-  console.log(orders);
   const isLoading = useSelector(getIsLoading);
+  console.log(orders);
+
   return (
     <>
       {isLoading && <Loader />}
