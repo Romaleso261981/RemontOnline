@@ -48,7 +48,6 @@ const OrderListItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isMoreDetali, setIsMoreDetali] = useState(true);
   const [isMoreComent, setIsMoreComent] = useState(true);
-  console.log(customerName);
 
   const toggle = (is, isSet) => {
     isSet(!is);

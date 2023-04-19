@@ -10,7 +10,6 @@ export const fetchNoticesByCategory = createAsyncThunk(
     const url = `/notices/category/${category}`;
     try {
       const result = await API.get(url);
-      console.log(result);
       return result.data.data.userWithPet;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -47,16 +47,8 @@ const NoticesPage = () => {
     }
     setShowAddModal(!showAddModal);
   };
-console.log(category);
   return (
     <StyledSection>
-      {/* <Title>Хороший майстер</Title> */}
-      {/* <NoticesSearch category={category} /> */}
-
-      {/* <ButtonBox>
-        <Categories category={category} />
-        <StyledAddPetDesktopButton onAddButtonClick={onAddButtonClick} />
-      </ButtonBox> */}
 
       <StyledAddPetMobileButton onAddButtonClick={onAddButtonClick} />
 
