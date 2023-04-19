@@ -29,7 +29,7 @@ const OrderList = ({ orders }) => {
               number,
               phone,
               serialNumber,
-              status,
+              type,
             }) => (
               <PetListItem
                 id={_id}
@@ -45,7 +45,7 @@ const OrderList = ({ orders }) => {
                 number={number}
                 phone={phone}
                 serialNumber={serialNumber}
-                status={status}
+                type={type}
               />
             ),
           )}

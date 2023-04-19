@@ -42,7 +42,7 @@ const OrderListItem = ({
   number,
   phone,
   serialNumber,
-  status,
+  type,
 }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +75,7 @@ const OrderListItem = ({
             <OrderDescriptionMalfunction value={descriptionMalfunction} />
             <OrderDescriptionOfRepair value={descriptionOfRepair} />
             <OrderCost value={cost} />
-            <OrderStatus value={status} />
+            <OrderStatus value={type} />
           </CommentWrapper>
         )}
       </DataListWrapper>
