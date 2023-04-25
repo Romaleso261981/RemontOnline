@@ -41,10 +41,11 @@ export const addOrder = createAsyncThunk(
     }
   },
 );
-export const done = createAsyncThunk('order/done', async (petId, thunkAPI) => {
+export const done = createAsyncThunk('order/done', async (orderId, thunkAPI) => {
   try {
-    alert('статус зміненно');
-    console.log(petId);
+    const response = await API.post(`/orders/${orderId}`, { orderId });
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
