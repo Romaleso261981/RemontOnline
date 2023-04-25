@@ -48,7 +48,7 @@ const SearchBarComponent = ({ setSortOrders, orders }) => {
     }
 
     searchNoticeByTitle(normilizedValue);
-    console.log(normilizedValue);
+    alert(normilizedValue);
     if (!isButtonClicked) {
       form.reset();
     }
