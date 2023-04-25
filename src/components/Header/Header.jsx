@@ -1,4 +1,4 @@
-import { Logo, Navigation } from './components';
+import { Logo } from './components';
 import { HeaderContainer } from './Header.styled';
 
 const Header = () => {
@@ -6,7 +6,7 @@ const Header = () => {
     <header>
       <HeaderContainer>
         <Logo />
-        <Navigation />
+        {/* <Navigation /> */}
       </HeaderContainer>
     </header>
   );

@@ -22,8 +22,9 @@ import {
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import { UniversalButton } from '../../ButtonUser/ButtonUser';
-import { deletePet } from 'redux/pets/operations';
+import { deleteOrder, done } from 'redux/order/operations';
 import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
+// import ShowFullItem from 'components/OnlineShop/ShowFullItem';
 import { Modal } from 'components/Modal/Modal';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -48,6 +49,8 @@ const OrderListItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isMoreDetali, setIsMoreDetali] = useState(true);
   const [isMoreComent, setIsMoreComent] = useState(true);
+  const [isOpenFull, setIsOpenFull] = useState(false);
+  // const [FullItem, setIsFullItem] = useState([]);
 
   const toggle = (is, isSet) => {
     isSet(!is);
@@ -100,15 +103,32 @@ const OrderListItem = ({
         <UniversalButton
           type="button"
           onClick={() => {
-            dispatch(deletePet(id));
+            dispatch(deleteOrder(id));
           }}
           text="Видалити"
+          strokeM={'#fdf7f2'}
+        />
+        <UniversalButton
+          type="button"
+          onClick={() => {
+            dispatch(done(id));
+          }}
+          text="зроблено"
           strokeM={'#fdf7f2'}
         />
       </BattonWrapper>
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
           <ModaEditingOrder closeModal={() => setIsOpen(false)} />
+        </Modal>
+      )}
+      {isOpenFull && (
+        <Modal
+          toggle={toggle}
+          setIsOpenFull={setIsOpenFull}
+          isOpenFull={isOpenFull}
+        >
+          {/* <ShowFullItem FullItem={FullItem} /> */}
         </Modal>
       )}
     </ContainerOrder>

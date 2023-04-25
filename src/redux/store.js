@@ -5,7 +5,7 @@ import { authReducer } from './auth/auth-slice';
 import { newsReducer } from './news/newsSlice';
 import { noticesReducer } from './notices/noticesSlice';
 import { userReducer } from './users/userSlice';
-import { petsReducer } from './pets/petSlice';
+import { petsReducer } from './order/petSlice';
 
 import {
   persistStore,

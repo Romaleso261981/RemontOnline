@@ -3,20 +3,18 @@ import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 import TitleUser from '../TitleUser/TitleUser';
 import { useEffect, useState } from 'react';
 import { ButtonPlus } from '../ButtonUser/ButtonUser';
-import { fetchPets } from 'redux/pets/operations';
+import { fetchPets } from 'redux/order/operations';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getStatePets } from 'redux/pets/selectors';
 import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import { Modal } from 'components/Modal/Modal';
-import { getIsLoading } from 'redux/pets/selectors';
+import { getIsLoading } from 'redux/order/selectors';
 import Loader from 'components/Loader/Loader2';
 
 const OrderData = ({ orders }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const isLoading = useSelector(getIsLoading);
-  // const pets = useSelector(getStatePets);
-  // console.log(pets);
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);
