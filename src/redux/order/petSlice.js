@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPets, deletePet, addOrder } from './operations';
+import { fetchPets, deleteOrder, addOrder } from './operations';
 
 const pendingReducer = state => {
   state.isLoading = true;
@@ -36,11 +36,11 @@ const petsSlice = createSlice({
       .addCase(addOrder.pending, pendingReducer)
       .addCase(addOrder.fulfilled, fetchPetsSucceesReducer)
       .addCase(addOrder.rejected, rejectedReducer)
-      .addCase(deletePet.pending, pendingReducer)
-      .addCase(deletePet.fulfilled, (state, action) => {
+      .addCase(deleteOrder.pending, pendingReducer)
+      .addCase(deleteOrder.fulfilled, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(deletePet.rejected, rejectedReducer);
+      .addCase(deleteOrder.rejected, rejectedReducer);
   },
 });
 

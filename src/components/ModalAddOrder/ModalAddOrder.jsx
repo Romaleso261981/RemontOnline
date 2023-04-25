@@ -16,18 +16,14 @@ import {
 } from './Validation';
 import UniversalButton from 'components/ReusableComponents/Buttons/UniversalButton';
 import { CloseModalButton } from 'components/ReusableComponents/Buttons/CloseModalButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { addOrder } from 'redux/pets/operations';
-import { getStateUsersId } from 'redux/users/selectors';
+import { useDispatch} from 'react-redux';
+import { addOrder } from 'redux/order/operations';
 import { format } from 'date-fns';
 
 const ModalAddOrder = ({ closeModal }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const dispatch = useDispatch();
-  const owner = useSelector(getStateUsersId);
-console.log(owner);
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log('handleSubmit');
     if (currentStep < 2) {
       setCurrentStep(currentStep + 1);
     } else if (currentStep < 3) {

@@ -1,5 +1,5 @@
 import PetListItem from './OrderListItem/OrderListItem';
-import { getIsLoading } from 'redux/pets/selectors';
+import { getIsLoading } from 'redux/order/selectors';
 import { useSelector } from 'react-redux';
 import CoverPage from 'components/ReusableComponents/CoverPage/CoverPage';
 import Loader from 'components/Loader/Loader2';

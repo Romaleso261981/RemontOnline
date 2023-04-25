@@ -55,10 +55,10 @@ const refreshUser = createAsyncThunk(
       const { data } = await API.post('/user/current', { refreshToken });
       authToken.set(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
-      Notiflix.Notify.success(
-        `Ми знов разом, ${data.data.user.email}!`,
-        notifySettings,
-      );
+      // Notiflix.Notify.success(
+      //   `Ми знов разом, ${data.data.user.email}!`,
+      //   notifySettings,
+      // );
       return data;
     } catch ({ response }) {
       const { status, data } = response;

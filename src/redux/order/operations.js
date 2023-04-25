@@ -13,14 +13,14 @@ export const fetchPets = createAsyncThunk(
     }
   },
 );
-
-export const editingOrder = createAsyncThunk(
+export const EditOrder = createAsyncThunk(
   'order/editing',
   async (pet, { thunkAPI }) => {
     try {
-      const response = await API.post('/orders/editing', pet);
+      console.log('EditOrder');
+      // const response = await API.post('/orders/editing', pet);
       toast.success('замовлення змінено');
-      return response.data.allUserPets;
+      // return response.data.allUserPets;
     } catch (error) {
       toast.error(error.response.data.message);
       return thunkAPI(error.message);
@@ -28,7 +28,7 @@ export const editingOrder = createAsyncThunk(
   },
 );
 export const addOrder = createAsyncThunk(
-  'pets/addPet',
+  'order/addPet',
   async (order, { thunkAPI }) => {
     try {
       console.log(order);
@@ -41,13 +41,20 @@ export const addOrder = createAsyncThunk(
     }
   },
 );
-
-export const deletePet = createAsyncThunk(
-  'pet/deletePet',
-  async (petId, thunkAPI) => {
+export const done = createAsyncThunk('order/done', async (petId, thunkAPI) => {
+  try {
+    alert('статус зміненно');
+    console.log(petId);
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+export const deleteOrder = createAsyncThunk(
+  'order/deleteOrder',
+  async (orderId, thunkAPI) => {
     try {
-    alert("Невидаляй бо ти незможеш видалити")
-      console.log(petId);
+      alert('Невидаляй бо ти незможеш видалити');
+      console.log(orderId);
       // const response = await API.delete(`/orders/${petId}`, {petId});
       // return response.data;
     } catch (error) {

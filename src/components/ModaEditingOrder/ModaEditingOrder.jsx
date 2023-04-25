@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Formik } from 'formik';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
+import StepThree from './StepThree';
 import {
   Container,
   ControlBox,
@@ -14,58 +15,34 @@ import {
   validationSchemaStepTwo,
 } from './Validation';
 import UniversalButton from 'components/ReusableComponents/Buttons/UniversalButton';
-import UploadImageField from 'components/ReusableComponents/UploadImageField/UploadImageField';
-import CommentField from 'components/ReusableComponents/CommentField/CommentField';
 import { CloseModalButton } from 'components/ReusableComponents/Buttons/CloseModalButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { editingOrder } from 'redux/pets/operations';
-import { getStateUsersId } from 'redux/users/selectors';
-import { format } from 'date-fns';
+import { useDispatch } from 'react-redux';
+import { EditOrder } from 'redux/order/operations';
 
-const ModaEditingOrder = ({ closeModal }) => {
+const ModalAddOrder = ({ closeModal }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [file, setFile] = useState(null);
-  const [fileDataURL, setFileDataURL] = useState(null);
   const dispatch = useDispatch();
-  const owner = useSelector(getStateUsersId);
-
-  useEffect(() => {
-    let fileReader,
-      isCancel = false;
-    if (file) {
-      fileReader = new FileReader();
-      fileReader.onload = e => {
-        const { result } = e.target;
-        if (result && !isCancel) {
-          setFileDataURL(result);
-        }
-      };
-      fileReader.readAsDataURL(file);
-    }
-    return () => {
-      isCancel = true;
-      if (fileReader && fileReader.readyState === 1) {
-        fileReader.abort();
-      }
-    };
-  }, [file]);
-
   const handleSubmit = async (values, { setSubmitting }) => {
     if (currentStep < 2) {
       setCurrentStep(currentStep + 1);
+    } else if (currentStep < 3) {
+      setCurrentStep(currentStep + 1);
     } else {
-      const dateBD = format(values.birthdate, 'dd.MM.yyyy');
 
       const data = new FormData();
-      data.append('nametechnique', values.name);
+      data.append('number', values.number);
+      data.append('nametechnique', values.nametechnique);
+      data.append('brend', values.brend);
+      data.append('model', values.model);
+      data.append('customerName', values.customerName);
+      data.append('customerAddress', values.customerAddress);
       data.append('phone', values.phone);
-      data.append('datecreation', dateBD);
-      data.append('model', values.breed);
-      data.append('comments', values.comments);
-      data.append('owner', owner);
+      data.append('descriptionMalfunction', values.descriptionMalfunction);
+      data.append('descriptionOfRepair', values.descriptionOfRepair);
+      data.append('cost', values.cost);
 
       try {
-        dispatch(editingOrder(data));
+        dispatch(EditOrder(data));
       } catch (error) {
         console.log('Failed to add pet:', error);
       }
@@ -73,11 +50,12 @@ const ModaEditingOrder = ({ closeModal }) => {
     }
     setSubmitting(false);
   };
+  console.log(currentStep);
 
   return (
     <Container>
       <CloseModalButton closeModal={closeModal} />
-      <Title step={currentStep}>Add pet</Title>
+      <Title step={currentStep}>Додати замовлення</Title>
 
       <Formik
         initialValues={initialValues}
@@ -87,25 +65,11 @@ const ModaEditingOrder = ({ closeModal }) => {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        {({ isSubmitting, values, setFieldValue }) => (
+        {({ isSubmitting }) => (
           <FormStyled>
             {currentStep === 1 && <StepOne />}
-
-            {currentStep === 2 && (
-              <StepTwo>
-                <UploadImageField
-                  name="photo"
-                  form="userPet"
-                  label="Add photo and some comments"
-                  fileDataURL={fileDataURL}
-                  handleChange={e => {
-                    setFile(e.currentTarget.files[0]);
-                    setFieldValue('photo', e.currentTarget.files[0]);
-                  }}
-                />
-                <CommentField name="comments" form="userPet" label="Comments" />
-              </StepTwo>
-            )}
+            {currentStep === 2 && <StepTwo />}
+            {currentStep === 3 && <StepThree />}
 
             <ControlBox>
               <UniversalButton
@@ -114,7 +78,7 @@ const ModaEditingOrder = ({ closeModal }) => {
                 width="100%"
                 disabled={isSubmitting}
               >
-                {currentStep < 2 ? <span>Next</span> : <span>Done</span>}
+                {currentStep < 3 ? <span>Next</span> : <span>Done</span>}
               </UniversalButton>
 
               {currentStep === 1 && (
@@ -131,6 +95,14 @@ const ModaEditingOrder = ({ closeModal }) => {
                   <span>Back</span>
                 </UniversalButton>
               )}
+              {currentStep === 3 && (
+                <UniversalButton
+                  name="transparent"
+                  onClick={() => setCurrentStep(1)}
+                >
+                  <span>Back</span>
+                </UniversalButton>
+              )}
             </ControlBox>
           </FormStyled>
         )}
@@ -139,4 +111,4 @@ const ModaEditingOrder = ({ closeModal }) => {
   );
 };
 
-export default ModaEditingOrder;
+export default ModalAddOrder;
