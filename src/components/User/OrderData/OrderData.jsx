@@ -1,19 +1,24 @@
-import OrderList from 'components/User/OrderList/OrderList';
-import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
-import TitleUser from '../TitleUser/TitleUser';
 import { useEffect, useState } from 'react';
-import { ButtonPlus } from '../ButtonUser/ButtonUser';
-import { fetchPets } from 'redux/order/operations';
 import { useDispatch, useSelector } from 'react-redux';
-// import { getStatePets } from 'redux/pets/selectors';
+
+import TitleUser from '../TitleUser/TitleUser';
+import { ButtonPlus } from '../ButtonUser/ButtonUser';
 import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
+import OrderList from 'components/User/OrderList/OrderList';
 import { Modal } from 'components/Modal/Modal';
-import { getIsLoading } from 'redux/order/selectors';
 import Loader from 'components/Loader/Loader2';
+import SearchBarComponent from 'components/SearchBarComponent/SearchBarComponent';
+
+// import { getStatePets } from 'redux/pets/selectors';
+import { fetchPets } from 'redux/order/operations';
+import { getIsLoading } from 'redux/order/selectors';
+
+import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 
 const OrderData = ({ orders }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [sortOrders, setSortOrders] = useState(orders || []);
   const isLoading = useSelector(getIsLoading);
   useEffect(() => {
     dispatch(fetchPets());
@@ -47,7 +52,8 @@ const OrderData = ({ orders }) => {
         </FlexSvg>
       </Flex>
       {isLoading && <Loader />}
-      {!isLoading && <OrderList orders={orders} />}
+      <SearchBarComponent setSortOrders={setSortOrders} orders={orders} />
+      {!isLoading && <OrderList orders={sortOrders} />}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
           <ModalAddOrder closeModal={() => setIsOpen(false)} />
