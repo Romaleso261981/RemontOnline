@@ -7,6 +7,7 @@ import {
 
 const NoticesCategoriesList = ({ onClose }) => {
   const notices = useSelector(getNotices);
+  console.log(notices);
 
   return <>{true && <OrderData orders={notices} onClose={onClose} />}</>;
 };

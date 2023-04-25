@@ -1,36 +1,37 @@
 import SearchBar from 'components/ReusableComponents/SearchBar/SearchBar';
-import { StyledSearchBox } from './NoticesSearch.styled';
+import { StyledSearchBox } from './SearchBarComponent.styled';
 
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchNoticesByCategory,
-  fetchNoticesByTitle,
-} from 'redux/notices/noticesOperations';
+import { useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+// import {
+//   fetchNoticesByCategory,
+//   fetchNoticesByTitle,
+// } from 'redux/notices/noticesOperations';
 
 import { getSearchBtnIsActive } from 'redux/notices/noticesSelectors';
 import { showToastInfo } from 'utils/showTost';
 
-const NoticesSearch = ({ category }) => {
-  const dispatch = useDispatch();
+const SearchBarComponent = ({ setSortOrders, orders }) => {
+  // const dispatch = useDispatch();
   const isButtonClicked = useSelector(getSearchBtnIsActive);
 
   const searchNoticeByTitle = title => {
     if (!isButtonClicked) {
       try {
-        dispatch(fetchNoticesByCategory(category));
+        // dispatch(fetchNoticesByCategory(category));
       } catch (error) {
         console.log(error);
       }
       return;
     }
 
-    if (category === 'own' || category === 'favorite') {
-      showToastInfo('Sorry, you can’t search in this categories');
-      return;
-    }
+    // if (category === 'own' || category === 'favorite') {
+    //   showToastInfo('Sorry, you can’t search in this categories');
+    //   return;
+    // }
 
     try {
-      dispatch(fetchNoticesByTitle(title));
+      // dispatch(fetchNoticesByTitle(title));
     } catch (error) {
       console.log(error);
     }
@@ -42,12 +43,12 @@ const NoticesSearch = ({ category }) => {
     const normilizedValue = form.elements.search.value;
 
     if (normilizedValue.trim() === '') {
-      showToastInfo('Sorry, no pets by this title');
+      showToastInfo('Sorry, no order by this title');
       return;
     }
 
     searchNoticeByTitle(normilizedValue);
-
+    alert(normilizedValue);
     if (!isButtonClicked) {
       form.reset();
     }
@@ -63,4 +64,4 @@ const NoticesSearch = ({ category }) => {
   );
 };
 
-export default NoticesSearch;
+export default SearchBarComponent;
