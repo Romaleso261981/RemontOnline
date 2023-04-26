@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import TitleUser from '../TitleUser/TitleUser';
+// import TitleUser from '../TitleUser/TitleUser';
 import { ButtonPlus } from '../ButtonUser/ButtonUser';
 import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import OrderList from 'components/User/OrderList/OrderList';
@@ -20,13 +20,14 @@ const OrderData = ({ orders }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sortOrders, setSortOrders] = useState(orders || []);
   const isLoading = useSelector(getIsLoading);
+ 
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);
   return (
     <BoxOrderData>
       <Flex>
-        <TitleUser M={'0px'}>Техніка в ремонті:</TitleUser>
+        {/* <TitleUser M={'0px'}>Техніка в ремонті:</TitleUser> */}
         <FlexSvg
           type="button"
           ariaLabel="add pet button"
@@ -52,7 +53,10 @@ const OrderData = ({ orders }) => {
         </FlexSvg>
       </Flex>
       {isLoading && <Loader />}
-      <SearchBarComponent setSortOrders={setSortOrders} orders={orders} />
+
+      {sortOrders.length > 5 && (
+        <SearchBarComponent setSortOrders={setSortOrders} orders={orders} />
+      )}
       {!isLoading && <OrderList orders={sortOrders} />}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
