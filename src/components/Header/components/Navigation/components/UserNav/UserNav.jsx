@@ -2,9 +2,13 @@ import { StyledAccountButton } from '../../../../../ReusableComponents/Buttons/S
 import { StyledUserButton } from './UserNav.styled';
 
 export const UserNav = () => {
+
+  const Logout = () => {
+    alert("вийти")
+  };
   return (
     <StyledUserButton>
-      <StyledAccountButton route="/user" buttonName="Account" />
+      <StyledAccountButton onClick={Logout} buttonName="Вийти" />
     </StyledUserButton>
   );
 };
