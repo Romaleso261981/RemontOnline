@@ -37,7 +37,7 @@ const logIn = createAsyncThunk('auth/login', async (userData, thunkAPI) => {
 const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const respons = await API.get('/auth/logout');
-    localStorage.setItem('refreshToken', "");
+    localStorage.setItem('refreshToken', '');
     authToken.unset();
     Notiflix.Notify.info('Бережіть себе і до зустрічі &#9996;', notifySettings);
     return respons.data;
