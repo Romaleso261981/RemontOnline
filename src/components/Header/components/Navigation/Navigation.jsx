@@ -1,5 +1,5 @@
 // import { MenuButtonOpen } from '../MobileMenu/MenuButton/MenuButtonOpen.styled';
-import { Nav, AuthNav } from './components';
+import { AuthNav } from './components';
 // import { Nav, AuthNav, UserNav } from './components';
 import { useState } from 'react';
 // import { useSelector } from 'react-redux';
@@ -17,7 +17,6 @@ export const Navigation = () => {
 
   return (
     <NavContainer>
-      <Nav />
       {/* {isloggedIn ? <UserNav /> : <AuthNav />} */}
       <AuthNav />
       {/* <MenuButtonOpen onMenuButtonClick={onMenuButtonClick} /> */}
