@@ -54,7 +54,7 @@ const OrderData = ({ orders }) => {
       </Flex>
       {isLoading && <Loader />}
 
-      {sortOrders.length > 5 && (
+      {sortOrders.length > 0 && (
         <SearchBarComponent setSortOrders={setSortOrders} orders={orders} />
       )}
       {!isLoading && <OrderList orders={sortOrders} />}
