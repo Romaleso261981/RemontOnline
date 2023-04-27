@@ -1,9 +1,11 @@
-// import UserData from 'components/User/UserData/UserData';
-import OrderData from 'components/User/OrderData/OrderData';
-import { UserWrapper } from './UserPage.styled';
-import { fetchUser } from 'redux/users/operations';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
+import OrderData from 'components/User/OrderData/OrderData';
+
+import { fetchUser } from 'redux/users/operations';
+
+import { UserWrapper } from './UserPage.styled';
 
 const UserPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,6 @@ const UserPage = () => {
 
   return (
     <UserWrapper>
-      {/* <UserData /> */}
       <OrderData />
     </UserWrapper>
   );

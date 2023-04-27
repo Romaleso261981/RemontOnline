@@ -14,16 +14,13 @@ const SearchBarComponent = ({ setSortOrders, orders }) => {
     const form = event.currentTarget;
     const normilizedValue = form.elements.search.value;
 
-    if (normilizedValue.trim() === '') {
-      showToastInfo('Введіть щось в строку пошуку');
-      return;
-    }
-    console.log(orders);
     const foundTitle = orders.filter(item =>
       item.customerName?.toLowerCase().includes(normilizedValue.toLowerCase()),
     );
-
-    console.log(foundTitle);
+    if (normilizedValue === "") {
+      setSortOrders(orders);
+      return;
+    }
     setSortOrders(foundTitle);
 
     if (!foundTitle) {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import TitleUser from '../TitleUser/TitleUser';
 import { ButtonPlus } from '../ButtonUser/ButtonUser';
 import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import OrderList from 'components/User/OrderList/OrderList';
@@ -9,7 +8,6 @@ import { Modal } from 'components/Modal/Modal';
 import Loader from 'components/Loader/Loader2';
 import SearchBarComponent from 'components/SearchBarComponent/SearchBarComponent';
 
-// import { getStatePets } from 'redux/pets/selectors';
 import { fetchPets } from 'redux/order/operations';
 import { getIsLoading } from 'redux/order/selectors';
 
@@ -27,7 +25,6 @@ const OrderData = ({ orders }) => {
   return (
     <BoxOrderData>
       <Flex>
-        {/* <TitleUser M={'0px'}>Техніка в ремонті:</TitleUser> */}
         <FlexSvg
           type="button"
           ariaLabel="add pet button"

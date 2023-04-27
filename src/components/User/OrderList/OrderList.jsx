@@ -1,9 +1,10 @@
-import PetListItem from './OrderListItem/OrderListItem';
-import { getIsLoading } from 'redux/order/selectors';
 import { useSelector } from 'react-redux';
+
+import PetListItem from './OrderListItem/OrderListItem';
 import CoverPage from 'components/ReusableComponents/CoverPage/CoverPage';
 import Loader from 'components/Loader/Loader2';
-// import { Animation } from 'components/Animation/Animation';
+
+import { getIsLoading } from 'redux/order/selectors';
 
 const OrderList = ({ orders }) => {
   const isLoading = useSelector(getIsLoading);
