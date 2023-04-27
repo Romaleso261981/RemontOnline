@@ -1,10 +1,6 @@
-import {
-  BattonWrapper,
-  DataListFirst,
-  DataListsecond,
-  DataListWrapper,
-  CommentWrapper,
-} from '../OrderList.styled';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import {
   OrderNametechnique,
   OrderBrend,
@@ -22,13 +18,18 @@ import {
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import { UniversalButton } from '../../ButtonUser/ButtonUser';
-import { deleteOrder, done } from 'redux/order/operations';
 import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
-// import ShowFullItem from 'components/OnlineShop/ShowFullItem';
 import { Modal } from 'components/Modal/Modal';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
+import { deleteOrder, done } from 'redux/order/operations';
+
+import {
+  BattonWrapper,
+  DataListFirst,
+  DataListsecond,
+  DataListWrapper,
+  CommentWrapper,
+} from '../OrderList.styled';
 const OrderListItem = ({
   id,
   brend,
@@ -50,7 +51,7 @@ const OrderListItem = ({
   const [isMoreDetali, setIsMoreDetali] = useState(true);
   const [isMoreComent, setIsMoreComent] = useState(true);
   const [isOpenFull, setIsOpenFull] = useState(false);
-  // const [FullItem, setIsFullItem] = useState([]);
+  
   const toggle = (is, isSet) => {
     isSet(!is);
   };
