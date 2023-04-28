@@ -9,8 +9,7 @@ export const StyledSection = styled.section`
   }
 
   @media screen and (min-width: 1280px) {
-    padding-top: 59px;
-    padding-bottom: 200px;
+    padding-top: 10px;
   }
 `;
 
