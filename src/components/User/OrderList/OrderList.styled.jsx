@@ -60,23 +60,35 @@ export const StyledTextOrder = styled.li`
     line-height: 1.357;
   }
   @media screen and (min-width: 1280px) {
-  max-width: 300px
+    max-width: 300px;
   }
 `;
 
 export const BattonWrapper = styled.div`
-  position: absolute;
-  top: 300px;
-  right: 30px;
+  display: none;
+  // position: absolute;
+  // top: 300px;
+  // right: 30px;
 
   @media screen and (min-width: 768px) {
     top: 20px;
   }
   @media screen and (min-width: 1280px) {
+    display: block;
+    position: absolute;
+    top: 300px;
+    right: 30px;
     top: 10px;
   }
 `;
 export const DataListFirst = styled.ul`
+  @media screen and (min-width: 768px) {
+    margin-left: 10px;
+    padding: 0 10px;
+    width: 200px;
+    border-left: 1px solid red;
+    flex-direction: row;
+  }
   @media screen and (min-width: 1280px) {
     min-height: 155px;
     min-width: 300px;
@@ -88,6 +100,13 @@ export const DataListFirst = styled.ul`
   }
 `;
 export const DataListsecond = styled.ul`
+  @media screen and (min-width: 768px) {
+    margin-left: 10px;
+    padding: 0 10px;
+    width: 200px;
+    border-left: 1px solid red;
+    flex-direction: row;
+  }
   @media screen and (min-width: 1280px) {
     min-height: 155px;
     min-width: 300px;
@@ -99,6 +118,13 @@ export const DataListsecond = styled.ul`
   }
 `;
 export const CommentWrapper = styled.ul`
+  @media screen and (min-width: 768px) {
+    margin-left: 10px;
+    padding: 0 10px;
+    width: 200px;
+    border-left: 1px solid red;
+    flex-direction: row;
+  }
   @media screen and (min-width: 1280px) {
     min-height: 155px;
     min-width: 300px;
@@ -110,9 +136,13 @@ export const CommentWrapper = styled.ul`
   }
 `;
 export const DataListWrapper = styled.ul`
+  @media screen and (min-width: 768px) {
+    // border-left: 1px solid red;
+    display: flex;
+    flex-direction: row;
+  }
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
   }
 `;

@@ -11,7 +11,7 @@ import NoticesCategoriesList from 'components/Notices/NoticesCategoriesList/Noti
 
 import { StyledSection } from './NoticesPage.styled';
 // import { StyledSection, ButtonBox } from './NoticesPage.styled';
-import { StyledAddPetMobileButton } from 'components/ReusableComponents/Buttons/StyledAddPetMobileButton';
+// import { StyledAddPetMobileButton } from 'components/ReusableComponents/Buttons/StyledAddPetMobileButton';
 // import { StyledAddPetDesktopButton } from 'components/ReusableComponents/Buttons/StyledAddPetDesktopButton';
 import { Modal } from 'components/Modal/Modal';
 import { Categories } from 'components/OnlineShop/Categories';
@@ -50,7 +50,7 @@ const NoticesPage = () => {
   return (
     <StyledSection>
 
-      <StyledAddPetMobileButton onAddButtonClick={onAddButtonClick} />
+      {/* <StyledAddPetMobileButton onAddButtonClick={onAddButtonClick} /> */}
 
       {showAddModal && (
         <Modal onClose={onAddButtonClick}>
