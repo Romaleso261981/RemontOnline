@@ -18,7 +18,7 @@ const OrderData = ({ orders }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sortOrders, setSortOrders] = useState(orders || []);
   const isLoading = useSelector(getIsLoading);
- 
+console.log("render");
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);

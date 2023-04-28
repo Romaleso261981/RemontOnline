@@ -31,9 +31,9 @@ const OrderList = ({ orders }) => {
               phone,
               serialNumber,
               type,
-            }) => (
+            }, index) => (
               <PetListItem
-                id={_id}
+                id={index}
                 brend={brend}
                 cost={cost}
                 customerAddress={customerAddress}

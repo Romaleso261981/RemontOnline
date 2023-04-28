@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const CategoriesWrapper = styled.div`
-  display: inline-block;
+  display: none;
   background: #f2f2f2;
   border-radius: 50px;
   padding: 10px 20px;
@@ -17,6 +17,7 @@ export const CategoriesWrapper = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    display: inline-block;
     // width: 608px;
     // padding: 40px 80px;
   }
