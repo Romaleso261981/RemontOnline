@@ -15,6 +15,8 @@ import { StyledSection } from './NoticesPage.styled';
 // import { StyledAddPetDesktopButton } from 'components/ReusableComponents/Buttons/StyledAddPetDesktopButton';
 import { Modal } from 'components/Modal/Modal';
 import { Categories } from 'components/OnlineShop/Categories';
+import Header from 'components/Header/Header';
+
 
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { getIsLoading } from 'redux/notices/noticesSelectors';
@@ -49,6 +51,7 @@ const NoticesPage = () => {
   };
   return (
     <StyledSection>
+      <Header />
 
       {/* <StyledAddPetMobileButton onAddButtonClick={onAddButtonClick} /> */}
 
