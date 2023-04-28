@@ -32,8 +32,6 @@ export const ContainerOrder = styled.li`
 
   position: relative;
   padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
   padding-left: 20px;
   margin-bottom: 20px;
 

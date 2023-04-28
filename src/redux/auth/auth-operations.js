@@ -66,10 +66,10 @@ const refreshUser = createAsyncThunk(
         status,
         message: data.message,
       };
-      Notiflix.Notify.failure(
-        'Будь ласка, залогіньтесь знову!',
-        notifySettings,
-      );
+      // Notiflix.Notify.failure(
+      //   'Будь ласка, залогіньтесь знову!',
+      //   notifySettings,
+      // );
       return rejectWithValue(error);
     }
   },

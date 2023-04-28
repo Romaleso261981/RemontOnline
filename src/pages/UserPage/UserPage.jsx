@@ -5,8 +5,6 @@ import OrderData from 'components/User/OrderData/OrderData';
 
 import { fetchUser } from 'redux/users/operations';
 
-import { UserWrapper } from './UserPage.styled';
-
 const UserPage = () => {
   const dispatch = useDispatch();
 
@@ -15,9 +13,9 @@ const UserPage = () => {
   }, [dispatch]);
 
   return (
-    <UserWrapper>
+    <>
       <OrderData />
-    </UserWrapper>
+    </>
   );
 };
 
