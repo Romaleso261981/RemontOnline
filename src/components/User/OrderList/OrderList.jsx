@@ -16,24 +16,28 @@ const OrderList = ({ orders }) => {
       {!isLoading && orders.length >= 1 && (
         <ul>
           {orders.map(
-            ({
-              _id,
-              brend,
-              cost,
-              customerAddress,
-              customerName,
-              datecreation,
-              descriptionMalfunction,
-              descriptionOfRepair,
-              model,
-              nametechnique,
-              number,
-              phone,
-              serialNumber,
-              type,
-            }, index) => (
+            (
+              {
+                _id,
+                brend,
+                cost,
+                customerAddress,
+                customerName,
+                datecreation,
+                descriptionMalfunction,
+                descriptionOfRepair,
+                model,
+                nametechnique,
+                number,
+                phone,
+                serialNumber,
+                type,
+              },
+              index,
+            ) => (
               <PetListItem
-                id={index}
+                index={index}
+                id={_id}
                 brend={brend}
                 cost={cost}
                 customerAddress={customerAddress}
