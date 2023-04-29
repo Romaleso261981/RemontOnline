@@ -45,18 +45,19 @@ const OrderListItem = ({
   phone,
   serialNumber,
   type,
+  index,
 }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isMoreDetali, setIsMoreDetali] = useState(true);
   const [isMoreComent, setIsMoreComent] = useState(true);
   const [isOpenFull, setIsOpenFull] = useState(false);
-  
+
   const toggle = (is, isSet) => {
     isSet(!is);
   };
   return (
-    <ContainerOrder key={id}>
+    <ContainerOrder key={index}>
       <DataListWrapper>
         <DataListFirst>
           <OrderNumber value={number} />
