@@ -20,8 +20,9 @@ const OrderData = ({ orders }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sortOrders, setSortOrders] = useState(orders || []);
   const [change, setChange] = useState();
+  const [order, setOrder] = useState({});
   const isLoading = useSelector(getIsLoading);
-  const order = useSelector(getOrder);
+  // const order = useSelector(getOrder);
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);
@@ -30,8 +31,10 @@ const OrderData = ({ orders }) => {
     setChange(filter);
   };
   const fullItem = id => {
-    console.log(id);
-    dispatch(finderOrder(id));
+    const foundOrder = orders.find(value => value._id === id);
+    
+    setOrder(foundOrder);
+    // dispatch(finderOrder(foundTitle));
     setIsOpen(true);
   };
   return (

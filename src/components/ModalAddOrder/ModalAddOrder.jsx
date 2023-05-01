@@ -21,6 +21,7 @@ import { addOrder } from 'redux/order/operations';
 import { format } from 'date-fns';
 
 const ModalAddOrder = ({ closeModal, order }) => {
+  console.log(order);
   const [currentStep, setCurrentStep] = useState(1);
   const dispatch = useDispatch();
   const handleSubmit = async (values, { setSubmitting }) => {
