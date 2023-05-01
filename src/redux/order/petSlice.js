@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPets, deleteOrder, addOrder, done } from './operations';
+import { fetchPets, addOrder, done, finderOrder } from './operations';
 
 const pendingReducer = state => {
   state.isLoading = true;
@@ -9,6 +9,10 @@ const fetchPetsSucceesReducer = (state, action) => {
   state.items = action.payload;
   state.isLoading = false;
 };
+// const finderOrderSucceesReducer = (state, action) => {
+
+//   // state.order = action.payload;
+// };
 const changeOrderSucceesReducer = (state, action) => {
   console.log('changeOrderSucceesReducer');
   state.items = action.payload;
@@ -26,6 +30,7 @@ const petsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    order: {},
   },
   extraReducers: builder => {
     builder
@@ -38,11 +43,14 @@ const petsSlice = createSlice({
       .addCase(addOrder.pending, pendingReducer)
       .addCase(addOrder.fulfilled, fetchPetsSucceesReducer)
       .addCase(addOrder.rejected, rejectedReducer)
-      .addCase(deleteOrder.pending, pendingReducer)
-      .addCase(deleteOrder.fulfilled, (state, action) => {
+      .addCase(finderOrder.pending, pendingReducer)
+      .addCase(finderOrder.fulfilled, (state, action) => {
+        console.log('finderOrder.fulfilled');
         state.isLoading = false;
       })
-      .addCase(deleteOrder.rejected, rejectedReducer);
+      .addCase(finderOrder.rejected, (state, action) => {
+        console.log('finderOrder.rejected');
+      });
   },
 });
 

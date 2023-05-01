@@ -14,7 +14,7 @@ export const DropDown = ({ getFilter }) => {
         <option value="customerAddress">Адресса</option>
         <option value="customerName">ПІБ</option>
         <option value="phone">телефон</option>
-        <option value="nametechnique">Тип техніки</option>
+        <option value="nametechnique">назва техніки</option>
         <option value="brend">Бренд</option>
         <option value="model">Модель</option>
         <option value="cost">вартість</option>

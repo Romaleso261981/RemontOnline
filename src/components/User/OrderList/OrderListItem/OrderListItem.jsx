@@ -46,6 +46,7 @@ const OrderListItem = ({
   serialNumber,
   type,
   index,
+  fullItem,
 }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -97,7 +98,7 @@ const OrderListItem = ({
         />
         <UniversalButton
           type="button"
-          onClick={() => setIsOpen(true)}
+          onClick={() => fullItem(id)}
           text="редагувати"
           strokeM={'#fdf7f2'}
         />
@@ -120,7 +121,7 @@ const OrderListItem = ({
       </BattonWrapper>
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <ModaEditingOrder closeModal={() => setIsOpen(false)} />
+          <ModaEditingOrder />
         </Modal>
       )}
       {isOpenFull && (

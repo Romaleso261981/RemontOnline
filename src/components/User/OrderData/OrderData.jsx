@@ -9,8 +9,9 @@ import Loader from 'components/Loader/Loader2';
 import SearchBarComponent from 'components/SearchBarComponent/SearchBarComponent';
 import { DropDown } from 'components/DropDown/DropDown';
 
-import { fetchPets } from 'redux/order/operations';
+import { fetchPets, finderOrder } from 'redux/order/operations';
 import { getIsLoading } from 'redux/order/selectors';
+import { getOrder } from 'redux/order/selectors';
 
 import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 
@@ -20,12 +21,18 @@ const OrderData = ({ orders }) => {
   const [sortOrders, setSortOrders] = useState(orders || []);
   const [change, setChange] = useState();
   const isLoading = useSelector(getIsLoading);
+  const order = useSelector(getOrder);
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);
 
   const getFilter = filter => {
     setChange(filter);
+  };
+  const fullItem = id => {
+    console.log(id);
+    dispatch(finderOrder(id));
+    setIsOpen(true);
   };
   return (
     <BoxOrderData>
@@ -66,10 +73,10 @@ const OrderData = ({ orders }) => {
         </>
       )}
 
-      {!isLoading && <OrderList orders={sortOrders} />}
+      {!isLoading && <OrderList orders={sortOrders} fullItem={fullItem} />}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <ModalAddOrder closeModal={() => setIsOpen(false)} />
+          <ModalAddOrder order={order} closeModal={() => setIsOpen(false)} />
         </Modal>
       )}
     </BoxOrderData>

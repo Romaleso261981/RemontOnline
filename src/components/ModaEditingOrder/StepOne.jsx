@@ -11,6 +11,7 @@ const StepOne = () => {
         name="number"
         placeholder="25"
         span="*"
+        
       />
       <InputField
         type="text"

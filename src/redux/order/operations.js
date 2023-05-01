@@ -63,3 +63,15 @@ export const deleteOrder = createAsyncThunk(
     }
   },
 );
+export const finderOrder = createAsyncThunk(
+  'order/deleteOrder',
+  async (orderId, thunkAPI) => {
+    try {
+      console.log(orderId);
+      // const response = await API.delete(`/orders/${petId}`, {petId});
+      // return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);

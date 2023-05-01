@@ -16,11 +16,11 @@ import {
 } from './Validation';
 import UniversalButton from 'components/ReusableComponents/Buttons/UniversalButton';
 import { CloseModalButton } from 'components/ReusableComponents/Buttons/CloseModalButton';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addOrder } from 'redux/order/operations';
 import { format } from 'date-fns';
 
-const ModalAddOrder = ({ closeModal }) => {
+const ModalAddOrder = ({ closeModal, order }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const dispatch = useDispatch();
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -69,9 +69,9 @@ const ModalAddOrder = ({ closeModal }) => {
       >
         {({ isSubmitting }) => (
           <FormStyled>
-            {currentStep === 1 && <StepOne />}
-            {currentStep === 2 && <StepTwo />}
-            {currentStep === 3 && <StepThree />}
+            {currentStep === 1 && <StepOne order={order}/>}
+            {currentStep === 2 && <StepTwo order={order}/>}
+            {currentStep === 3 && <StepThree order={order}/>}
 
             <ControlBox>
               <UniversalButton
