@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/auth-slice';
 import { noticesReducer } from './notices/noticesSlice';
 import { userReducer } from './users/userSlice';
-import { petsReducer } from './order/petSlice';
+import { petsReducer } from './order/orderSlice';
 
 import {
   persistStore,
