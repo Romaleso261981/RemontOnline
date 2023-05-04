@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Modal from 'components/Modal/Modal';
 import Loader from 'components/Loader/Loader2';
@@ -9,22 +9,16 @@ import OrderList from 'components/User/OrderList/OrderList';
 import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import SearchBarComponent from 'components/SearchBarComponent/SearchBarComponent';
 
-import { fetchPets } from 'redux/order/operations';
 import { getIsLoading } from 'redux/order/selectors';
 
 import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 
 const OrderData = ({ orders }) => {
-  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [sortOrders, setSortOrders] = useState(orders || []);
   const [change, setChange] = useState();
   const [order, setOrder] = useState({});
   const isLoading = useSelector(getIsLoading);
-
-  useEffect(() => {
-    dispatch(fetchPets());
-  }, [dispatch]);
 
   const getFilter = filter => {
     setChange(filter);
