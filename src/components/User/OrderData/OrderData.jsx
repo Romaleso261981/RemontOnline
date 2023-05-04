@@ -9,7 +9,7 @@ import OrderList from 'components/User/OrderList/OrderList';
 import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import SearchBarComponent from 'components/SearchBarComponent/SearchBarComponent';
 
-import { getIsLoading } from 'redux/order/selectors';
+import { getIsLoading } from 'redux/orders/selectors';
 
 import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 

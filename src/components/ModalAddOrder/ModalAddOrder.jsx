@@ -17,7 +17,7 @@ import {
 import UniversalButton from 'components/ReusableComponents/Buttons/UniversalButton';
 import { CloseModalButton } from 'components/ReusableComponents/Buttons/CloseModalButton';
 import { useDispatch } from 'react-redux';
-import { addOrder } from 'redux/order/operations';
+import { addOrder } from 'redux/orders/operations';
 import { format } from 'date-fns';
 
 const ModalAddOrder = ({ closeModal, order }) => {
@@ -55,7 +55,7 @@ const ModalAddOrder = ({ closeModal, order }) => {
     }
     setSubmitting(false);
   };
-console.log(formData);
+  console.log(formData);
   return (
     <Container>
       <CloseModalButton closeModal={closeModal} />
@@ -71,9 +71,9 @@ console.log(formData);
       >
         {({ isSubmitting }) => (
           <FormStyled>
-            {currentStep === 1 && <StepOne order={order}/>}
-            {currentStep === 2 && <StepTwo order={order}/>}
-            {currentStep === 3 && <StepThree order={order}/>}
+            {currentStep === 1 && <StepOne order={order} />}
+            {currentStep === 2 && <StepTwo order={order} />}
+            {currentStep === 3 && <StepThree order={order} />}
 
             <ControlBox>
               <UniversalButton

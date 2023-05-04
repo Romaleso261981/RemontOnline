@@ -9,10 +9,10 @@ import Categories from 'components/OnlineShop/Categories';
 import ModalAddNotice from 'components/Notices/NoticeModal/ModalAddNotice';
 import NoticesCategoriesList from 'components/Notices/NoticesCategoriesList/NoticesCategoriesList';
 
-import { getOrder } from 'redux/notices/noticesSelectors';
+import { getOrder } from 'redux/orders/selectors';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
-import { getIsLoading } from 'redux/notices/noticesSelectors';
-import { fetchNoticesByCategory } from 'redux/notices/noticesOperations';
+import { getIsLoading } from 'redux/orders/selectors';
+import { fetchOrdersByCategory } from 'redux/orders/operations';
 import { showToastInfo } from 'utils/showTost';
 
 import { StyledSection } from './NoticesPage.styled';
@@ -27,7 +27,7 @@ const NoticesPage = () => {
   useEffect(() => {
     const searchNoticeByCategory = () => {
       try {
-        dispatch(fetchNoticesByCategory(category));
+        dispatch(fetchOrdersByCategory(category));
       } catch (error) {
         console.log(error);
       }
