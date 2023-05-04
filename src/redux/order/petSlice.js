@@ -5,23 +5,22 @@ const pendingReducer = state => {
   state.isLoading = true;
 };
 
+const rejectedReducer = (state, action) => {
+  state.error = action.payload;
+  state.isLoading = false;
+};
+
 const fetchPetsSucceesReducer = (state, action) => {
   state.items = action.payload;
   state.isLoading = false;
 };
-// const finderOrderSucceesReducer = (state, action) => {
 
-//   // state.order = action.payload;
-// };
 const changeOrderSucceesReducer = (state, action) => {
   state.items = action.payload;
   state.isLoading = false;
 };
 
-const rejectedReducer = (state, action) => {
-  state.error = action.payload;
-  state.isLoading = false;
-};
+
 
 const petsSlice = createSlice({
   name: 'pets',

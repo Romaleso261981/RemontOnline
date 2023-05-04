@@ -1,11 +1,12 @@
 import { API } from '../../API';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { showToastInfo } from 'utils/showTost';
 
 
 
 export const fetchNoticesByCategory = createAsyncThunk(
-  'notices/fetchByCategory',
+  'order/fetchByCategory',
   async (category, thunkAPI) => {
     const url = `/notices/category/${category}`;
     try {
@@ -13,6 +14,19 @@ export const fetchNoticesByCategory = createAsyncThunk(
       return result.data.data.userWithPet;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+export const addOrder = createAsyncThunk(
+  'order/addOrder',
+  async (order, { thunkAPI }) => {
+    try {
+      const response = await API.post('/orders/order', order);
+      toast.success('Замовлення додано');
+      return response.data.allUserPets;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return thunkAPI(error.message);
     }
   },
 );

@@ -58,7 +58,7 @@ const OrderListItem = ({
     isSet(!is);
   };
   return (
-    <ContainerOrder key={index}>
+    <ContainerOrder>
       <DataListWrapper>
         <DataListFirst>
           <OrderNumber value={number} />

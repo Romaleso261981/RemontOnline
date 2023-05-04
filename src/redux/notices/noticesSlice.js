@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  addNotice,
+  addOrder,
   addToFavorite,
   deleteFromFavorite,
   deleteNotice,
@@ -11,7 +11,7 @@ import {
 } from './noticesOperations';
 
 const noticesInitialState = {
-  noticesList: [],
+  orderList: [],
   ownList: [],
   favoriteList: [],
   isLoading: false,
@@ -32,9 +32,10 @@ const noticesSlice = createSlice({
         state.searchBtnIsActive = true;
       })
       .addCase(fetchNoticesByCategory.fulfilled, (state, action) => {
+        console.log('fetchNoticesByCategory');
         state.isLoading = false;
         state.error = null;
-        state.noticesList = action.payload;
+        state.orderList = action.payload;
         state.searchBtnIsActive = true;
       })
       .addCase(fetchNoticesByCategory.rejected, (state, action) => {
@@ -54,7 +55,7 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.searchError = null;
-        state.noticesList = action.payload;
+        state.orderList = action.payload;
         state.searchBtnIsActive = false;
       })
       .addCase(fetchNoticesByTitle.rejected, (state, action) => {
@@ -83,17 +84,17 @@ const noticesSlice = createSlice({
       })
 
       // add new notice
-      .addCase(addNotice.pending, state => {
+      .addCase(addOrder.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(addNotice.fulfilled, (state, action) => {
+      .addCase(addOrder.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.noticesList.push(action.payload.data);
+        state.orderList.push(action.payload.data);
         state.ownList.push(action.payload.data);
       })
-      .addCase(addNotice.rejected, (state, action) => {
+      .addCase(addOrder.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
@@ -106,12 +107,12 @@ const noticesSlice = createSlice({
       .addCase(deleteNotice.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const { noticesList, ownList } = state;
+        const { orderList, ownList } = state;
 
-        const indexNotice = noticesList.findIndex(
+        const indexNotice = orderList.findIndex(
           notice => notice._id === action.payload.data._id,
         );
-        noticesList.splice(indexNotice, 1);
+        orderList.splice(indexNotice, 1);
 
         const indexOwn = ownList.findIndex(
           notice => notice._id === action.payload.data._id,

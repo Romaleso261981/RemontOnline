@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ButtonPlus } from '../ButtonUser/ButtonUser';
-import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
-import OrderList from 'components/User/OrderList/OrderList';
 import Modal from 'components/Modal/Modal';
 import Loader from 'components/Loader/Loader2';
+import DropDown from 'components/DropDown/DropDown';
+import { ButtonPlus } from '../ButtonUser/ButtonUser';
+import OrderList from 'components/User/OrderList/OrderList';
+import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import SearchBarComponent from 'components/SearchBarComponent/SearchBarComponent';
-import { DropDown } from 'components/DropDown/DropDown';
 
 import { fetchPets } from 'redux/order/operations';
-// import { fetchPets, finderOrder } from 'redux/order/operations';
 import { getIsLoading } from 'redux/order/selectors';
-// import { getOrder } from 'redux/order/selectors';
 
 import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 
@@ -23,7 +21,7 @@ const OrderData = ({ orders }) => {
   const [change, setChange] = useState();
   const [order, setOrder] = useState({});
   const isLoading = useSelector(getIsLoading);
-  // const order = useSelector(getOrder);
+
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);
@@ -31,13 +29,13 @@ const OrderData = ({ orders }) => {
   const getFilter = filter => {
     setChange(filter);
   };
+
   const fullItem = id => {
     const foundOrder = orders.find(value => value._id === id);
-
     setOrder(foundOrder);
-    // dispatch(finderOrder(foundTitle));
     setIsOpen(true);
   };
+
   return (
     <BoxOrderData>
       <Flex>

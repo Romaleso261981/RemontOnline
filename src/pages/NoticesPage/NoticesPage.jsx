@@ -9,8 +9,7 @@ import Categories from 'components/OnlineShop/Categories';
 import ModalAddNotice from 'components/Notices/NoticeModal/ModalAddNotice';
 import NoticesCategoriesList from 'components/Notices/NoticesCategoriesList/NoticesCategoriesList';
 
-
-import { getNotices } from 'redux/notices/noticesSelectors';
+import { getOrder } from 'redux/notices/noticesSelectors';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { getIsLoading } from 'redux/notices/noticesSelectors';
 import { fetchNoticesByCategory } from 'redux/notices/noticesOperations';
@@ -18,14 +17,13 @@ import { showToastInfo } from 'utils/showTost';
 
 import { StyledSection } from './NoticesPage.styled';
 
-
 const NoticesPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showAddModal, setShowAddModal] = useState(false);
   const [category, setCategory] = useState('прийнятий');
-  const notices = useSelector(getNotices);
+  const order = useSelector(getOrder);
   useEffect(() => {
     const searchNoticeByCategory = () => {
       try {
@@ -64,7 +62,7 @@ const NoticesPage = () => {
           <>
             <Categories setCategory={setCategory} />
             <NoticesCategoriesList
-              notices={notices}
+              order={order}
               category={category}
               onClose={onAddButtonClick}
             />

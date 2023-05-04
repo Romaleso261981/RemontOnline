@@ -1,11 +1,7 @@
 import OrderData from '../../User/OrderData/OrderData';
 
-
-
-const NoticesCategoriesList = ({ onClose, notices }) => {
-  
-
-  return <>{true && <OrderData orders={notices} onClose={onClose} />}</>;
+const NoticesCategoriesList = ({ onClose, order }) => {
+  return <>{true && <OrderData orders={order} onClose={onClose} />}</>;
 };
 
 export default NoticesCategoriesList;

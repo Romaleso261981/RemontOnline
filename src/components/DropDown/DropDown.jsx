@@ -1,4 +1,4 @@
-export const DropDown = ({ getFilter }) => {
+const DropDown = ({ getFilter }) => {
   return (
     <div style={{ marginTop: 50, marginLeft: 0 }}>
       <label for="filter" style={{ marginRight: 20 }}>
@@ -22,3 +22,5 @@ export const DropDown = ({ getFilter }) => {
     </div>
   );
 };
+
+export default DropDown;
