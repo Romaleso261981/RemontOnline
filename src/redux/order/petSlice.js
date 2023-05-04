@@ -14,7 +14,6 @@ const fetchPetsSucceesReducer = (state, action) => {
 //   // state.order = action.payload;
 // };
 const changeOrderSucceesReducer = (state, action) => {
-  console.log('changeOrderSucceesReducer');
   state.items = action.payload;
   state.isLoading = false;
 };
@@ -45,12 +44,8 @@ const petsSlice = createSlice({
       .addCase(addOrder.rejected, rejectedReducer)
       .addCase(finderOrder.pending, pendingReducer)
       .addCase(finderOrder.fulfilled, (state, action) => {
-        console.log('finderOrder.fulfilled');
         state.isLoading = false;
       })
-      .addCase(finderOrder.rejected, (state, action) => {
-        console.log('finderOrder.rejected');
-      });
   },
 });
 

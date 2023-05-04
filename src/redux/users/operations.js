@@ -27,7 +27,6 @@ export const refreshUser = createAsyncThunk(
   'user/changeAvatar',
   async (file, { thunkAPI }) => {
     try {
-      console.log('refreshUser');
       // const formData = new FormData();
       // formData.append('avatarUrl', file);
       const response = await API.post('/user/current');

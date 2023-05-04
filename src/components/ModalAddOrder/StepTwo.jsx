@@ -4,7 +4,6 @@ import MyDataPicker from 'components/ReusableComponents/DataPicker/DatePicker';
 import { DateBox, ErrorData, Label } from './StepOne.styled';
 
 const StepTwo = ({ order }) => {
-  console.log(order);
   return (
     <>
       <InputField

@@ -50,7 +50,6 @@ const ModalAddOrder = ({ closeModal }) => {
     }
     setSubmitting(false);
   };
-  console.log(currentStep);
 
   return (
     <Container>

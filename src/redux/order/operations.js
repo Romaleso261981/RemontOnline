@@ -17,7 +17,6 @@ export const EditOrder = createAsyncThunk(
   'order/editing',
   async (pet, { thunkAPI }) => {
     try {
-      console.log('EditOrder');
       // const response = await API.post('/orders/editing', pet);
       toast.success('замовлення змінено');
       // return response.data.allUserPets;
@@ -31,7 +30,6 @@ export const addOrder = createAsyncThunk(
   'order/addPet',
   async (order, { thunkAPI }) => {
     try {
-      console.log(order);
       const response = await API.post('/orders/order', order);
       toast.success('Замовлення додано');
       return response.data.allUserPets;
@@ -44,7 +42,6 @@ export const addOrder = createAsyncThunk(
 export const done = createAsyncThunk('order/done', async (orderId, thunkAPI) => {
   try {
     const response = await API.post(`/orders/${orderId}`, { orderId });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -55,7 +52,6 @@ export const deleteOrder = createAsyncThunk(
   async (orderId, thunkAPI) => {
     try {
       alert('Невидаляй бо ти незможеш видалити');
-      console.log(orderId);
       // const response = await API.delete(`/orders/${petId}`, {petId});
       // return response.data;
     } catch (error) {
@@ -67,7 +63,6 @@ export const finderOrder = createAsyncThunk(
   'order/deleteOrder',
   async (orderId, thunkAPI) => {
     try {
-      console.log(orderId);
       // const response = await API.delete(`/orders/${petId}`, {petId});
       // return response.data;
     } catch (error) {
