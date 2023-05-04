@@ -23,6 +23,7 @@ import { format } from 'date-fns';
 const ModalAddOrder = ({ closeModal, order }) => {
   console.log(order);
   const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
   const handleSubmit = async (values, { setSubmitting }) => {
     if (currentStep < 2) {
@@ -47,6 +48,7 @@ const ModalAddOrder = ({ closeModal, order }) => {
 
       try {
         dispatch(addOrder(data));
+        setFormData(data);
       } catch (error) {
         console.log('Failed to add pet:', error);
       }
@@ -54,7 +56,7 @@ const ModalAddOrder = ({ closeModal, order }) => {
     }
     setSubmitting(false);
   };
-
+console.log(formData);
   return (
     <Container>
       <CloseModalButton closeModal={closeModal} />

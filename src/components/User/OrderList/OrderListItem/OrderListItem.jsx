@@ -19,7 +19,7 @@ import {
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import { UniversalButton } from '../../ButtonUser/ButtonUser';
 import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
-import { Modal } from 'components/Modal/Modal';
+import Modal from 'components/Modal/Modal';
 
 import { deleteOrder, done } from 'redux/order/operations';
 

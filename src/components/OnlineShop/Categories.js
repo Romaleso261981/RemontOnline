@@ -1,7 +1,7 @@
 import React from 'react';
 import { CategoriesWrapper } from './OnlineShop.styled';
 
-export function Categories({ setCategory }) {
+ function Categories({ setCategory }) {
   const categories = [
     {
       key: 'прийнятий',

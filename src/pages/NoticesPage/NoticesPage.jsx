@@ -2,26 +2,22 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import Title from 'components/Title/Title';
-// import NoticesSearch from 'components/Notices/NoticesSearch/NoticesSearch';
-// import NoticesCategoriesNav from 'components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
 import Loader from 'components/Loader/Loader';
+import Header from 'components/Header/Header';
+import Modal from 'components/Modal/Modal';
+import Categories from 'components/OnlineShop/Categories';
 import ModalAddNotice from 'components/Notices/NoticeModal/ModalAddNotice';
 import NoticesCategoriesList from 'components/Notices/NoticesCategoriesList/NoticesCategoriesList';
 
-import { StyledSection } from './NoticesPage.styled';
-// import { StyledSection, ButtonBox } from './NoticesPage.styled';
-// import { StyledAddPetMobileButton } from 'components/ReusableComponents/Buttons/StyledAddPetMobileButton';
-// import { StyledAddPetDesktopButton } from 'components/ReusableComponents/Buttons/StyledAddPetDesktopButton';
-import { Modal } from 'components/Modal/Modal';
-import { Categories } from 'components/OnlineShop/Categories';
-import Header from 'components/Header/Header';
 
-
+import { getNotices } from 'redux/notices/noticesSelectors';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { getIsLoading } from 'redux/notices/noticesSelectors';
 import { fetchNoticesByCategory } from 'redux/notices/noticesOperations';
 import { showToastInfo } from 'utils/showTost';
+
+import { StyledSection } from './NoticesPage.styled';
+
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
@@ -29,7 +25,7 @@ const NoticesPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showAddModal, setShowAddModal] = useState(false);
   const [category, setCategory] = useState('прийнятий');
-
+  const notices = useSelector(getNotices);
   useEffect(() => {
     const searchNoticeByCategory = () => {
       try {
@@ -68,6 +64,7 @@ const NoticesPage = () => {
           <>
             <Categories setCategory={setCategory} />
             <NoticesCategoriesList
+              notices={notices}
               category={category}
               onClose={onAddButtonClick}
             />
