@@ -37,6 +37,14 @@ const StepOne = ({ order }) => {
         placeholder="RR39M7140SA/UA"
         span="*"
       />
+      <InputField
+        type="text"
+        label="S/N"
+        id="serialNumber"
+        name="serialNumber"
+        placeholder="RR-25698745825635as"
+        span="*"
+      />
     </>
   );
 };

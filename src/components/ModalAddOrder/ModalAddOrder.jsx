@@ -37,6 +37,7 @@ const ModalAddOrder = ({ closeModal, order }) => {
       data.append('nametechnique', values.nametechnique);
       data.append('brend', values.brend);
       data.append('model', values.model);
+      data.append('serialNumber', values.serialNumber);
       data.append('customerName', values.customerName);
       data.append('customerAddress', values.customerAddress);
       data.append('phone', values.phone);
