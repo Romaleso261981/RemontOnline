@@ -17,7 +17,7 @@ import {
 import UniversalButton from 'components/ReusableComponents/Buttons/UniversalButton';
 import { CloseModalButton } from 'components/ReusableComponents/Buttons/CloseModalButton';
 import { useDispatch } from 'react-redux';
-import { EditOrder } from 'redux/order/operations';
+import { EditOrder } from 'redux/orders/operations';
 
 const ModalAddOrder = ({ closeModal }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -28,7 +28,6 @@ const ModalAddOrder = ({ closeModal }) => {
     } else if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
     } else {
-
       const data = new FormData();
       data.append('number', values.number);
       data.append('nametechnique', values.nametechnique);
@@ -50,7 +49,6 @@ const ModalAddOrder = ({ closeModal }) => {
     }
     setSubmitting(false);
   };
-  console.log(currentStep);
 
   return (
     <Container>

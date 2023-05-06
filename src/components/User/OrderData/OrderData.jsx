@@ -1,32 +1,35 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { ButtonPlus } from '../ButtonUser/ButtonUser';
-import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
-import OrderList from 'components/User/OrderList/OrderList';
-import { Modal } from 'components/Modal/Modal';
+import Modal from 'components/Modal/Modal';
 import Loader from 'components/Loader/Loader2';
+import DropDown from 'components/DropDown/DropDown';
+import { ButtonPlus } from '../ButtonUser/ButtonUser';
+import OrderList from 'components/User/OrderList/OrderList';
+import ModalAddOrder from 'components/ModalAddOrder/ModalAddOrder';
 import SearchBarComponent from 'components/SearchBarComponent/SearchBarComponent';
-import { DropDown } from 'components/DropDown/DropDown';
 
-import { fetchPets } from 'redux/order/operations';
-import { getIsLoading } from 'redux/order/selectors';
+import { getIsLoading } from 'redux/orders/selectors';
 
 import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 
 const OrderData = ({ orders }) => {
-  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [sortOrders, setSortOrders] = useState(orders || []);
   const [change, setChange] = useState();
+  const [order, setOrder] = useState({});
   const isLoading = useSelector(getIsLoading);
-  useEffect(() => {
-    dispatch(fetchPets());
-  }, [dispatch]);
 
   const getFilter = filter => {
     setChange(filter);
   };
+
+  const fullItem = id => {
+    const foundOrder = orders.find(value => value._id === id);
+    setOrder(foundOrder);
+    setIsOpen(true);
+  };
+
   return (
     <BoxOrderData>
       <Flex>
@@ -66,10 +69,10 @@ const OrderData = ({ orders }) => {
         </>
       )}
 
-      {!isLoading && <OrderList orders={sortOrders} />}
+      {!isLoading && <OrderList orders={sortOrders} fullItem={fullItem} />}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <ModalAddOrder closeModal={() => setIsOpen(false)} />
+          <ModalAddOrder order={order} closeModal={() => setIsOpen(false)} />
         </Modal>
       )}
     </BoxOrderData>

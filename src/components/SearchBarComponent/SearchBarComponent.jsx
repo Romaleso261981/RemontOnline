@@ -3,7 +3,7 @@ import { StyledSearchBox } from './SearchBarComponent.styled';
 
 import { useSelector } from 'react-redux';
 
-import { getSearchBtnIsActive } from 'redux/notices/noticesSelectors';
+import { getSearchBtnIsActive } from 'redux/orders/selectors';
 import { showToastInfo } from 'utils/showTost';
 
 const SearchBarComponent = ({ setSortOrders, orders, filter }) => {

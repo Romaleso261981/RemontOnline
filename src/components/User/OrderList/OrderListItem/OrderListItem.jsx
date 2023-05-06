@@ -19,9 +19,9 @@ import {
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
 import { UniversalButton } from '../../ButtonUser/ButtonUser';
 import ModaEditingOrder from 'components/ModaEditingOrder/ModaEditingOrder';
-import { Modal } from 'components/Modal/Modal';
+import Modal from 'components/Modal/Modal';
 
-import { deleteOrder, done } from 'redux/order/operations';
+import { deleteOrder, done } from 'redux/orders/operations';
 
 import {
   BattonWrapper,
@@ -46,6 +46,7 @@ const OrderListItem = ({
   serialNumber,
   type,
   index,
+  fullItem,
 }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +58,7 @@ const OrderListItem = ({
     isSet(!is);
   };
   return (
-    <ContainerOrder key={index}>
+    <ContainerOrder>
       <DataListWrapper>
         <DataListFirst>
           <OrderNumber value={number} />
@@ -97,7 +98,7 @@ const OrderListItem = ({
         />
         <UniversalButton
           type="button"
-          onClick={() => setIsOpen(true)}
+          onClick={() => fullItem(id)}
           text="редагувати"
           strokeM={'#fdf7f2'}
         />
@@ -120,7 +121,7 @@ const OrderListItem = ({
       </BattonWrapper>
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <ModaEditingOrder closeModal={() => setIsOpen(false)} />
+          <ModaEditingOrder />
         </Modal>
       )}
       {isOpenFull && (

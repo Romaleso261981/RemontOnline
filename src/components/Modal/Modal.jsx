@@ -13,7 +13,7 @@ function updateScrollLock() {
   }
 }
 
-export const Modal = ({ onClose, children }) => {
+const Modal = ({ onClose, children }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -47,3 +47,5 @@ Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   children: PropTypes.node,
 };
+
+export default Modal;

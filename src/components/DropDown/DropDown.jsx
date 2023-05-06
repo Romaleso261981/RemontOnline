@@ -1,4 +1,4 @@
-export const DropDown = ({ getFilter }) => {
+const DropDown = ({ getFilter }) => {
   return (
     <div style={{ marginTop: 50, marginLeft: 0 }}>
       <label for="filter" style={{ marginRight: 20 }}>
@@ -14,7 +14,7 @@ export const DropDown = ({ getFilter }) => {
         <option value="customerAddress">Адресса</option>
         <option value="customerName">ПІБ</option>
         <option value="phone">телефон</option>
-        <option value="nametechnique">Тип техніки</option>
+        <option value="nametechnique">назва техніки</option>
         <option value="brend">Бренд</option>
         <option value="model">Модель</option>
         <option value="cost">вартість</option>
@@ -22,3 +22,5 @@ export const DropDown = ({ getFilter }) => {
     </div>
   );
 };
+
+export default DropDown;

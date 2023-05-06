@@ -4,9 +4,9 @@ import PetListItem from './OrderListItem/OrderListItem';
 import CoverPage from 'components/ReusableComponents/CoverPage/CoverPage';
 import Loader from 'components/Loader/Loader2';
 
-import { getIsLoading } from 'redux/order/selectors';
+import { getIsLoading } from 'redux/orders/selectors';
 
-const OrderList = ({ orders }) => {
+const OrderList = ({ orders, fullItem }) => {
   const isLoading = useSelector(getIsLoading);
 
   return (
@@ -36,6 +36,7 @@ const OrderList = ({ orders }) => {
               index,
             ) => (
               <PetListItem
+                fullItem={fullItem}
                 index={index}
                 id={_id}
                 brend={brend}

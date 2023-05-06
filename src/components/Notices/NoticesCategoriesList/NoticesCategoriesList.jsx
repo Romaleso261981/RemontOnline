@@ -1,14 +1,7 @@
-import { useSelector } from 'react-redux';
 import OrderData from '../../User/OrderData/OrderData';
 
-import {
-  getNotices,
-} from 'redux/notices/noticesSelectors';
-
-const NoticesCategoriesList = ({ onClose }) => {
-  const notices = useSelector(getNotices);
-
-  return <>{true && <OrderData orders={notices} onClose={onClose} />}</>;
+const NoticesCategoriesList = ({ onClose, order }) => {
+  return <>{true && <OrderData orders={order} onClose={onClose} />}</>;
 };
 
 export default NoticesCategoriesList;
