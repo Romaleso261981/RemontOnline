@@ -2,21 +2,9 @@ import * as Yup from 'yup';
 
 // Values for Formik
 export const initialValues = {
-  number: '',
-  nametechnique: '',
-  serialNumber: '',
-  datecreation: '',
-  brend: '',
-  model: '',
-  customerName: '',
-  customerAddress: '',
-  phone: '',
-  photo: '',
   cost: '',
   descriptionOfRepair: '',
-  descriptionMalfunction: '',
-  status: '',
-  owner: '',
+  descriptionMalfunction: ''
 };
 
 // Yup validation

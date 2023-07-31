@@ -13,15 +13,17 @@ import UniversalButton from 'components/ReusableComponents/Buttons/UniversalButt
 import { useDispatch } from 'react-redux';
 import { EditOrder } from 'redux/orders/operations';
 
-const ModalAddOrder = ({ setIsOpenModaEditingOrder }) => {
+const ModalAddOrder = ({ setIsOpenModaEditingOrder, id }) => {
   const dispatch = useDispatch();
-  const handleSubmit = async (values, { setSubmitting }) => {
-    const data = new FormData();
-    data.append('descriptionMalfunction', values.descriptionMalfunction);
-    data.append('descriptionOfRepair', values.descriptionOfRepair);
-    data.append('cost', values.cost);
+  const handleSubmit = async (data, { setSubmitting }) => {
+    // const data = new FormData();
+    // console.log(data);
+    // data.append('descriptionMalfunction', data.descriptionMalfunction);
+    // data.append('descriptionOfRepair', data.descriptionOfRepair);
+    // data.append('cost', data.cost);
+    // data.append('id', id);
     try {
-      dispatch(EditOrder(data));
+      dispatch(EditOrder({data, id}));
     } catch (error) {
       console.log('Failed to add pet:', error);
     }
@@ -50,7 +52,7 @@ const ModalAddOrder = ({ setIsOpenModaEditingOrder }) => {
                 <span>Done</span>
               </UniversalButton>
               <UniversalButton name="transparent" onClick={()=>setIsOpenModaEditingOrder(false)}>
-                  <span>Cancel</span>
+                <span>Cancel</span>
               </UniversalButton>
             </ControlBox>
           </FormStyled>
