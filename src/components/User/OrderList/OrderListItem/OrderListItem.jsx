@@ -56,6 +56,9 @@ const OrderListItem = ({
   const toggle = (is, isSet) => {
     isSet(!is);
   };
+  const toggleModaEditingOrder = (is, isSet) => {
+    setIsOpenModaEditingOrder(!isOpenModaEditingOrder)
+  };
   return (
     <ContainerOrder>
       <DataListWrapper>
@@ -97,7 +100,7 @@ const OrderListItem = ({
         />
         <UniversalButton
           type="button"
-          onClick={() => setIsOpenModaEditingOrder(true)}
+          onClick={toggleModaEditingOrder}
           text="редагувати"
           strokeM={'#fdf7f2'}
         />
@@ -119,8 +122,10 @@ const OrderListItem = ({
         />
       </BattonWrapper>
       {isOpenModaEditingOrder && (
-        <Modal>
-          <ModaEditingOrder setIsOpenModaEditingOrder={setIsOpenModaEditingOrder}/>
+        <Modal onClose={toggleModaEditingOrder}>
+          <ModaEditingOrder 
+          id={id}
+          setIsOpenModaEditingOrder={setIsOpenModaEditingOrder}/>
         </Modal>
       )}
     </ContainerOrder>
