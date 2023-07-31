@@ -22,14 +22,6 @@ const StepThree = () => {
       />
       <InputField
         type="text"
-        label="Статус"
-        id="status"
-        name="status"
-        placeholder="прийнятий"
-        span="*"
-      />
-      <InputField
-        type="text"
         label="Вартість ремонту"
         id="cost"
         name="cost"

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const baseUrl =
-  process.env.NODE_ENV === 'production'
-    ? 'https://remontonlineback.up.railway.app/'
-    : 'http://localhost:8000/';
+const baseUrl = 'https://remontonlineback.up.railway.app/';
+  // process.env.NODE_ENV = 
+    // ? 'https://remontonlineback.up.railway.app/'
+    // : 'http://localhost:8000/';
 
 const API = axios.create({
   baseURL: `${baseUrl}`,
