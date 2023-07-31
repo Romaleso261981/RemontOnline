@@ -49,10 +49,9 @@ const OrderListItem = ({
   fullItem,
 }) => {
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenModaEditingOrder, setIsOpenModaEditingOrder] = useState(false);
   const [isMoreDetali, setIsMoreDetali] = useState(true);
   const [isMoreComent, setIsMoreComent] = useState(true);
-  const [isOpenFull, setIsOpenFull] = useState(false);
 
   const toggle = (is, isSet) => {
     isSet(!is);
@@ -98,7 +97,7 @@ const OrderListItem = ({
         />
         <UniversalButton
           type="button"
-          onClick={() => fullItem(id)}
+          onClick={() => setIsOpenModaEditingOrder(true)}
           text="редагувати"
           strokeM={'#fdf7f2'}
         />
@@ -119,18 +118,9 @@ const OrderListItem = ({
           strokeM={'#fdf7f2'}
         />
       </BattonWrapper>
-      {isOpen && (
-        <Modal onClose={() => setIsOpen(false)}>
-          <ModaEditingOrder />
-        </Modal>
-      )}
-      {isOpenFull && (
-        <Modal
-          toggle={toggle}
-          setIsOpenFull={setIsOpenFull}
-          isOpenFull={isOpenFull}
-        >
-          {/* <ShowFullItem FullItem={FullItem} /> */}
+      {isOpenModaEditingOrder && (
+        <Modal>
+          <ModaEditingOrder setIsOpenModaEditingOrder={setIsOpenModaEditingOrder}/>
         </Modal>
       )}
     </ContainerOrder>

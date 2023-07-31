@@ -18,9 +18,8 @@ export const EditOrder = createAsyncThunk(
   'order/editing',
   async (pet, { thunkAPI }) => {
     try {
-      // const response = await API.post('/orders/editing', pet);
-      toast.success('замовлення змінено');
-      // return response.data.allUserPets;
+      const response = await API.post('/orders/editing', pet);
+      return response.data.allUserPets;
     } catch (error) {
       toast.error(error.response.data.message);
       return thunkAPI(error.message);
