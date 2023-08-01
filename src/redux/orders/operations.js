@@ -41,9 +41,11 @@ export const addOrder = createAsyncThunk(
     }
   },
 );
+
 export const done = createAsyncThunk('order/done', async (orderId, thunkAPI) => {
   try {
-    const response = await API.post(`/orders/${orderId}`, { orderId });
+    const response = await API.post(`/orders/done/${orderId}`, { orderId });
+    console.log(response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
