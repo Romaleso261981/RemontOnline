@@ -25,6 +25,7 @@ const fetchPetsSucceesReducer = (state, action) => {
 };
 
 const changeOrderSucceesReducer = (state, action) => {
+  console.log(action.payload);
   state.items = action.payload;
   state.isLoading = false;
 };
