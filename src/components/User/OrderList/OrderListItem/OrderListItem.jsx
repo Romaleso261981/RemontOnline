@@ -46,16 +46,15 @@ const OrderListItem = ({
   serialNumber,
   type,
   index,
-  fullItem,
 }) => {
   const dispatch = useDispatch();
   const [isOpenModaEditingOrder, setIsOpenModaEditingOrder] = useState(false);
-  const [isMoreDetali, setIsMoreDetali] = useState(true);
-  const [isMoreComent, setIsMoreComent] = useState(true);
+  // const [isMoreDetali, setIsMoreDetali] = useState(true);
+  // const [isMoreComent, setIsMoreComent] = useState(true);
 
-  const toggle = (is, isSet) => {
-    isSet(!is);
-  };
+  // const toggle = (is, isSet) => {
+  //   isSet(!is);
+  // };
   const toggleModaEditingOrder = (is, isSet) => {
     setIsOpenModaEditingOrder(!isOpenModaEditingOrder)
   };
@@ -69,7 +68,7 @@ const OrderListItem = ({
           <OrderBrend value={brend} />
           <OrderModel value={model} />
         </DataListFirst>
-        {isMoreDetali && (
+        {true && (
           <DataListsecond>
             <OrderSerialNumber value={serialNumber} />
             <OrderCustomerName value={customerName} />
@@ -77,7 +76,7 @@ const OrderListItem = ({
             <OrderPhone value={phone} />
           </DataListsecond>
         )}
-        {isMoreComent && (
+        {true && (
           <CommentWrapper>
             <OrderDescriptionMalfunction value={descriptionMalfunction} />
             <OrderDescriptionOfRepair value={descriptionOfRepair} />
@@ -87,7 +86,7 @@ const OrderListItem = ({
         )}
       </DataListWrapper>
       <BattonWrapper>
-        <UniversalButton
+        {/* <UniversalButton
           type="button"
           onClick={() => toggle(isMoreDetali, setIsMoreDetali)}
           text="Деталі"
@@ -97,7 +96,7 @@ const OrderListItem = ({
           onClick={() => toggle(isMoreComent, setIsMoreComent)}
           text="деталі"
           strokeM={'#fdf7f2'}
-        />
+        /> */}
         <UniversalButton
           type="button"
           onClick={toggleModaEditingOrder}

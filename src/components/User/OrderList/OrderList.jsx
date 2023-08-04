@@ -6,7 +6,7 @@ import Loader from 'components/Loader/Loader2';
 
 import { getIsLoading } from 'redux/orders/selectors';
 
-const OrderList = ({ orders, fullItem }) => {
+const OrderList = ({ orders }) => {
   const isLoading = useSelector(getIsLoading);
 
   return (
@@ -36,7 +36,6 @@ const OrderList = ({ orders, fullItem }) => {
               index,
             ) => (
               <PetListItem
-                fullItem={fullItem}
                 index={index}
                 id={_id}
                 brend={brend}
