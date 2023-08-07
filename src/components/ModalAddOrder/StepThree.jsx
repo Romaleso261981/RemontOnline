@@ -1,7 +1,7 @@
 import React from 'react';
 import InputField from 'components/ReusableComponents/InputField/InputField';
 
-const StepThree = ({ order }) => {
+const StepThree = () => {
   return (
     <>
       <InputField

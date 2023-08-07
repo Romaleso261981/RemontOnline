@@ -3,7 +3,7 @@ import InputField from 'components/ReusableComponents/InputField/InputField';
 import MyDataPicker from 'components/ReusableComponents/DataPicker/DatePicker';
 import { DateBox, ErrorData, Label } from './StepOne.styled';
 
-const StepTwo = ({ order }) => {
+const StepTwo = () => {
   return (
     <>
       <InputField
