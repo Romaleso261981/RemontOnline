@@ -20,7 +20,7 @@ import { useDispatch } from 'react-redux';
 import { addOrder } from 'redux/orders/operations';
 import { format } from 'date-fns';
 
-const ModalAddOrder = ({ closeModal, order }) => {
+const ModalAddOrder = ({ closeModal }) => {
   const [currentStep, setCurrentStep] = useState(1);
   // const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
@@ -72,9 +72,9 @@ const ModalAddOrder = ({ closeModal, order }) => {
       >
         {({ isSubmitting }) => (
           <FormStyled>
-            {currentStep === 1 && <StepOne order={order} />}
-            {currentStep === 2 && <StepTwo order={order} />}
-            {currentStep === 3 && <StepThree order={order} />}
+            {currentStep === 1 && <StepOne />}
+            {currentStep === 2 && <StepTwo />}
+            {currentStep === 3 && <StepThree />}
 
             <ControlBox>
               <UniversalButton

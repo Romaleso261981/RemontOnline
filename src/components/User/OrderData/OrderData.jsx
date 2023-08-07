@@ -25,11 +25,9 @@ const OrderData = ({ orders }) => {
     setChange(filter);
   };
 
-  // const fullItem = id => {
-  //   const foundOrder = orders.find(value => value._id === id);
-  //   setOrder(foundOrder);
-  //   setIsOpen(true);
-  // };
+  const toggleAddModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <BoxOrderData>
@@ -37,7 +35,7 @@ const OrderData = ({ orders }) => {
         <FlexSvg
           type="button"
           ariaLabel="add pet button"
-          onClick={() => setIsOpen(true)}
+          onClick={toggleAddModal}
         >
           <Span>Нове замовлення</Span>
           <ButtonPlus
@@ -70,10 +68,10 @@ const OrderData = ({ orders }) => {
         </>
       )}
 
-      {!isLoading && <OrderList orders={sortOrders}/>}
+      {!isLoading && <OrderList orders={sortOrders} />}
       {isOpen && (
-        <Modal onClose={() => setIsOpen(false)}>
-          <ModalAddOrder closeModal={() => setIsOpen(false)} />
+        <Modal onClose={toggleAddModal}>
+          <ModalAddOrder closeModal={toggleAddModal} />
         </Modal>
       )}
     </BoxOrderData>
