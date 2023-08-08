@@ -14,7 +14,6 @@ export const fetchOrdersByCategory = createAsyncThunk(
     }
   },
 );
-
 export const EditOrder = createAsyncThunk(
   'order/editing',
   async (order, { thunkAPI }) => {
@@ -29,7 +28,6 @@ export const EditOrder = createAsyncThunk(
     }
   },
 );
-
 export const addOrder = createAsyncThunk(
   'order/addPet',
   async (order, { thunkAPI }) => {
@@ -53,7 +51,6 @@ export const done = createAsyncThunk('order/done', async (orderId, thunkAPI) => 
     return thunkAPI.rejectWithValue(error.message);
   }
 });
-
 export const deleteOrder = createAsyncThunk(
   'order/deleteOrder',
   async (orderId, thunkAPI) => {
@@ -66,7 +63,6 @@ export const deleteOrder = createAsyncThunk(
     }
   },
 );
-
 export const finderOrder = createAsyncThunk(
   'order/finderOrder',
   async (orderId, thunkAPI) => {

@@ -36,11 +36,11 @@ const logIn = createAsyncThunk('auth/login', async (userData, thunkAPI) => {
 
 const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    // const respons = await API.get('/auth/logout');
+    const respons = await API.get('/auth/logout');
     localStorage.setItem('refreshToken', '');
     authToken.unset();
     Notiflix.Notify.info('Бережіть себе і до зустрічі &#9996;', notifySettings);
-    // return respons.data;
+    return respons.data;
   } catch (error) {
     Notiflix.Notify.failure('Щось пішло не так...', notifySettings);
     return thunkAPI.rejectWithValue(error);
@@ -51,15 +51,15 @@ const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, { rejectWithValue }) => {
     try {
-      // const refreshToken = localStorage.getItem('refreshToken');
-      // const { data } = await API.post('/user/current', { refreshToken });
-      // authToken.set(data.accessToken);
-      // localStorage.setItem('refreshToken', data.refreshToken);
+      const refreshToken = localStorage.getItem('refreshToken');
+      const { data } = await API.post('/user/current', { refreshToken });
+      authToken.set(data.accessToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
       // Notiflix.Notify.success(
       //   `Ми знов разом, ${data.data.user.email}!`,
       //   notifySettings,
       // );
-      // return data;
+      return data;
     } catch ({ response }) {
       const { status, data } = response;
       const error = {

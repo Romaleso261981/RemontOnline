@@ -1,7 +1,7 @@
 import React from 'react';
 import InputField from 'components/ReusableComponents/InputField/InputField';
 
-const StepOne = () => {
+const StepOne = ({ order }) => {
   return (
     <>
       <InputField
@@ -19,6 +19,7 @@ const StepOne = () => {
         name="nametechnique"
         placeholder="Холодильник"
         span="*"
+        value={order.nametechnique}
       />
       <InputField
         type="text"
