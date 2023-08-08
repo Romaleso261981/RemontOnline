@@ -20,9 +20,9 @@ import { useDispatch } from 'react-redux';
 import { addOrder } from 'redux/orders/operations';
 import { format } from 'date-fns';
 
-const ModalAddOrder = ({ closeModal }) => {
+const ModalAddOrder = ({ closeModal, order }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  // const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
   const handleSubmit = async (values, { setSubmitting }) => {
     if (currentStep < 2) {
@@ -48,7 +48,7 @@ const ModalAddOrder = ({ closeModal }) => {
 
       try {
         dispatch(addOrder(data));
-        // setFormData(data);
+        setFormData(data);
       } catch (error) {
         console.log('Failed to add pet:', error);
       }
@@ -56,7 +56,7 @@ const ModalAddOrder = ({ closeModal }) => {
     }
     setSubmitting(false);
   };
-
+  console.log(formData);
   return (
     <Container>
       <CloseModalButton closeModal={closeModal} />
@@ -72,9 +72,9 @@ const ModalAddOrder = ({ closeModal }) => {
       >
         {({ isSubmitting }) => (
           <FormStyled>
-            {currentStep === 1 && <StepOne />}
-            {currentStep === 2 && <StepTwo />}
-            {currentStep === 3 && <StepThree />}
+            {currentStep === 1 && <StepOne order={order} />}
+            {currentStep === 2 && <StepTwo order={order} />}
+            {currentStep === 3 && <StepThree order={order} />}
 
             <ControlBox>
               <UniversalButton

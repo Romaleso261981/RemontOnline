@@ -14,19 +14,20 @@ import { getIsLoading } from 'redux/orders/selectors';
 import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 
 const OrderData = ({ orders }) => {
-  console.log(orders);
   const [isOpen, setIsOpen] = useState(false);
   const [sortOrders, setSortOrders] = useState(orders || []);
   const [change, setChange] = useState();
-  // const [order, setOrder] = useState({});
+  const [order, setOrder] = useState({});
   const isLoading = useSelector(getIsLoading);
 
   const getFilter = filter => {
     setChange(filter);
   };
 
-  const toggleAddModal = () => {
-    setIsOpen(!isOpen);
+  const fullItem = id => {
+    const foundOrder = orders.find(value => value._id === id);
+    setOrder(foundOrder);
+    setIsOpen(true);
   };
 
   return (
@@ -35,7 +36,7 @@ const OrderData = ({ orders }) => {
         <FlexSvg
           type="button"
           ariaLabel="add pet button"
-          onClick={toggleAddModal}
+          onClick={() => setIsOpen(true)}
         >
           <Span>Нове замовлення</Span>
           <ButtonPlus
@@ -68,10 +69,10 @@ const OrderData = ({ orders }) => {
         </>
       )}
 
-      {!isLoading && <OrderList orders={sortOrders} />}
+      {!isLoading && <OrderList orders={sortOrders} fullItem={fullItem} />}
       {isOpen && (
-        <Modal onClose={toggleAddModal}>
-          <ModalAddOrder closeModal={toggleAddModal} />
+        <Modal onClose={() => setIsOpen(false)}>
+          <ModalAddOrder order={order} closeModal={() => setIsOpen(false)} />
         </Modal>
       )}
     </BoxOrderData>

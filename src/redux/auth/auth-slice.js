@@ -48,10 +48,10 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, (state, { payload }) => {
       })
       .addCase(refreshUser.fulfilled, (state, {payload}) => {
-        // const { data, accessToken, refreshToken } = payload;
-        // state.accessToken = accessToken;
-        // state.refreshToken = refreshToken;
-        // state.user = data.user;
+        const { data, accessToken, refreshToken } = payload;
+        state.accessToken = accessToken;
+        state.refreshToken = refreshToken;
+        state.user = data.user;
         state.isRefreshing = true;
         state.isLoggedIn = true;
       })
