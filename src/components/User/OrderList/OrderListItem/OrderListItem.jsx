@@ -50,14 +50,10 @@ const OrderListItem = ({
 }) => {
   const dispatch = useDispatch();
   const [isOpenModaEditingOrder, setIsOpenModaEditingOrder] = useState(false);
-  const [isMoreDetali, setIsMoreDetali] = useState(true);
-  const [isMoreComent, setIsMoreComent] = useState(true);
 
-  const toggle = (is, isSet) => {
-    isSet(!is);
-  };
   const toggleModaEditingOrder = (is, isSet) => {
-    setIsOpenModaEditingOrder(!isOpenModaEditingOrder)
+    alert('Ви не можете редагувати замовлення');
+    // setIsOpenModaEditingOrder(!isOpenModaEditingOrder);
   };
   return (
     <ContainerOrder>
@@ -69,35 +65,20 @@ const OrderListItem = ({
           <OrderBrend value={brend} />
           <OrderModel value={model} />
         </DataListFirst>
-        {isMoreDetali && (
-          <DataListsecond>
+        <DataListsecond>
             <OrderSerialNumber value={serialNumber} />
             <OrderCustomerName value={customerName} />
             <OrderCustomerAddress value={customerAddress} />
             <OrderPhone value={phone} />
           </DataListsecond>
-        )}
-        {isMoreComent && (
           <CommentWrapper>
             <OrderDescriptionMalfunction value={descriptionMalfunction} />
             <OrderDescriptionOfRepair value={descriptionOfRepair} />
             <OrderCost value={cost} />
             <OrderStatus value={type} />
           </CommentWrapper>
-        )}
       </DataListWrapper>
       <BattonWrapper>
-        <UniversalButton
-          type="button"
-          onClick={() => toggle(isMoreDetali, setIsMoreDetali)}
-          text="Деталі"
-        />
-        <UniversalButton
-          type="button"
-          onClick={() => toggle(isMoreComent, setIsMoreComent)}
-          text="деталі"
-          strokeM={'#fdf7f2'}
-        />
         <UniversalButton
           type="button"
           onClick={toggleModaEditingOrder}
@@ -123,9 +104,10 @@ const OrderListItem = ({
       </BattonWrapper>
       {isOpenModaEditingOrder && (
         <Modal onClose={toggleModaEditingOrder}>
-          <ModaEditingOrder 
-          id={id}
-          setIsOpenModaEditingOrder={setIsOpenModaEditingOrder}/>
+          <ModaEditingOrder
+            id={id}
+            setIsOpenModaEditingOrder={setIsOpenModaEditingOrder}
+          />
         </Modal>
       )}
     </ContainerOrder>
