@@ -51,15 +51,15 @@ const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, { rejectWithValue }) => {
     try {
-      const refreshToken = localStorage.getItem('refreshToken');
-      const { data } = await API.post('/user/current', { refreshToken });
-      authToken.set(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
+      // const refreshToken = localStorage.getItem('refreshToken');
+      // const { data } = await API.post('/user/current', { refreshToken });
+      // authToken.set(data.accessToken);
+      // localStorage.setItem('refreshToken', data.refreshToken);
       // Notiflix.Notify.success(
       //   `Ми знов разом, ${data.data.user.email}!`,
       //   notifySettings,
       // );
-      return data;
+      // return data;
     } catch ({ response }) {
       const { status, data } = response;
       const error = {

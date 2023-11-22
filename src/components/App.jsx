@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { lazy, Suspense } from 'react';
+// import { useDispatch } from 'react-redux';
 
-import { refreshUser } from '../redux/auth/auth-operations';
+// import { refreshUser } from '../redux/auth/auth-operations';
 import Container from './Container/Container';
 import SharedLayout from './SharedLayout/SharedLayout';
 import { ConditionalRoutes } from './ConditionalRoutes/ConditionalRoutes';
@@ -16,12 +16,12 @@ const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFound = lazy(() => import('pages/NotFoundPage/NotFound'));
 
 export const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshUser());
-    // eslint-disable-next-line
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  //   // eslint-disable-next-line
+  // }, [dispatch]);
 
   return (
     <>

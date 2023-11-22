@@ -28,6 +28,9 @@ const changeOrderSucceesReducer = (state, action) => {
   state.items = action.payload;
   state.isLoading = false;
 };
+const orderIsDone = (state, action) => {
+  state.isLoading = false;
+};
 
 const ordersSlice = createSlice({
   name: 'orders',
@@ -48,7 +51,7 @@ const ordersSlice = createSlice({
       .addCase(fetchOrdersByCategory.fulfilled, fetchPetsSucceesReducer)
       .addCase(fetchOrdersByCategory.rejected, rejectedReducer)
       .addCase(done.pending, pendingReducer)
-      .addCase(done.fulfilled, changeOrderSucceesReducer)
+      .addCase(done.fulfilled, orderIsDone)
       .addCase(done.rejected, rejectedReducer)
       .addCase(addOrder.pending, pendingReducer)
       .addCase(addOrder.fulfilled, fetchPetsSucceesReducer)
