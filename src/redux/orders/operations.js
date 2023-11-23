@@ -20,7 +20,6 @@ export const EditOrder = createAsyncThunk(
     const { data, id} = order;
     try {
       const response = await API.post(`/orders/editing/${id}`, data);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       toast.error(error.response.data.message);

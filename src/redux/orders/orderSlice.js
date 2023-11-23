@@ -4,6 +4,7 @@ import {
   addOrder,
   done,
   finderOrder,
+  EditOrder,
 } from './operations';
 
 const pendingReducer = state => {
@@ -25,6 +26,12 @@ const fetchPetsSucceesReducer = (state, action) => {
 };
 
 const orderIsDone = (state, action) => {
+  state.orderList = action.payload.userWithPet
+  ;
+  state.isLoading = false;
+};
+const EditOrderReduser = (state, action) => {
+  console.log(action.payload.userWithPet[0])
   state.orderList = action.payload.userWithPet
   ;
   state.isLoading = false;
@@ -51,6 +58,8 @@ const ordersSlice = createSlice({
       .addCase(done.pending, pendingReducer)
       .addCase(done.fulfilled, orderIsDone)
       .addCase(done.rejected, rejectedReducer)
+      .addCase(EditOrder.fulfilled, EditOrderReduser)
+      .addCase(EditOrder.rejected, rejectedReducer)
       .addCase(addOrder.pending, pendingReducer)
       .addCase(addOrder.fulfilled, fetchPetsSucceesReducer)
       .addCase(addOrder.rejected, rejectedReducer)

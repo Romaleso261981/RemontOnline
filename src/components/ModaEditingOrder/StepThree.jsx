@@ -6,14 +6,6 @@ const StepThree = () => {
     <>
       <InputField
         type="text"
-        label="Опис несправності"
-        id="descriptionMalfunction"
-        name="descriptionMalfunction"
-        placeholder="Нехолодить, невключається"
-        span="*"
-      />
-      <InputField
-        type="text"
         label="Опис ремонту"
         id="descriptionOfRepair"
         name="descriptionOfRepair"

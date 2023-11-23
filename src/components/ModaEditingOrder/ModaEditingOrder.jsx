@@ -16,12 +16,6 @@ import { EditOrder } from 'redux/orders/operations';
 const ModalAddOrder = ({ setIsOpenModaEditingOrder, id }) => {
   const dispatch = useDispatch();
   const handleSubmit = async (data, { setSubmitting }) => {
-    // const data = new FormData();
-    // console.log(data);
-    // data.append('descriptionMalfunction', data.descriptionMalfunction);
-    // data.append('descriptionOfRepair', data.descriptionOfRepair);
-    // data.append('cost', data.cost);
-    // data.append('id', id);
     try {
       dispatch(EditOrder({data, id}));
     } catch (error) {

@@ -52,8 +52,7 @@ const OrderListItem = ({
   const [isOpenModaEditingOrder, setIsOpenModaEditingOrder] = useState(false);
 
   const toggleModaEditingOrder = (is, isSet) => {
-    alert('Ви не можете редагувати замовлення');
-    // setIsOpenModaEditingOrder(!isOpenModaEditingOrder);
+    setIsOpenModaEditingOrder(!isOpenModaEditingOrder);
   };
   return (
     <ContainerOrder>
