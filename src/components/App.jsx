@@ -16,12 +16,6 @@ const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFound = lazy(() => import('pages/NotFoundPage/NotFound'));
 
 export const App = () => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  //   // eslint-disable-next-line
-  // }, [dispatch]);
 
   return (
     <>
