@@ -24,11 +24,9 @@ const fetchPetsSucceesReducer = (state, action) => {
   state.searchBtnIsActive = true;
 };
 
-const changeOrderSucceesReducer = (state, action) => {
-  state.items = action.payload;
-  state.isLoading = false;
-};
 const orderIsDone = (state, action) => {
+  state.orderList = action.payload.userWithPet
+  ;
   state.isLoading = false;
 };
 
