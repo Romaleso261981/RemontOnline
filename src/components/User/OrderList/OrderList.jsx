@@ -32,6 +32,7 @@ const OrderList = ({ orders, fullItem }) => {
                 phone,
                 serialNumber,
                 type,
+                price,
               },
               index,
             ) => (
@@ -52,6 +53,7 @@ const OrderList = ({ orders, fullItem }) => {
                 phone={phone}
                 serialNumber={serialNumber}
                 type={type}
+                price={price}
               />
             ),
           )}

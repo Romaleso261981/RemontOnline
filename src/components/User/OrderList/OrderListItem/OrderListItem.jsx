@@ -30,6 +30,7 @@ import {
   DataListWrapper,
   CommentWrapper,
 } from '../OrderList.styled';
+import OrderPrice from '../OrderPrice/OrderPrice';
 const OrderListItem = ({
   id,
   brend,
@@ -47,6 +48,7 @@ const OrderListItem = ({
   type,
   index,
   fullItem,
+  price,
 }) => {
   const dispatch = useDispatch();
   const [isOpenModaEditingOrder, setIsOpenModaEditingOrder] = useState(false);
@@ -74,6 +76,7 @@ const OrderListItem = ({
             <OrderDescriptionMalfunction value={descriptionMalfunction} />
             <OrderDescriptionOfRepair value={descriptionOfRepair} />
             <OrderCost value={cost} />
+            <OrderPrice value={price} />
             <OrderStatus value={type} />
           </CommentWrapper>
       </DataListWrapper>

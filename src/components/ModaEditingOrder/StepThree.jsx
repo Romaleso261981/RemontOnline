@@ -20,6 +20,14 @@ const StepThree = () => {
         placeholder="1000"
         span="*"
       />
+      <InputField
+        type="text"
+        label="Собівартість"
+        id="price"
+        name="price"
+        placeholder="1000"
+        span="*"
+      />
     </>
   );
 };
