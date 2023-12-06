@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 export const fetchOrdersByCategory = createAsyncThunk(
   'order/fetchByCategory',
   async (category, thunkAPI) => {
-    const url = `/notices/category/${category}`;
+    const url = `/orders/category/${category}`;
     try {
       const result = await API.get(url);
       return result.data.data.userWithPet;
