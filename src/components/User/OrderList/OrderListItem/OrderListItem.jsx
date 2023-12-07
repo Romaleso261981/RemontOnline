@@ -13,7 +13,6 @@ import {
   OrderDescriptionMalfunction,
   OrderDescriptionOfRepair,
   OrderCost,
-  OrderStatus,
   OrderNumber,
 } from '../index';
 import { ContainerOrder } from '../../OrderData/OrderData.styled';
@@ -77,7 +76,6 @@ const OrderListItem = ({
             <OrderDescriptionOfRepair value={descriptionOfRepair} />
             <OrderCost value={cost} />
             <OrderPrice value={price} />
-            <OrderStatus value={type} />
           </CommentWrapper>
       </DataListWrapper>
       <BattonWrapper>
