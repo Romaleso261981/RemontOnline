@@ -15,7 +15,11 @@ const SearchBarComponent = ({ setSortOrders, orders, filter }) => {
     const normilizedValue = form.elements.search.value;
     const foundTitle = orders.filter(item => {
       let arr = orders;
-      if (filter === 'customerName') {
+      if (filter === 'number') {
+        arr = item.number
+          ?.toLowerCase()
+          .includes(normilizedValue.toLowerCase());
+      } else if (filter === 'customerName') {
         arr = item.customerName
           ?.toLowerCase()
           .includes(normilizedValue.toLowerCase());

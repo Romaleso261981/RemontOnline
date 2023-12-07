@@ -33,7 +33,6 @@ const ModalAddOrder = ({ closeModal, order }) => {
       const dateBD = format(values.datecreation, 'dd.MM.yyyy');
 
       const data = new FormData();
-      data.append('number', values.number);
       data.append('nametechnique', values.nametechnique);
       data.append('brend', values.brend);
       data.append('model', values.model);
@@ -45,6 +44,7 @@ const ModalAddOrder = ({ closeModal, order }) => {
       data.append('descriptionMalfunction', values.descriptionMalfunction);
       data.append('descriptionOfRepair', values.descriptionOfRepair);
       data.append('cost', values.cost);
+      data.append('number', values.number);
 
       try {
         dispatch(addOrder(data));

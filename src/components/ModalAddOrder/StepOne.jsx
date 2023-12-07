@@ -19,7 +19,6 @@ const StepOne = ({ order }) => {
         name="nametechnique"
         placeholder="Холодильник"
         span="*"
-        value={order.nametechnique}
       />
       <InputField
         type="text"

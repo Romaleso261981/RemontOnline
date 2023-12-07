@@ -16,18 +16,11 @@ import { BoxOrderData, Flex, Span, FlexSvg } from './OrderData.styled';
 const OrderData = ({ orders }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sortOrders, setSortOrders] = useState(orders || []);
-  const [change, setChange] = useState();
-  const [order, setOrder] = useState({});
+  const [change, setChange] = useState('number');
   const isLoading = useSelector(getIsLoading);
 
   const getFilter = filter => {
     setChange(filter);
-  };
-
-  const fullItem = id => {
-    const foundOrder = orders.find(value => value._id === id);
-    setOrder(foundOrder);
-    setIsOpen(true);
   };
 
   return (
@@ -68,11 +61,10 @@ const OrderData = ({ orders }) => {
           />
         </>
       )}
-
-      {!isLoading && <OrderList orders={sortOrders} fullItem={fullItem} />}
+      {!isLoading && <OrderList orders={sortOrders} />}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <ModalAddOrder order={order} closeModal={() => setIsOpen(false)} />
+          <ModalAddOrder closeModal={() => setIsOpen(false)} />
         </Modal>
       )}
     </BoxOrderData>

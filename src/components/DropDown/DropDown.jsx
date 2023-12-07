@@ -11,6 +11,7 @@ const DropDown = ({ getFilter }) => {
           getFilter(e.target.value);
         }}
       >
+        <option value="number">№ замовлення</option>
         <option value="customerAddress">Адресса</option>
         <option value="customerName">ПІБ</option>
         <option value="phone">телефон</option>
