@@ -31,6 +31,7 @@ export const addOrder = createAsyncThunk(
   'order/addPet',
   async (order, { thunkAPI }) => {
     try {
+      console.log(order)
       const response = await API.post('/orders/order', order);
       toast.success('Замовлення додано');
       return response.data.allUserPets;

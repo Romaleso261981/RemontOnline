@@ -20,9 +20,8 @@ import { useDispatch } from 'react-redux';
 import { addOrder } from 'redux/orders/operations';
 import { format } from 'date-fns';
 
-const ModalAddOrder = ({ closeModal, order }) => {
+const ModalAddOrder = ({ setIsOpen }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
   const handleSubmit = async (values, { setSubmitting }) => {
     if (currentStep < 2) {
@@ -32,34 +31,32 @@ const ModalAddOrder = ({ closeModal, order }) => {
     } else {
       const dateBD = format(values.datecreation, 'dd.MM.yyyy');
 
-      const data = new FormData();
-      data.append('nametechnique', values.nametechnique);
-      data.append('brend', values.brend);
-      data.append('model', values.model);
-      data.append('serialNumber', values.serialNumber);
-      data.append('customerName', values.customerName);
-      data.append('customerAddress', values.customerAddress);
-      data.append('phone', values.phone);
-      data.append('datecreation', dateBD);
-      data.append('descriptionMalfunction', values.descriptionMalfunction);
-      data.append('descriptionOfRepair', values.descriptionOfRepair);
-      data.append('cost', values.cost);
-      data.append('number', values.number);
-
+      const data = {
+        nametechnique: values.nametechnique,
+        brend: values.brend,
+        model: values.model,
+        serialNumber: values.serialNumber,
+        customerName: values.customerName,
+        customerAddress: values.customerAddress,
+        phone: values.phone,
+        datecreation: dateBD,
+        descriptionMalfunction: values.descriptionMalfunction,
+        descriptionOfRepair: values.descriptionOfRepair,
+        cost: values.cost,
+        number: values.number,
+      };
       try {
         dispatch(addOrder(data));
-        setFormData(data);
       } catch (error) {
         console.log('Failed to add pet:', error);
       }
-      closeModal();
+      setIsOpen(false);
     }
     setSubmitting(false);
   };
-  console.log(formData);
   return (
     <Container>
-      <CloseModalButton closeModal={closeModal} />
+      <CloseModalButton setIsOpen={setIsOpen} />
       <Title step={currentStep}>Додати замовлення</Title>
 
       <Formik
@@ -72,9 +69,9 @@ const ModalAddOrder = ({ closeModal, order }) => {
       >
         {({ isSubmitting }) => (
           <FormStyled>
-            {currentStep === 1 && <StepOne order={order} />}
-            {currentStep === 2 && <StepTwo order={order} />}
-            {currentStep === 3 && <StepThree order={order} />}
+            {currentStep === 1 && <StepOne />}
+            {currentStep === 2 && <StepTwo />}
+            {currentStep === 3 && <StepThree />}
 
             <ControlBox>
               <UniversalButton
@@ -87,7 +84,7 @@ const ModalAddOrder = ({ closeModal, order }) => {
               </UniversalButton>
 
               {currentStep === 1 && (
-                <UniversalButton name="transparent" onClick={closeModal}>
+                <UniversalButton name="transparent" onClick={()=>{setIsOpen(false)}}>
                   <span>Cancel</span>
                 </UniversalButton>
               )}

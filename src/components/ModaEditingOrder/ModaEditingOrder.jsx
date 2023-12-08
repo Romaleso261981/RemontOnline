@@ -19,7 +19,7 @@ const ModalAddOrder = ({ setIsOpenModaEditingOrder, id }) => {
     try {
       dispatch(EditOrder({data, id}));
     } catch (error) {
-      console.log('Failed to add pet:', error);
+      console.log('Failed to add order:', error);
     }
     setIsOpenModaEditingOrder();
     setSubmitting(false);

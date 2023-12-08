@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://remontonlineback.up.railway.app/';
+const baseUrl = 'http://localhost:8000/';
   // process.env.NODE_ENV = 
     // ? 'https://remontonlineback.up.railway.app/'
     // : 'http://localhost:8000/';

@@ -64,7 +64,7 @@ const OrderData = ({ orders }) => {
       {!isLoading && <OrderList orders={sortOrders} />}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <ModalAddOrder closeModal={() => setIsOpen(false)} />
+          <ModalAddOrder setIsOpen={setIsOpen} />
         </Modal>
       )}
     </BoxOrderData>

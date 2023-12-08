@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { AiOutlineClose } from 'react-icons/ai';
 
-export const CloseModalButton = ({ closeModal }) => {
+export const CloseModalButton = ({ setIsOpen }) => {
   return (
-    <ButtonCloseModal onClick={closeModal}>
+    <ButtonCloseModal onClick={()=>{setIsOpen(false)}}>
       <AiOutlineClose size={24} />
     </ButtonCloseModal>
   );
